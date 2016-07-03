@@ -13,3 +13,27 @@ extension Double {
     return round(100 * number) / 100
   }
 }
+
+extension NSDecimalNumber {
+  static func isGreaterThan(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
+    if lhs.compare(rhs).rawValue == -1 {
+      return false
+    }
+    return true
+  }
+  
+  static func isLessThan(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
+    if lhs.compare(rhs).rawValue == 1 {
+      return false
+    }
+    return true
+  }
+  
+  static func isEqualTo(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
+    if lhs.compare(rhs).rawValue == 0 {
+      return true
+    }
+    return false
+  }
+  
+}

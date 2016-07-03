@@ -29,92 +29,99 @@ private struct RateNumber {
   static let ThirdScaleRateNumber = 78_446.00
 }
 
+/*
+ NSOrderedAscending if the value of decimalNumber is greater than the receiver;
+ NSOrderedSame if they’re equal; 
+ NSOrderedDescending if the value of decimalNumber is less than the receiver. 
+ */
+
 
 struct ISR {
-  static func doesSalaryApplyForISR(salary: Double) -> Bool {
+  
+  static func doesSalaryApplyForISR(salary: NSDecimalNumber) -> Bool {
     
-    let yearlySalary = calculateYearlySalary(salary)
-    
-    if yearlySalary < Scale.ExemptFromISRScale {
+    let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
+
+    if yearlySalary.compare(Scale.ExemptFromISRScale).rawValue == -1 {
       return false
     } else {
       return true
     }
-    
+  
   }
   
-  static func getPercentage(salary: Double) -> Double {
-    
-    let yearlySalary = calculateYearlySalary(salary)
-    
-    switch yearlySalary {
-    case Scale.LowerBoundFirstScale...Scale.HigherBoundFirstScale:
-      return Percentage.FirstScalePercentage
-    case Scale.LowerBoundSecondScale...Scale.HigherBoundSecondScale:
-      return Percentage.SecondScalePercentage
-    case Scale.LowerBoundThirdScale...DBL_MAX:
-      return Percentage.ThirdScalePercentage
-    default:
-      return 0.0
-    }
-  }
-  
-  static func getSurplus(salary: Double) -> Double {
-    
-    let ISRPercentage = getPercentage(salary)
-    
-    switch ISRPercentage {
-    case Percentage.FirstScalePercentage:
-      return Scale.LowerBoundFirstScale
-    case Percentage.SecondScalePercentage:
-      return Scale.LowerBoundSecondScale
-    case Percentage.ThirdScalePercentage:
-      return Scale.LowerBoundThirdScale
-    default:
-      return 0.0
-    }
-    
-  }
-  
-  static func getRateNumber(percent: Double) -> Double {
-    
-    switch percent {
-    case Percentage.SecondScalePercentage:
-      return RateNumber.SecondScaleRateNumber
-    case Percentage.ThirdScalePercentage:
-      return RateNumber.ThirdScaleRateNumber
-    default:
-      return 0.0
-    }
-    
-  }
-  
-  static func getYearlyRetentionAmount(salary: Double) -> Double {
-    let yearlySalary = calculateYearlySalary(salary)
-    let ISRSurplus = getSurplus(salary)
-    let yearlySalaryMinusSurplusResult = Double.roundToNearestTwo(yearlySalary - ISRSurplus)
-    let ISRPercentage = getPercentage(salary)
-    var totalISRRetention = Double.roundToNearestTwo(yearlySalaryMinusSurplusResult * ISRPercentage)
-    
-    let rateNumber = getRateNumber(ISRPercentage)
-    
-    if rateNumber != 0.0 {
-      totalISRRetention += rateNumber
-    }
-    return Double.roundToNearestTwo(totalISRRetention)
-  }
-  
-  static func getMontlyRetentionAmount(salary: Double) -> Double {
-    return Double.roundToNearestTwo(getYearlyRetentionAmount(salary) / 12)
-  }
-  
-  static func getBiWeeklyRetentionAmount(salary: Double) -> Double {
-    return getMontlyRetentionAmount(salary) / 2
-  }
-  
+//  static func getPercentage(salary: NSDecimalNumber) -> Double {
+//    
+//    let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
+//    
+//    switch Double(yearlySalary) {
+//    case Scale.LowerBoundFirstScale...Scale.HigherBoundFirstScale:
+//      return Percentage.FirstScalePercentage
+//    case Scale.LowerBoundSecondScale...Scale.HigherBoundSecondScale:
+//      return Percentage.SecondScalePercentage
+//    case Scale.LowerBoundThirdScale...DBL_MAX:
+//      return Percentage.ThirdScalePercentage
+//    default:
+//      return 0.0
+//    }
+//  }
+//
+//  static func getSurplus(salary: Double) -> Double {
+//    
+//    let ISRPercentage = getPercentage(salary)
+//    
+//    switch ISRPercentage {
+//    case Percentage.FirstScalePercentage:
+//      return Scale.LowerBoundFirstScale
+//    case Percentage.SecondScalePercentage:
+//      return Scale.LowerBoundSecondScale
+//    case Percentage.ThirdScalePercentage:
+//      return Scale.LowerBoundThirdScale
+//    default:
+//      return 0.0
+//    }
+//    
+//  }
+//  
+//  static func getRateNumber(percent: Double) -> Double {
+//    
+//    switch percent {
+//    case Percentage.SecondScalePercentage:
+//      return RateNumber.SecondScaleRateNumber
+//    case Percentage.ThirdScalePercentage:
+//      return RateNumber.ThirdScaleRateNumber
+//    default:
+//      return 0.0
+//    }
+//    
+//  }
+//  
+//  static func getYearlyRetentionAmount(salary: Double) -> Double {
+//    let yearlySalary = calculateYearlySalary(salary)
+//    let ISRSurplus = getSurplus(salary)
+//    let yearlySalaryMinusSurplusResult = Double.roundToNearestTwo(yearlySalary - ISRSurplus)
+//    let ISRPercentage = getPercentage(salary)
+//    var totalISRRetention = Double.roundToNearestTwo(yearlySalaryMinusSurplusResult * ISRPercentage)
+//    
+//    let rateNumber = getRateNumber(ISRPercentage)
+//    
+//    if rateNumber != 0.0 {
+//      totalISRRetention += rateNumber
+//    }
+//    return Double.roundToNearestTwo(totalISRRetention)
+//  }
+//  
+//  static func getMontlyRetentionAmount(salary: Double) -> Double {
+//    return Double.roundToNearestTwo(getYearlyRetentionAmount(salary) / 12)
+//  }
+//  
+//  static func getBiWeeklyRetentionAmount(salary: Double) -> Double {
+//    return getMontlyRetentionAmount(salary) / 2
+//  }
+//  
 }
 
-private func calculateYearlySalary(salary: Double) -> Double {
-  let oneYear = 12
-  return salary * Double(oneYear)
+private func calculateYearlySalary(salary: NSDecimalNumber) -> NSDecimalNumber {
+  let oneYear: NSDecimalNumber = 12.0
+  return salary.decimalNumberByMultiplyingBy(oneYear)
 }

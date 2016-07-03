@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15453ADA1D29840A00515D9A /* CompareTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A29821D296EC2000E2F45 /* CompareTest.swift */; };
 		157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157134F91D25CC5800DE9110 /* AppDelegate.swift */; };
 		157134FF1D25CC5800DE9110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 157134FD1D25CC5800DE9110 /* Main.storyboard */; };
 		157135011D25CC5800DE9110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 157135001D25CC5800DE9110 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		151A29821D296EC2000E2F45 /* CompareTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareTest.swift; sourceTree = "<group>"; };
 		157134F61D25CC5700DE9110 /* Calcula Tu Salario.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calcula Tu Salario.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		157134F91D25CC5800DE9110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		157134FE1D25CC5800DE9110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				1571352B1D25E30300DE9110 /* ISR.swift */,
 				157135291D25D70F00DE9110 /* Deduction.swift */,
+				1571352F1D271DBB00DE9110 /* Util.swift */,
 				157134FD1D25CC5800DE9110 /* Main.storyboard */,
 				157135311D27204D00DE9110 /* Supporting Files */,
 			);
@@ -117,9 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				1571350E1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift */,
-				157135101D25CC5800DE9110 /* Info.plist */,
 				157135271D25CE0C00DE9110 /* ISRTest.swift */,
 				1571352D1D26D99F00DE9110 /* DeductionTest.swift */,
+				151A29821D296EC2000E2F45 /* CompareTest.swift */,
+				157135101D25CC5800DE9110 /* Info.plist */,
 			);
 			path = "Calcula Tu SalarioTests";
 			sourceTree = "<group>";
@@ -136,7 +140,6 @@
 		157135311D27204D00DE9110 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1571352F1D271DBB00DE9110 /* Util.swift */,
 				157134F91D25CC5800DE9110 /* AppDelegate.swift */,
 				157135001D25CC5800DE9110 /* Assets.xcassets */,
 				157135021D25CC5800DE9110 /* LaunchScreen.storyboard */,
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15453ADA1D29840A00515D9A /* CompareTest.swift in Sources */,
 				1571350F1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift in Sources */,
 				1571352E1D26D99F00DE9110 /* DeductionTest.swift in Sources */,
 				157135281D25CE0C00DE9110 /* ISRTest.swift in Sources */,
@@ -511,6 +515,7 @@
 				157135201D25CC5800DE9110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		157135211D25CC5800DE9110 /* Build configuration list for PBXNativeTarget "Calcula Tu SalarioTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +524,7 @@
 				157135231D25CC5800DE9110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		157135241D25CC5800DE9110 /* Build configuration list for PBXNativeTarget "Calcula Tu SalarioUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +533,7 @@
 				157135261D25CC5800DE9110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
