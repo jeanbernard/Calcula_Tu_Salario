@@ -10,30 +10,24 @@ import Foundation
 import Darwin
 
 private struct Percentage {
-  static let FirstScalePercentage = 0.15
-  static let SecondScalePercentage = 0.20
-  static let ThirdScalePercentage = 0.25
+  static let FirstScalePercentage: NSDecimalNumber = 0.15
+  static let SecondScalePercentage: NSDecimalNumber = 0.20
+  static let ThirdScalePercentage: NSDecimalNumber = 0.25
 }
 
 private struct Scale {
   static let ExemptFromISRScale: NSDecimalNumber = 409_281.00
-  static let LowerBoundFirstScale = 409_281.01
-  static let HigherBoundFirstScale = 613_921.00
-  static let LowerBoundSecondScale = 613_921.01
-  static let HigherBoundSecondScale = 852_667.00
-  static let LowerBoundThirdScale = 852_667.01
+  static let LowerBoundFirstScale: NSDecimalNumber = 409_281.01
+  static let HigherBoundFirstScale: NSDecimalNumber = 613_921.00
+  static let LowerBoundSecondScale: NSDecimalNumber = 613_921.01
+  static let HigherBoundSecondScale: NSDecimalNumber = 852_667.00
+  static let LowerBoundThirdScale: NSDecimalNumber = 852_667.01
 }
 
 private struct RateNumber {
   static let SecondScaleRateNumber = 30_696.00
   static let ThirdScaleRateNumber = 78_446.00
 }
-
-/*
- NSOrderedAscending if the value of decimalNumber is greater than the receiver;
- NSOrderedSame if they’re equal;
- NSOrderedDescending if the value of decimalNumber is less than the receiver.
- */
 
 
 struct ISR {
@@ -49,21 +43,31 @@ struct ISR {
     return false
   }
   
-  //  static func getPercentage(salary: NSDecimalNumber) -> Double {
-  //
-  //    let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
-  //
-  //    switch Double(yearlySalary) {
-  //    case Scale.LowerBoundFirstScale...Scale.HigherBoundFirstScale:
-  //      return Percentage.FirstScalePercentage
-  //    case Scale.LowerBoundSecondScale...Scale.HigherBoundSecondScale:
-  //      return Percentage.SecondScalePercentage
-  //    case Scale.LowerBoundThirdScale...DBL_MAX:
-  //      return Percentage.ThirdScalePercentage
-  //    default:
-  //      return 0.0
-  //    }
-  //  }
+    static func getPercentage(salary: NSDecimalNumber) -> NSDecimalNumber {
+  
+      let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
+      
+      let isSalaryInFirstScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundFirstScale) && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundFirstScale)
+      
+      let isSalaryInSecondScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundSecondScale) && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundSecondScale)
+      
+       let isSalaryInThirdScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundThirdScale) && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, NSDecimalNumber(double: DBL_MAX))
+      
+      if isSalaryInFirstScale {
+        return Percentage.FirstScalePercentage
+      }
+      
+      else if isSalaryInSecondScale {
+        return Percentage.SecondScalePercentage
+      }
+      
+      else if isSalaryInThirdScale {
+        return Percentage.ThirdScalePercentage
+      }
+    
+      return 0.0
+    }
+  
   //
   //  static func getSurplus(salary: Double) -> Double {
   //

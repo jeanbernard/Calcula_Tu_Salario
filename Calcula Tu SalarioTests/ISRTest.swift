@@ -27,25 +27,25 @@ class ISRTest: XCTestCase {
     XCTAssertFalse(isSalaryISRFree)
   }
 
-//  func testSalaryAppliesFor15PercentISR() {
-//    let expectedISRPercent = 0.15
-//    let ISRPercent = ISR.getPercentage(firstScaleSalary)
-//    XCTAssertEqual(expectedISRPercent, ISRPercent)
-//  }
+  func testSalaryAppliesFor15PercentISR() {
+    let expectedISRPercent = 0.15
+    let ISRPercent = ISR.getPercentage(firstScaleSalary)
+    XCTAssertEqual(expectedISRPercent, ISRPercent)
+  }
+
+  func testSalaryAppliesFor20PercentISR() {
+    let expectedISRPercent = 0.20
+    let ISRPercent = ISR.getPercentage(secondScaleSalary)
+    XCTAssertEqual(expectedISRPercent, ISRPercent)
+    
+  }
+
+  func testSalaryAppliesFor25PercentISR() {
+    let expectedISRPercent = 0.25
+    let ISRPercent = ISR.getPercentage(thirdScaleSalary)
+    XCTAssertEqual(expectedISRPercent, ISRPercent)
+  }
 //
-//  func testSalaryAppliesFor20PercentISR() {
-//    let expectedISRPercent = 0.20
-//    let ISRPercent = ISR.getPercentage(secondScaleSalary)
-//    XCTAssertEqual(expectedISRPercent, ISRPercent)
-//    
-//  }
-//  
-//  func testSalaryAppliesFor25PercentISR() {
-//    let expectedISRPercent = 0.25
-//    let ISRPercent = ISR.getPercentage(thirdScaleSalary)
-//    XCTAssertEqual(expectedISRPercent, ISRPercent)
-//  }
-//  
 //  func testISRSurplus15Percent() {
 //    let expectedSurplus = 409_281.01
 //    let surplusAmount = ISR.getSurplus(firstScaleSalary)
