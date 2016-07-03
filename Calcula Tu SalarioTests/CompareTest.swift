@@ -17,14 +17,35 @@ class CompareTest: XCTestCase {
 
   func testIsEqualTo() {
     let number: NSDecimalNumber = 409_281.01
-    let sameNumber: NSDecimalNumber = 409_281.01
-    XCTAssertTrue(NSDecimalNumber.isEqualTo(number, sameNumber))
+    XCTAssertTrue(NSDecimalNumber.isEqualTo(number, number))
   }
 
   func testEqualityFails() {
     let number: NSDecimalNumber = 400
     let notSameNumber: NSDecimalNumber = 7
     XCTAssertFalse(NSDecimalNumber.isEqualTo(number, notSameNumber))
+  }
+  
+  func testGreaterThanOrEqualToIsTrue() {
+    let number: NSDecimalNumber = 7
+    XCTAssertTrue(NSDecimalNumber.isGreaterThanOrEqualTo(number, number))
+  }
+  
+  func testGreaterThanOrEqualToIsFalse() {
+    let number: NSDecimalNumber = 7
+    let notSameNumber: NSDecimalNumber = 8
+    XCTAssertFalse(NSDecimalNumber.isGreaterThanOrEqualTo(number, notSameNumber))
+  }
+  
+  func testLessThanOrEqualToIsTrue() {
+    let number: NSDecimalNumber = 7
+    XCTAssertTrue(NSDecimalNumber.isLessThanOrEqualTo(number, number))
+  }
+  
+  func testLessThanOrEqualToIsFalse() {
+    let number: NSDecimalNumber = 9
+    let notSameNumber: NSDecimalNumber = 8
+    XCTAssertFalse(NSDecimalNumber.isLessThanOrEqualTo(number, notSameNumber))
   }
   
 }

@@ -36,4 +36,19 @@ extension NSDecimalNumber {
     return false
   }
   
+  static func isGreaterThanOrEqualTo(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
+    if isGreaterThan(lhs, rhs) || isEqualTo(lhs, rhs) {
+      return true
+    }
+    return false
+  }
+  
+  static func isLessThanOrEqualTo(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
+    if isLessThan(lhs, rhs) || isEqualTo(lhs, rhs) {
+      return true
+    }
+    return false
+  }
+  
+  
 }
