@@ -25,8 +25,8 @@ private struct Scale {
 }
 
 private struct RateNumber {
-  static let SecondScaleRateNumber = 30_696.00
-  static let ThirdScaleRateNumber = 78_446.00
+  static let SecondScaleRateNumber: NSDecimalNumber = 30_696.00
+  static let ThirdScaleRateNumber: NSDecimalNumber = 78_446.00
 }
 
 
@@ -88,19 +88,17 @@ struct ISR {
     
   }
   
-  //
-  //  static func getRateNumber(percent: Double) -> Double {
-  //
-  //    switch percent {
-  //    case Percentage.SecondScalePercentage:
-  //      return RateNumber.SecondScaleRateNumber
-  //    case Percentage.ThirdScalePercentage:
-  //      return RateNumber.ThirdScaleRateNumber
-  //    default:
-  //      return 0.0
-  //    }
-  //
-  //  }
+  static func getRateNumber(percent: NSDecimalNumber) -> NSDecimalNumber {
+    
+    switch percent {
+    case Percentage.SecondScalePercentage:
+      return RateNumber.SecondScaleRateNumber
+    case Percentage.ThirdScalePercentage:
+      return RateNumber.ThirdScaleRateNumber
+    default:
+      return 0.0
+    }
+  }
   //
   //  static func getYearlyRetentionAmount(salary: Double) -> Double {
   //    let yearlySalary = calculateYearlySalary(salary)

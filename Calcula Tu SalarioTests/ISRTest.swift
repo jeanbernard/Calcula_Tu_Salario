@@ -63,28 +63,28 @@ class ISRTest: XCTestCase {
     let surplusAmount = ISR.getSurplus(thirdScaleSalary)
     XCTAssertEqual(expectedSurplus, surplusAmount)
   }
+
+  func testSalaryDoesNotApplyForISRRate() {
+    let expectedRateNumber: NSDecimalNumber = 0.0
+    let ISRPercent: NSDecimalNumber = 0.15
+    let rateNumber = ISR.getRateNumber(ISRPercent)
+    XCTAssertEqual(expectedRateNumber, rateNumber)
+  }
+
+  func testISRRateNumber20Percent() {
+    let expectedRateNumber: NSDecimalNumber = 30_696.00
+    let ISRPercent: NSDecimalNumber = 0.20
+    let rateNumber = ISR.getRateNumber(ISRPercent)
+    XCTAssertEqual(expectedRateNumber, rateNumber)
+  }
+  
+  func testISRRateNumber25Percent() {
+    let expectedRateNumber: NSDecimalNumber = 78_446.00
+    let ISRPercent: NSDecimalNumber = 0.25
+    let rateNumber = ISR.getRateNumber(ISRPercent)
+    XCTAssertEqual(expectedRateNumber, rateNumber)
+  }
 //
-//  func testSalaryDoesNotApplyForISRRate() {
-//    let expectedRateNumber = 0.0
-//    let ISRPercent = 0.15
-//    let rateNumber = ISR.getRateNumber(ISRPercent)
-//    XCTAssertEqual(expectedRateNumber, rateNumber)
-//  }
-//  
-//  func testISRRateNumber20Percent() {
-//    let expectedRateNumber = 30_696.00
-//    let ISRPercent = 0.20
-//    let rateNumber = ISR.getRateNumber(ISRPercent)
-//    XCTAssertEqual(expectedRateNumber, rateNumber)
-//  }
-//  
-//  func testISRRateNumber25Percent() {
-//    let expectedRateNumber = 78_446.00
-//    let ISRPercent = 0.25
-//    let rateNumber = ISR.getRateNumber(ISRPercent)
-//    XCTAssertEqual(expectedRateNumber, rateNumber)
-//  }
-//  
 //  func testISRYearlyRetentionAmount15Percent() {
 //    let expectedYearlyISRRetentionAmount = 29_327.85
 //    let ISRDeductionAmount = ISR.getYearlyRetentionAmount(firstScaleSalary)
