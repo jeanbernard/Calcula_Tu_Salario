@@ -50,5 +50,10 @@ extension NSDecimalNumber {
     return false
   }
   
+  static func roundToNearestTwo(numberToRound: NSDecimalNumber) -> NSDecimalNumber {
+    let roundBehaviour = NSDecimalNumberHandler(roundingMode: .RoundPlain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+    return numberToRound.decimalNumberByRoundingAccordingToBehavior(roundBehaviour)
+  }
+  
   
 }

@@ -11,7 +11,7 @@ class ISRTest: XCTestCase {
   override func setUp() {
     super.setUp()
     noScaleSalary = 30000.00
-    firstScaleSalary = 50400.00
+    firstScaleSalary = 47421.36
     secondScaleSalary = 60000.00
     thirdScaleSalary = 80000.00
   }
@@ -84,13 +84,13 @@ class ISRTest: XCTestCase {
     let rateNumber = ISR.getRateNumber(ISRPercent)
     XCTAssertEqual(expectedRateNumber, rateNumber)
   }
+
+  func testISRYearlyRetentionAmount15Percent() {
+    let expectedYearlyISRRetentionAmount: NSDecimalNumber = 23_966.3
+    let ISRDeductionAmount: NSDecimalNumber = ISR.getYearlyRetentionAmount(firstScaleSalary)
+    XCTAssertEqual(expectedYearlyISRRetentionAmount, ISRDeductionAmount)
+  }
 //
-//  func testISRYearlyRetentionAmount15Percent() {
-//    let expectedYearlyISRRetentionAmount = 29_327.85
-//    let ISRDeductionAmount = ISR.getYearlyRetentionAmount(firstScaleSalary)
-//    XCTAssertEqual(expectedYearlyISRRetentionAmount, ISRDeductionAmount)
-//  }
-//  
 //  func testISRYearlyRetentionAmount20Percent() {
 //    let expectedYearlyISRRetentionAmount = 51_911.80
 //    let ISRDeductionAmount = ISR.getYearlyRetentionAmount(secondScaleSalary)
@@ -103,12 +103,12 @@ class ISRTest: XCTestCase {
 //    XCTAssertEqual(expectedYearlyISRRetentionAmount, ISRDeductionAmount)
 //  }
 //  
-//  func testISRMontlyRetentionAmount15Percent() {
-//    let expectedISRRetention = 2443.99
-//    let ISRDeductionAmount = ISR.getMontlyRetentionAmount(firstScaleSalary)
-//    XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
-//  }
-//  
+  func testISRMontlyRetentionAmount15Percent() {
+    let expectedISRRetention: NSDecimalNumber = 1997.19
+    let ISRDeductionAmount = ISR.getMontlyRetentionAmount(firstScaleSalary)
+    XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
+  }
+//
 //  func testISRMonthlyRetentionAmount20Percent() {
 //    let expectedISRRetention = 4325.98
 //    let ISRDeductionAmount = ISR.getMontlyRetentionAmount(secondScaleSalary)
@@ -121,12 +121,12 @@ class ISRTest: XCTestCase {
 //    XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
 //  }
 //  
-//  func testISRBiWeeklyRetentionAmount15Percent() {
-//    let expectedISRRetention = 1221.995
-//    let ISRDeductionAmount = ISR.getBiWeeklyRetentionAmount(firstScaleSalary)
-//    XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
-//  }
-//  
+  func testISRBiWeeklyRetentionAmount15Percent() {
+    let expectedISRRetention = 998.60
+    let ISRDeductionAmount = ISR.getBiWeeklyRetentionAmount(firstScaleSalary)
+    XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
+  }
+//
 //  func testISRBiWeeklyRetentionAmount20Percent() {
 //    let expectedISRRetention = 2162.99
 //    let ISRDeductionAmount = ISR.getBiWeeklyRetentionAmount(secondScaleSalary)

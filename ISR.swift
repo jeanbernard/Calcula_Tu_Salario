@@ -99,33 +99,36 @@ struct ISR {
       return 0.0
     }
   }
-  //
-  //  static func getYearlyRetentionAmount(salary: Double) -> Double {
-  //    let yearlySalary = calculateYearlySalary(salary)
-  //    let ISRSurplus = getSurplus(salary)
-  //    let yearlySalaryMinusSurplusResult = Double.roundToNearestTwo(yearlySalary - ISRSurplus)
-  //    let ISRPercentage = getPercentage(salary)
-  //    var totalISRRetention = Double.roundToNearestTwo(yearlySalaryMinusSurplusResult * ISRPercentage)
-  //
-  //    let rateNumber = getRateNumber(ISRPercentage)
-  //
-  //    if rateNumber != 0.0 {
-  //      totalISRRetention += rateNumber
-  //    }
-  //    return Double.roundToNearestTwo(totalISRRetention)
-  //  }
-  //
-  //  static func getMontlyRetentionAmount(salary: Double) -> Double {
-  //    return Double.roundToNearestTwo(getYearlyRetentionAmount(salary) / 12)
-  //  }
-  //
-  //  static func getBiWeeklyRetentionAmount(salary: Double) -> Double {
-  //    return getMontlyRetentionAmount(salary) / 2
-  //  }
-  //
+  
+  static func getYearlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
+    
+    let yearlySalary = calculateYearlySalary(salary)
+    let ISRSurplus = getSurplus(salary)
+    let yearlySalaryMinusSurplusResult = yearlySalary.decimalNumberBySubtracting(ISRSurplus)
+    let ISRPercentage = getPercentage(salary)
+    var totalISRRetention = NSDecimalNumber.roundToNearestTwo(yearlySalaryMinusSurplusResult.decimalNumberByMultiplyingBy(ISRPercentage))
+    
+    let rateNumber = getRateNumber(ISRPercentage)
+    
+    if rateNumber != 0.0 {
+      totalISRRetention = totalISRRetention.decimalNumberByAdding(rateNumber)
+    }
+    return totalISRRetention
+  }
+  
+  static func getMontlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
+    return NSDecimalNumber.roundToNearestTwo(getYearlyRetentionAmount(salary).decimalNumberByDividingBy(12))
+  }
+  
+  static func getBiWeeklyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
+    return NSDecimalNumber.roundToNearestTwo(getMontlyRetentionAmount(salary).decimalNumberByDividingBy(2))
+  }
+  
 }
 
 private func calculateYearlySalary(salary: NSDecimalNumber) -> NSDecimalNumber {
   let oneYear: NSDecimalNumber = 12.0
   return salary.decimalNumberByMultiplyingBy(oneYear)
 }
+
+
