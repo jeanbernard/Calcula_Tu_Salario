@@ -71,23 +71,23 @@ struct ISR {
     return 0.0
   }
   
-  //
-  //  static func getSurplus(salary: Double) -> Double {
-  //
-  //    let ISRPercentage = getPercentage(salary)
-  //
-  //    switch ISRPercentage {
-  //    case Percentage.FirstScalePercentage:
-  //      return Scale.LowerBoundFirstScale
-  //    case Percentage.SecondScalePercentage:
-  //      return Scale.LowerBoundSecondScale
-  //    case Percentage.ThirdScalePercentage:
-  //      return Scale.LowerBoundThirdScale
-  //    default:
-  //      return 0.0
-  //    }
-  //
-  //  }
+  static func getSurplus(salary: NSDecimalNumber) -> NSDecimalNumber {
+    
+    let ISRPercentage = getPercentage(salary)
+    
+    switch ISRPercentage {
+    case Percentage.FirstScalePercentage:
+      return Scale.LowerBoundFirstScale
+    case Percentage.SecondScalePercentage:
+      return Scale.LowerBoundSecondScale
+    case Percentage.ThirdScalePercentage:
+      return Scale.LowerBoundThirdScale
+    default:
+      return 0.0
+    }
+    
+  }
+  
   //
   //  static func getRateNumber(percent: Double) -> Double {
   //

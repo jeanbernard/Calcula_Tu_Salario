@@ -28,42 +28,42 @@ class ISRTest: XCTestCase {
   }
 
   func testSalaryAppliesFor15PercentISR() {
-    let expectedISRPercent = 0.15
+    let expectedISRPercent: NSDecimalNumber = 0.15
     let ISRPercent = ISR.getPercentage(firstScaleSalary)
     XCTAssertEqual(expectedISRPercent, ISRPercent)
   }
 
   func testSalaryAppliesFor20PercentISR() {
-    let expectedISRPercent = 0.20
+    let expectedISRPercent: NSDecimalNumber = 0.20
     let ISRPercent = ISR.getPercentage(secondScaleSalary)
     XCTAssertEqual(expectedISRPercent, ISRPercent)
     
   }
 
   func testSalaryAppliesFor25PercentISR() {
-    let expectedISRPercent = 0.25
+    let expectedISRPercent: NSDecimalNumber = 0.25
     let ISRPercent = ISR.getPercentage(thirdScaleSalary)
     XCTAssertEqual(expectedISRPercent, ISRPercent)
   }
+
+  func testISRSurplus15Percent() {
+    let expectedSurplus: NSDecimalNumber = 409_281.01
+    let surplusAmount = ISR.getSurplus(firstScaleSalary)
+    XCTAssertEqual(expectedSurplus, surplusAmount)
+  }
+
+  func testISRSurplus20Percent() {
+    let expectedSurplus: NSDecimalNumber = 613_921.01
+    let surplusAmount = ISR.getSurplus(secondScaleSalary)
+    XCTAssertEqual(expectedSurplus, surplusAmount)
+  }
+
+  func testISRSurplus25Percent() {
+    let expectedSurplus: NSDecimalNumber = 852_667.01
+    let surplusAmount = ISR.getSurplus(thirdScaleSalary)
+    XCTAssertEqual(expectedSurplus, surplusAmount)
+  }
 //
-//  func testISRSurplus15Percent() {
-//    let expectedSurplus = 409_281.01
-//    let surplusAmount = ISR.getSurplus(firstScaleSalary)
-//    XCTAssertEqual(expectedSurplus, surplusAmount)
-//  }
-//  
-//  func testISRSurplus20Percent() {
-//    let expectedSurplus = 613_921.01
-//    let surplusAmount = ISR.getSurplus(secondScaleSalary)
-//    XCTAssertEqual(expectedSurplus, surplusAmount)
-//  }
-//  
-//  func testISRSurplus25Percent() {
-//    let expectedSurplus = 852_667.01
-//    let surplusAmount = ISR.getSurplus(thirdScaleSalary)
-//    XCTAssertEqual(expectedSurplus, surplusAmount)
-//  }
-//  
 //  func testSalaryDoesNotApplyForISRRate() {
 //    let expectedRateNumber = 0.0
 //    let ISRPercent = 0.15
