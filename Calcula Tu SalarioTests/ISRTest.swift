@@ -18,13 +18,13 @@ class ISRTest: XCTestCase {
   
   
   func testNetSalaryDoesNotApplyForISR() {
-    let salaryAppliesForISR = ISR.doesSalaryApplyForISR(noScaleSalary)
-    XCTAssertFalse(salaryAppliesForISR)
+    let isSalaryISRFree = ISR.isSalaryExemptFromISR(noScaleSalary)
+    XCTAssertTrue(isSalaryISRFree)
   }
   
   func testIfNetSalaryAppliesForISR() {
-    let salaryAppliesForISR = ISR.doesSalaryApplyForISR(firstScaleSalary)
-    XCTAssertTrue(salaryAppliesForISR)
+    let isSalaryISRFree = ISR.isSalaryExemptFromISR(firstScaleSalary)
+    XCTAssertFalse(isSalaryISRFree)
   }
 
 //  func testSalaryAppliesFor15PercentISR() {
