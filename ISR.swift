@@ -43,30 +43,33 @@ struct ISR {
     return false
   }
   
-    static func getPercentage(salary: NSDecimalNumber) -> NSDecimalNumber {
-  
-      let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
-      
-      let isSalaryInFirstScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundFirstScale) && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundFirstScale)
-      
-      let isSalaryInSecondScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundSecondScale) && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundSecondScale)
-      
-       let isSalaryInThirdScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundThirdScale) && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, NSDecimalNumber(double: DBL_MAX))
-      
-      if isSalaryInFirstScale {
-        return Percentage.FirstScalePercentage
-      }
-      
-      else if isSalaryInSecondScale {
-        return Percentage.SecondScalePercentage
-      }
-      
-      else if isSalaryInThirdScale {
-        return Percentage.ThirdScalePercentage
-      }
+  static func getPercentage(salary: NSDecimalNumber) -> NSDecimalNumber {
     
-      return 0.0
+    let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
+    
+    let isSalaryInFirstScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundFirstScale)
+      && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundFirstScale)
+    
+    let isSalaryInSecondScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundSecondScale)
+      && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundSecondScale)
+    
+    let isSalaryInThirdScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundThirdScale)
+      && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, NSDecimalNumber(double: DBL_MAX))
+    
+    if isSalaryInFirstScale {
+      return Percentage.FirstScalePercentage
     }
+      
+    else if isSalaryInSecondScale {
+      return Percentage.SecondScalePercentage
+    }
+      
+    else if isSalaryInThirdScale {
+      return Percentage.ThirdScalePercentage
+    }
+    
+    return 0.0
+  }
   
   //
   //  static func getSurplus(salary: Double) -> Double {
