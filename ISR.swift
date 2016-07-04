@@ -111,7 +111,7 @@ struct ISR {
     let rateNumber = getRateNumber(ISRPercentage)
     
     if rateNumber != 0.0 {
-      totalISRRetention = totalISRRetention.decimalNumberByAdding(rateNumber)
+      totalISRRetention = NSDecimalNumber.roundToNearestTwo(totalISRRetention.decimalNumberByAdding(rateNumber))
     }
     return totalISRRetention
   }

@@ -10,19 +10,27 @@ import Foundation
 import Darwin
 
 struct Deduction {
-  var name: String
-  var amount: Double
   
-  enum TaxDeductions: Double {
+  enum TaxDeductions: NSDecimalNumber {
     case AFP = 0.0287
     case SFS = 0.0304
   }
   
-  static func applyGovernmentTaxesToSalary(salary: Double) -> Double {
-    let afpDeduction = salary * TaxDeductions.AFP.rawValue
-    let sfsDeduction = salary * TaxDeductions.SFS.rawValue
-    let totalDeductions = Double.roundToNearestTwo(afpDeduction + sfsDeduction)
-    let salaryAfterGovernmentTaxes = floor(salary - totalDeductions)
+  static func calculateAFPDeduction(salary: NSDecimalNumber) -> NSDecimalNumber {
+    let afpDeduction = salary.decimalNumberByMultiplyingBy(TaxDeductions.AFP.rawValue)
+    return NSDecimalNumber.roundToNearestTwo(afpDeduction)
+  }
+  
+  static func calculateSFSDeduction(salary: NSDecimalNumber) -> NSDecimalNumber {
+    let sfsDeduction = salary.decimalNumberByMultiplyingBy(TaxDeductions.SFS.rawValue)
+    return NSDecimalNumber.roundToNearestTwo(sfsDeduction)
+  }
+  
+  static func applyGovernmentTaxesToSalary(salary: NSDecimalNumber) -> NSDecimalNumber {
+    let afpDeduction = Deduction.calculateAFPDeduction(salary)
+    let sfsDeduction = Deduction.calculateSFSDeduction(salary)
+    let totalDeductions = afpDeduction.decimalNumberByAdding(sfsDeduction)
+    let salaryAfterGovernmentTaxes = salary.decimalNumberBySubtracting(totalDeductions)
     return salaryAfterGovernmentTaxes
   }
   
