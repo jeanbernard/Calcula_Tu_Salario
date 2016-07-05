@@ -11,7 +11,7 @@ import Darwin
 
 struct Deduction {
   
-  enum TaxDeductions: NSDecimalNumber {
+  private enum TaxDeductions: NSDecimalNumber {
     case AFP = 0.0287
     case SFS = 0.0304
   }

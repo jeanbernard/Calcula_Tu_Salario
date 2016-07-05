@@ -106,14 +106,14 @@ struct ISR {
     let ISRSurplus = getSurplus(salary)
     let yearlySalaryMinusSurplusResult = yearlySalary.decimalNumberBySubtracting(ISRSurplus)
     let ISRPercentage = getPercentage(salary)
-    var totalISRRetention = NSDecimalNumber.roundToNearestTwo(yearlySalaryMinusSurplusResult.decimalNumberByMultiplyingBy(ISRPercentage))
+    var totalISRRetention = yearlySalaryMinusSurplusResult.decimalNumberByMultiplyingBy(ISRPercentage)
     
     let rateNumber = getRateNumber(ISRPercentage)
     
     if rateNumber != 0.0 {
-      totalISRRetention = NSDecimalNumber.roundToNearestTwo(totalISRRetention.decimalNumberByAdding(rateNumber))
+      totalISRRetention = totalISRRetention.decimalNumberByAdding(rateNumber)
     }
-    return totalISRRetention
+    return NSDecimalNumber.roundToNearestTwo(totalISRRetention)
   }
   
   static func getMontlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
