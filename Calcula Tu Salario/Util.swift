@@ -8,6 +8,22 @@
 
 import Foundation
 
+func + (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
+  return lhs.decimalNumberByAdding(rhs)
+}
+
+func - (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
+  return lhs.decimalNumberBySubtracting(rhs)
+}
+
+func * (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
+  return lhs.decimalNumberByMultiplyingBy(rhs)
+}
+
+func / (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
+  return lhs.decimalNumberByDividingBy(rhs)
+}
+
 extension Double {
   static func roundToNearestTwo(number: Double) -> Double {
     return round(100 * number) / 100

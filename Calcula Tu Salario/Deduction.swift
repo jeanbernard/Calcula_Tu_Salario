@@ -17,20 +17,20 @@ struct Deduction {
   }
   
   static func calculateAFPDeduction(salary: NSDecimalNumber) -> NSDecimalNumber {
-    let afpDeduction = salary.decimalNumberByMultiplyingBy(TaxDeductions.AFP.rawValue)
+    let afpDeduction = salary * TaxDeductions.AFP.rawValue
     return NSDecimalNumber.roundToNearestTwo(afpDeduction)
   }
   
   static func calculateSFSDeduction(salary: NSDecimalNumber) -> NSDecimalNumber {
-    let sfsDeduction = salary.decimalNumberByMultiplyingBy(TaxDeductions.SFS.rawValue)
+    let sfsDeduction = salary * TaxDeductions.SFS.rawValue
     return NSDecimalNumber.roundToNearestTwo(sfsDeduction)
   }
   
   static func applyGovernmentTaxesToSalary(salary: NSDecimalNumber) -> NSDecimalNumber {
     let afpDeduction = Deduction.calculateAFPDeduction(salary)
     let sfsDeduction = Deduction.calculateSFSDeduction(salary)
-    let totalDeductions = afpDeduction.decimalNumberByAdding(sfsDeduction)
-    let salaryAfterGovernmentTaxes = salary.decimalNumberBySubtracting(totalDeductions)
+    let totalDeductions = afpDeduction + sfsDeduction
+    let salaryAfterGovernmentTaxes = salary - totalDeductions
     return salaryAfterGovernmentTaxes
   }
   
