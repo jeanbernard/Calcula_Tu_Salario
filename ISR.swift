@@ -104,31 +104,31 @@ struct ISR {
     
     let yearlySalary = calculateYearlySalary(salary)
     let ISRSurplus = getSurplus(salary)
-    let yearlySalaryMinusSurplusResult = yearlySalary.decimalNumberBySubtracting(ISRSurplus)
+    let yearlySalaryMinusSurplusResult = yearlySalary - ISRSurplus
     let ISRPercentage = getPercentage(salary)
-    var totalISRRetention = yearlySalaryMinusSurplusResult.decimalNumberByMultiplyingBy(ISRPercentage)
+    var totalISRRetention = yearlySalaryMinusSurplusResult * ISRPercentage
     
     let rateNumber = getRateNumber(ISRPercentage)
     
     if rateNumber != 0.0 {
-      totalISRRetention = totalISRRetention.decimalNumberByAdding(rateNumber)
+      totalISRRetention = totalISRRetention + rateNumber
     }
     return NSDecimalNumber.roundToNearestTwo(totalISRRetention)
   }
   
   static func getMontlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
-    return NSDecimalNumber.roundToNearestTwo(getYearlyRetentionAmount(salary).decimalNumberByDividingBy(12))
+    return NSDecimalNumber.roundToNearestTwo(getYearlyRetentionAmount(salary) / 12)
   }
   
   static func getBiWeeklyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
-    return NSDecimalNumber.roundToNearestTwo(getMontlyRetentionAmount(salary).decimalNumberByDividingBy(2))
+    return NSDecimalNumber.roundToNearestTwo(getMontlyRetentionAmount(salary) / 2)
   }
   
 }
 
 private func calculateYearlySalary(salary: NSDecimalNumber) -> NSDecimalNumber {
   let oneYear: NSDecimalNumber = 12.0
-  return salary.decimalNumberByMultiplyingBy(oneYear)
+  return salary * oneYear
 }
 
 

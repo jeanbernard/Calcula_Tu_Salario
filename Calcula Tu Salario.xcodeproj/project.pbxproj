@@ -20,7 +20,7 @@
 		1571352A1D25D70F00DE9110 /* Deduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135291D25D70F00DE9110 /* Deduction.swift */; };
 		1571352C1D25E30300DE9110 /* ISR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352B1D25E30300DE9110 /* ISR.swift */; };
 		1571352E1D26D99F00DE9110 /* DeductionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352D1D26D99F00DE9110 /* DeductionTest.swift */; };
-		157135301D271DBB00DE9110 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* Util.swift */; };
+		157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		157135291D25D70F00DE9110 /* Deduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deduction.swift; sourceTree = "<group>"; };
 		1571352B1D25E30300DE9110 /* ISR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISR.swift; path = ../ISR.swift; sourceTree = "<group>"; };
 		1571352D1D26D99F00DE9110 /* DeductionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeductionTest.swift; sourceTree = "<group>"; };
-		1571352F1D271DBB00DE9110 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				1571352B1D25E30300DE9110 /* ISR.swift */,
 				15453ADB1D2A6C2000515D9A /* Payroll.swift */,
 				157135291D25D70F00DE9110 /* Deduction.swift */,
-				1571352F1D271DBB00DE9110 /* Util.swift */,
+				1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */,
 				157134FD1D25CC5800DE9110 /* Main.storyboard */,
 				157135311D27204D00DE9110 /* Supporting Files */,
 			);
@@ -307,7 +307,7 @@
 			files = (
 				1571352A1D25D70F00DE9110 /* Deduction.swift in Sources */,
 				15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */,
-				157135301D271DBB00DE9110 /* Util.swift in Sources */,
+				157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */,
 				1571352C1D25E30300DE9110 /* ISR.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,
 			);

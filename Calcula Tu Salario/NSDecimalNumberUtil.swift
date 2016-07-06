@@ -24,11 +24,6 @@ func / (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
   return lhs.decimalNumberByDividingBy(rhs)
 }
 
-extension Double {
-  static func roundToNearestTwo(number: Double) -> Double {
-    return round(100 * number) / 100
-  }
-}
 
 extension NSDecimalNumber {
   static func isGreaterThan(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
