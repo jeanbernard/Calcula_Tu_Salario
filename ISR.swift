@@ -35,7 +35,7 @@ struct ISR {
   static func isSalaryExemptFromISR(salary: NSDecimalNumber) -> Bool {
     let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
     
-    let isSalaryExemptFromISR = NSDecimalNumber.isLessThan(yearlySalary, Scale.ExemptFromISRScale)
+    let isSalaryExemptFromISR = yearlySalary < Scale.ExemptFromISRScale
     
     if isSalaryExemptFromISR {
       return true
@@ -47,14 +47,14 @@ struct ISR {
     
     let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
     
-    let isSalaryInFirstScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundFirstScale)
-      && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundFirstScale)
+    let isSalaryInFirstScale = yearlySalary >= Scale.LowerBoundFirstScale
+      && yearlySalary <= Scale.HigherBoundFirstScale
     
-    let isSalaryInSecondScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundSecondScale)
-      && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, Scale.HigherBoundSecondScale)
+    let isSalaryInSecondScale = yearlySalary >= Scale.LowerBoundSecondScale
+      && yearlySalary <= Scale.HigherBoundSecondScale
     
-    let isSalaryInThirdScale = NSDecimalNumber.isGreaterThanOrEqualTo(yearlySalary, Scale.LowerBoundThirdScale)
-      && NSDecimalNumber.isLessThanOrEqualTo(yearlySalary, NSDecimalNumber(double: DBL_MAX))
+    let isSalaryInThirdScale = yearlySalary >= Scale.LowerBoundThirdScale
+      && yearlySalary <= NSDecimalNumber(double: DBL_MAX)
     
     if isSalaryInFirstScale {
       return Percentage.FirstScalePercentage
@@ -70,7 +70,7 @@ struct ISR {
     
     return 0.0
   }
-  
+
   static func getSurplus(salary: NSDecimalNumber) -> NSDecimalNumber {
     
     let ISRPercentage = getPercentage(salary)
@@ -87,7 +87,7 @@ struct ISR {
     }
     
   }
-  
+
   static func getRateNumber(percent: NSDecimalNumber) -> NSDecimalNumber {
     
     switch percent {
@@ -99,7 +99,7 @@ struct ISR {
       return 0.0
     }
   }
-  
+
   static func getYearlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
     
     let yearlySalary = calculateYearlySalary(salary)
@@ -123,7 +123,7 @@ struct ISR {
   static func getBiWeeklyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
     return NSDecimalNumber.roundToNearestTwo(getMontlyRetentionAmount(salary) / 2)
   }
-  
+
 }
 
 private func calculateYearlySalary(salary: NSDecimalNumber) -> NSDecimalNumber {

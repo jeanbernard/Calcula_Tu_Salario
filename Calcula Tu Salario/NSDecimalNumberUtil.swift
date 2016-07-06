@@ -8,6 +8,8 @@
 
 import Foundation
 
+//MARK: Overloaded Arithmetic Operators
+
 func + (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
   return lhs.decimalNumberByAdding(rhs)
 }
@@ -25,46 +27,49 @@ func / (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
 }
 
 
+//MARK: Overloaded Comparison Operators
+
+func > (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
+  if lhs.compare(rhs).rawValue == -1 {
+    return false
+  }
+  return true
+}
+
+func < (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
+  if lhs.compare(rhs).rawValue == 1 {
+    return false
+  }
+  return true
+}
+
+func == (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
+  if lhs.compare(rhs).rawValue == 0 {
+    return true
+  }
+  return false
+}
+
+func >= (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
+  if lhs > rhs || lhs == rhs {
+    return true
+  }
+  return false
+}
+
+func <= (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
+  if lhs < rhs || lhs == rhs {
+    return true
+  }
+  return false
+}
+
+
 extension NSDecimalNumber {
-  static func isGreaterThan(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
-    if lhs.compare(rhs).rawValue == -1 {
-      return false
-    }
-    return true
-  }
-  
-  static func isLessThan(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
-    if lhs.compare(rhs).rawValue == 1 {
-      return false
-    }
-    return true
-  }
-  
-  static func isEqualTo(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
-    if lhs.compare(rhs).rawValue == 0 {
-      return true
-    }
-    return false
-  }
-  
-  static func isGreaterThanOrEqualTo(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
-    if isGreaterThan(lhs, rhs) || isEqualTo(lhs, rhs) {
-      return true
-    }
-    return false
-  }
-  
-  static func isLessThanOrEqualTo(lhs: NSDecimalNumber, _ rhs: NSDecimalNumber) -> Bool {
-    if isLessThan(lhs, rhs) || isEqualTo(lhs, rhs) {
-      return true
-    }
-    return false
-  }
-  
+
   static func roundToNearestTwo(numberToRound: NSDecimalNumber) -> NSDecimalNumber {
     let roundBehaviour = NSDecimalNumberHandler(roundingMode: .RoundPlain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
     return numberToRound.decimalNumberByRoundingAccordingToBehavior(roundBehaviour)
   }
-  
   
 }
