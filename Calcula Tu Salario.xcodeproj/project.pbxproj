@@ -10,6 +10,7 @@
 		15453ADA1D29840A00515D9A /* CompareTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A29821D296EC2000E2F45 /* CompareTest.swift */; };
 		15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15453ADB1D2A6C2000515D9A /* Payroll.swift */; };
 		15453ADE1D2A6C3800515D9A /* PayrollTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15453ADD1D2A6C3800515D9A /* PayrollTest.swift */; };
+		155B67791D2DE092002E8C9F /* ISR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B67781D2DE092002E8C9F /* ISR.swift */; };
 		157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157134F91D25CC5800DE9110 /* AppDelegate.swift */; };
 		157134FF1D25CC5800DE9110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 157134FD1D25CC5800DE9110 /* Main.storyboard */; };
 		157135011D25CC5800DE9110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 157135001D25CC5800DE9110 /* Assets.xcassets */; };
@@ -18,7 +19,6 @@
 		1571351A1D25CC5800DE9110 /* Calcula_Tu_SalarioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135191D25CC5800DE9110 /* Calcula_Tu_SalarioUITests.swift */; };
 		157135281D25CE0C00DE9110 /* ISRTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135271D25CE0C00DE9110 /* ISRTest.swift */; };
 		1571352A1D25D70F00DE9110 /* Deduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135291D25D70F00DE9110 /* Deduction.swift */; };
-		1571352C1D25E30300DE9110 /* ISR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352B1D25E30300DE9110 /* ISR.swift */; };
 		1571352E1D26D99F00DE9110 /* DeductionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352D1D26D99F00DE9110 /* DeductionTest.swift */; };
 		157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +44,7 @@
 		151A29821D296EC2000E2F45 /* CompareTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareTest.swift; sourceTree = "<group>"; };
 		15453ADB1D2A6C2000515D9A /* Payroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payroll.swift; sourceTree = "<group>"; };
 		15453ADD1D2A6C3800515D9A /* PayrollTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayrollTest.swift; sourceTree = "<group>"; };
+		155B67781D2DE092002E8C9F /* ISR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISR.swift; sourceTree = "<group>"; };
 		157134F61D25CC5700DE9110 /* Calcula Tu Salario.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calcula Tu Salario.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		157134F91D25CC5800DE9110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		157134FE1D25CC5800DE9110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		1571351B1D25CC5800DE9110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		157135271D25CE0C00DE9110 /* ISRTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISRTest.swift; sourceTree = "<group>"; };
 		157135291D25D70F00DE9110 /* Deduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deduction.swift; sourceTree = "<group>"; };
-		1571352B1D25E30300DE9110 /* ISR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISR.swift; path = ../ISR.swift; sourceTree = "<group>"; };
 		1571352D1D26D99F00DE9110 /* DeductionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeductionTest.swift; sourceTree = "<group>"; };
 		1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,9 +91,9 @@
 		155B67771D2DDD3D002E8C9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				155B67781D2DE092002E8C9F /* ISR.swift */,
 				15453ADB1D2A6C2000515D9A /* Payroll.swift */,
 				157135291D25D70F00DE9110 /* Deduction.swift */,
-				1571352B1D25E30300DE9110 /* ISR.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 				1571352A1D25D70F00DE9110 /* Deduction.swift in Sources */,
 				15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */,
 				157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */,
-				1571352C1D25E30300DE9110 /* ISR.swift in Sources */,
+				155B67791D2DE092002E8C9F /* ISR.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
