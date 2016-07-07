@@ -45,7 +45,7 @@ struct ISR {
   
   static func getPercentage(salary: NSDecimalNumber) -> NSDecimalNumber {
     
-    let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
+    let yearlySalary = calculateYearlySalary(salary)
     
     let isSalaryInFirstScale = yearlySalary >= Scale.LowerBoundFirstScale
       && yearlySalary <= Scale.HigherBoundFirstScale
