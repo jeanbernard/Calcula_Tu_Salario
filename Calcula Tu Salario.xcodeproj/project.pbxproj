@@ -111,10 +111,9 @@
 		157134F81D25CC5800DE9110 /* Calcula Tu Salario */ = {
 			isa = PBXGroup;
 			children = (
-				1571352B1D25E30300DE9110 /* ISR.swift */,
 				15453ADB1D2A6C2000515D9A /* Payroll.swift */,
 				157135291D25D70F00DE9110 /* Deduction.swift */,
-				1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */,
+				1571352B1D25E30300DE9110 /* ISR.swift */,
 				157134FD1D25CC5800DE9110 /* Main.storyboard */,
 				157135311D27204D00DE9110 /* Supporting Files */,
 			);
@@ -146,6 +145,7 @@
 		157135311D27204D00DE9110 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */,
 				157134F91D25CC5800DE9110 /* AppDelegate.swift */,
 				157135001D25CC5800DE9110 /* Assets.xcassets */,
 				157135021D25CC5800DE9110 /* LaunchScreen.storyboard */,
