@@ -6,6 +6,10 @@ enum HourlyWage: NSDecimalNumber {
   case weekly = 5.5
 }
 
+private struct WorkingHours {
+  static let legalWorkingHours: NSDecimalNumber = 44
+}
+
 
 struct Overtime {
   
@@ -14,6 +18,14 @@ struct Overtime {
     let hourlyWageResult = (salary / frequency.rawValue) / normalWorkingHours
     
     return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
+  }
+  
+  static func extraHoursWorked(hoursWorked: NSDecimalNumber) -> NSDecimalNumber {
+    
+    let extraHoursWorkedResult = hoursWorked - WorkingHours.legalWorkingHours
+    
+    return extraHoursWorkedResult
+    
   }
   
 }
