@@ -3,28 +3,40 @@ import XCTest
 
 class OvertimeTest: XCTestCase {
   
+  var salary: NSDecimalNumber = 0.0
+  var hoursWorked: NSDecimalNumber = 0
+  
+  override func setUp() {
+    super.setUp()
+    salary = 10_000.00
+    hoursWorked = 8
+  }
+  
   func testHourlyOvertimePayPerMonth() {
-    let salary: NSDecimalNumber = 10_000.00
-    let hoursWorked: NSDecimalNumber = 8
-    let expectedHourlyOvertimePayPerMonth: NSDecimalNumber = 52.45
-    let hourlyOvertimePayPerMonth = Overtime.calculateHourlyOvertimePayPerMonth(salary, hoursWorked: hoursWorked)
-    XCTAssertEqual(expectedHourlyOvertimePayPerMonth, hourlyOvertimePayPerMonth)
+    let frequency: HourlyWage = .Monthly
+    let expectedHourlyWagePerMonth: NSDecimalNumber = 52.45
+    
+    let hourlyWagePerMonth = Overtime.hourlyWage(salary, hoursWorked: hoursWorked, frequency: frequency)
+    
+    XCTAssertEqual(expectedHourlyWagePerMonth, hourlyWagePerMonth)
   }
   
   func testHourlyOvertimePayPerBiWeek() {
-    let salary: NSDecimalNumber = 10_000.00
-    let hoursWorked: NSDecimalNumber = 8
-    let expectedHourlyOvertimePayPerBiWeek: NSDecimalNumber = 104.95
-    let hourlyOvertimePayPerBiWeek = Overtime.calculateHourlyOvertimePayPerBiWeekly(salary, hoursWorked: hoursWorked)
-    XCTAssertEqual(expectedHourlyOvertimePayPerBiWeek, hourlyOvertimePayPerBiWeek)
+    let frequency: HourlyWage = .BiWeekly
+    let expectedHourlyWagePerBiWeek: NSDecimalNumber = 104.95
+    
+    let hourlyWagePerBiWeek = Overtime.hourlyWage(salary, hoursWorked: hoursWorked, frequency: frequency)
+    
+    XCTAssertEqual(expectedHourlyWagePerBiWeek, hourlyWagePerBiWeek)
   }
-  
+
   func testHourlyOvertimePayPerWeek() {
-    let salary: NSDecimalNumber = 10_000.00
-    let hoursWorked: NSDecimalNumber = 8
-    let expectedHourlyOvertimePayPerWeek: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(227.27)
-    let hourlyOvertimePayPerBiWeek = Overtime.calculateHourlyOvertimePayPerWeek(salary, hoursWorked: hoursWorked)
-    XCTAssertEqual(expectedHourlyOvertimePayPerWeek, hourlyOvertimePayPerBiWeek)
+    let frequency: HourlyWage = .Weekly
+    let expectedHourlyWagePerWeek: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(227.27)
+    
+    let hourlyWagePerWeek = Overtime.hourlyWage(salary, hoursWorked: hoursWorked, frequency: frequency)
+    
+    XCTAssertEqual(expectedHourlyWagePerWeek, hourlyWagePerWeek)
   }
   
 }

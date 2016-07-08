@@ -1,6 +1,6 @@
 import Foundation
 
-private enum HourlyPay: NSDecimalNumber {
+enum HourlyWage: NSDecimalNumber {
   case Monthly = 23.83
   case BiWeekly = 11.91
   case Weekly = 5.5
@@ -9,26 +9,11 @@ private enum HourlyPay: NSDecimalNumber {
 
 struct Overtime {
   
-  static func calculateHourlyOvertimePayPerMonth(salary: NSDecimalNumber, hoursWorked: NSDecimalNumber) -> NSDecimalNumber {
+  static func hourlyWage(salary: NSDecimalNumber, hoursWorked: NSDecimalNumber, frequency: HourlyWage) -> NSDecimalNumber {
     
-    let hourlyOvertimePayPerMonth = (salary / HourlyPay.Monthly.rawValue) / hoursWorked
+    let hourlyWageResult = (salary / frequency.rawValue) / hoursWorked
     
-    return NSDecimalNumber.roundToNearestTwo(hourlyOvertimePayPerMonth)
+    return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
   }
-  
-  static func calculateHourlyOvertimePayPerBiWeekly(salary: NSDecimalNumber, hoursWorked: NSDecimalNumber) -> NSDecimalNumber {
-    
-    let hourlyOvertimePayPerBiWeekly = (salary / HourlyPay.BiWeekly.rawValue) / hoursWorked
-  
-    return NSDecimalNumber.roundToNearestTwo(hourlyOvertimePayPerBiWeekly)
-  }
-  
-  static func calculateHourlyOvertimePayPerWeek(salary: NSDecimalNumber, hoursWorked: NSDecimalNumber) -> NSDecimalNumber {
-    
-    let hourlyOvertimePayPerBiWeek = (salary / HourlyPay.Weekly.rawValue) / hoursWorked
-    
-    return NSDecimalNumber.roundToNearestTwo(hourlyOvertimePayPerBiWeek)
-  }
-  
   
 }
