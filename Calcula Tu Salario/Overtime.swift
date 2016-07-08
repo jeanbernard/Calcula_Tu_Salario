@@ -1,11 +1,3 @@
-//
-//  Wage.swift
-//  Calcula Tu Salario
-//
-//  Created by Jean Bernard on 7/8/16.
-//  Copyright © 2016 Jean Bernard. All rights reserved.
-//
-
 import Foundation
 
 private enum HourlyPay: NSDecimalNumber {
@@ -15,11 +7,11 @@ private enum HourlyPay: NSDecimalNumber {
 
 struct Overtime {
   
-  static func calculateHourlyWagePerMonth(wage: NSDecimalNumber, hoursWorked: NSDecimalNumber) -> NSDecimalNumber {
+  static func calculateHourlyOvertimePayPerMonth(salary: NSDecimalNumber, hoursWorked: NSDecimalNumber) -> NSDecimalNumber {
     
-    let hourlyWagePerMonth = (wage / HourlyPay.Monthly.rawValue) / hoursWorked
+    let hourlyOvertimePayPerMonth = (salary / HourlyPay.Monthly.rawValue) / hoursWorked
     
-    return NSDecimalNumber.roundToNearestTwo(hourlyWagePerMonth)
+    return NSDecimalNumber.roundToNearestTwo(hourlyOvertimePayPerMonth)
   }
   
 }
