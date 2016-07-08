@@ -1,9 +1,9 @@
 import Foundation
 
 enum HourlyWage: NSDecimalNumber {
-  case Monthly = 23.83
-  case BiWeekly = 11.91
-  case Weekly = 5.5
+  case monthly = 23.83
+  case biWeekly = 11.91
+  case weekly = 5.5
 }
 
 
