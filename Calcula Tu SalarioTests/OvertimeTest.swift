@@ -11,6 +11,13 @@ class OvertimeTest: XCTestCase {
     XCTAssertEqual(expectedHourlyOvertimePayPerMonth, hourlyOvertimePayPerMonth)
   }
   
+  func testHourlyOvertimePayPerBiWeek() {
+    let salary: NSDecimalNumber = 10_000.00
+    let hoursWorked: NSDecimalNumber = 8
+    let expectedHourlyOvertimePayPerBiWeek: NSDecimalNumber = 104.95
+    let hourlyOvertimePayPerBiWeek = Overtime.calculateHourlyOvertimePayPerBiWeekly(salary, hoursWorked: hoursWorked)
+    XCTAssertEqual(expectedHourlyOvertimePayPerBiWeek, hourlyOvertimePayPerBiWeek)
+  }
   
   
 }
