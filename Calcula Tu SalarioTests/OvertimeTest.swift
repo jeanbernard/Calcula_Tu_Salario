@@ -4,13 +4,12 @@ import XCTest
 class OvertimeTest: XCTestCase {
   
   func testHourlyOvertimePayPerMonth() {
-    let salary: NSDecimalNumber = 50200.00
+    let salary: NSDecimalNumber = 10_000.00
     let hoursWorked: NSDecimalNumber = 8
-    let expectedHourlyOvertimePayPerMonth: NSDecimalNumber = 263.32
+    let expectedHourlyOvertimePayPerMonth: NSDecimalNumber = 52.45
     let hourlyOvertimePayPerMonth = Overtime.calculateHourlyOvertimePayPerMonth(salary, hoursWorked: hoursWorked)
     XCTAssertEqual(expectedHourlyOvertimePayPerMonth, hourlyOvertimePayPerMonth)
   }
-  
   
   
   
