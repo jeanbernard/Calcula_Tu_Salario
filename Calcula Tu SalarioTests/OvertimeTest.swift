@@ -12,7 +12,7 @@ class OvertimeTest: XCTestCase {
     hoursWorked = 8
   }
   
-  func testHourlyOvertimePayPerMonth() {
+  func testHourlyWagePerMonth() {
     let frequency: HourlyWage = .monthly
     let expectedHourlyWagePerMonth: NSDecimalNumber = 52.45
     
@@ -21,7 +21,7 @@ class OvertimeTest: XCTestCase {
     XCTAssertEqual(expectedHourlyWagePerMonth, hourlyWagePerMonth)
   }
   
-  func testHourlyOvertimePayPerBiWeek() {
+  func testHourlyWagePerBiWeek() {
     let frequency: HourlyWage = .biWeekly
     let expectedHourlyWagePerBiWeek: NSDecimalNumber = 104.95
     
@@ -30,7 +30,7 @@ class OvertimeTest: XCTestCase {
     XCTAssertEqual(expectedHourlyWagePerBiWeek, hourlyWagePerBiWeek)
   }
 
-  func testHourlyOvertimePayPerWeek() {
+  func testHourlyWagePerWeek() {
     let frequency: HourlyWage = .weekly
     let expectedHourlyWagePerWeek: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(227.27)
     
@@ -38,5 +38,6 @@ class OvertimeTest: XCTestCase {
     
     XCTAssertEqual(expectedHourlyWagePerWeek, hourlyWagePerWeek)
   }
+  
   
 }
