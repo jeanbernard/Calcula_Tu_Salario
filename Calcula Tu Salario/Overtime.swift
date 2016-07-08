@@ -9,9 +9,9 @@ enum HourlyWage: NSDecimalNumber {
 
 struct Overtime {
   
-  static func hourlyWage(salary: NSDecimalNumber, hoursWorked: NSDecimalNumber, frequency: HourlyWage) -> NSDecimalNumber {
+  static func hourlyWage(salary: NSDecimalNumber, normalWorkingHours: NSDecimalNumber, frequency: HourlyWage) -> NSDecimalNumber {
     
-    let hourlyWageResult = (salary / frequency.rawValue) / hoursWorked
+    let hourlyWageResult = (salary / frequency.rawValue) / normalWorkingHours
     
     return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
   }
