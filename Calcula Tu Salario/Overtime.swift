@@ -28,4 +28,13 @@ struct Overtime {
     
   }
   
+  static func extraHourAmount(hourlyWage: NSDecimalNumber) -> NSDecimalNumber {
+  
+  let lawPercentDiscount = hourlyWage * 0.35
+  let extraHourAmountResult = hourlyWage + lawPercentDiscount
+  
+  return NSDecimalNumber.roundToNearestTwo(extraHourAmountResult)
+  
+  }
+  
 }
