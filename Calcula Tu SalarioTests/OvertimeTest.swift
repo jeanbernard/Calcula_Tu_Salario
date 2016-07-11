@@ -41,7 +41,7 @@ class OvertimeTest: XCTestCase {
   
   func testAmountOfExtraHoursWorked() {
     let expectedExtraHoursAmount: NSDecimalNumber = 21
-    let hoursWorked: NSDecimalNumber = 65
+    hoursWorked = 65
     
     let extraHoursAmount = Overtime.extraHoursWorked(hoursWorked)
     
@@ -49,16 +49,22 @@ class OvertimeTest: XCTestCase {
     
   }
   
-  func testExtraHourAmount() {
+  func testExtraAmountPerHour() {
     let expectedExtraHourAmount: NSDecimalNumber = 70.81
     let hourlyWagePerMonth: NSDecimalNumber = 52.45
     
-    let extraHourAmount = Overtime.extraAmountPerHour(hourlyWagePerMonth)
+    let extraHourAmount = Overtime.extraAmountPerHour(wage: hourlyWagePerMonth)
     
     XCTAssertEqual(expectedExtraHourAmount, extraHourAmount)
     
   }
   
-  
+  func testOvertimePay() {
+    let expectedOvertimePay: NSDecimalNumber = 1_487.01
+    hoursWorked = 21
+    let extraAmountPerHour: NSDecimalNumber = 70.81
+    let totalOvertimePay = Overtime.totalPay(extraHoursWorked: hoursWorked, extraHourAmount: extraAmountPerHour)
+    XCTAssertEqual(expectedOvertimePay, totalOvertimePay)
+  }
   
 }
