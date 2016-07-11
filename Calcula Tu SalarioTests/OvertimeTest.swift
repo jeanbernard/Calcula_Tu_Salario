@@ -59,9 +59,9 @@ class OvertimeTest: XCTestCase {
   
   func testOvertimePay() {
     let expectedOvertimePay: NSDecimalNumber = 1_487.01
-    hoursWorked = 21
-    let extraAmountPerHour: NSDecimalNumber = 70.81
-    let totalOvertimePay = Overtime.totalPay(extraHoursWorked: hoursWorked, extraHourAmount: extraAmountPerHour)
+    hoursWorked = 65
+    let totalOvertimePay = Overtime.totalPay(salary, normalWorkingHours: 8, totalHoursWorked: hoursWorked, frequency: HourlyWage.monthly)
+    
     XCTAssertEqual(expectedOvertimePay, totalOvertimePay)
   }
   

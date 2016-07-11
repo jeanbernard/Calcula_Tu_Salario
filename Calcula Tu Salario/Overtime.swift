@@ -30,8 +30,10 @@ struct Overtime {
     return NSDecimalNumber.roundToNearestTwo(extraHourlyWageResult)
   }
   
-  static func totalPay(extraHoursWorked hoursWorked: NSDecimalNumber, extraHourAmount: NSDecimalNumber) -> NSDecimalNumber {
-    let totalPayResult = hoursWorked * extraHourAmount
+  static func totalPay(salary: NSDecimalNumber, normalWorkingHours workingHours: NSDecimalNumber, totalHoursWorked hours: NSDecimalNumber, frequency: HourlyWage) -> NSDecimalNumber {
+    let extraHours = extraHoursWorked(hours)
+    let extraHourAmount = extraHourlyWage(salary, normalWorkingHours: workingHours, frequency: frequency)
+    let totalPayResult = extraHours * extraHourAmount
     return NSDecimalNumber.roundToNearestTwo(totalPayResult)
   }
   
