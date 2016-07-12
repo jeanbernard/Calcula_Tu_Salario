@@ -1,6 +1,6 @@
 import Foundation
 
-enum HourlyWage: NSDecimalNumber {
+enum PaymentFrequency: NSDecimalNumber {
   case monthly = 23.83
   case biWeekly = 11.91
   case weekly = 5.5
@@ -17,8 +17,8 @@ private struct WorkingHours {
 
 struct Overtime {
   
-  static func hourlyWage(salary: NSDecimalNumber, normalWorkingHours: NSDecimalNumber, frequency: HourlyWage) -> NSDecimalNumber {
-    let hourlyWageResult = (salary / frequency.rawValue) / normalWorkingHours
+  static func hourlyWage(salary: NSDecimalNumber, normalWorkingHours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
+    let hourlyWageResult = (salary / payFrequency.rawValue) / normalWorkingHours
     return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
   }
   
@@ -27,16 +27,16 @@ struct Overtime {
     return extraHoursWorkedResult
   }
   
-  static func extraHourlyWage(salary: NSDecimalNumber, normalWorkingHours hours: NSDecimalNumber, frequency: HourlyWage) -> NSDecimalNumber {
-    let amountPerHour = hourlyWage(salary, normalWorkingHours: hours, frequency: frequency)
+  static func extraHourlyWage(salary: NSDecimalNumber, normalWorkingHours hours: NSDecimalNumber, frequency: PaymentFrequency) -> NSDecimalNumber {
+    let amountPerHour = hourlyWage(salary, normalWorkingHours: hours, payFrequency: frequency)
     let lawPercentDiscount = amountPerHour * CompensationPercentage.lessThan68Hours.rawValue
     let extraHourlyWageResult = amountPerHour + lawPercentDiscount
     return NSDecimalNumber.roundToNearestTwo(extraHourlyWageResult)
   }
   
-  static func totalPay(salary: NSDecimalNumber, normalWorkingHours workingHours: NSDecimalNumber, totalHoursWorked hours: NSDecimalNumber, frequency: HourlyWage) -> NSDecimalNumber {
+  static func totalPay(salary: NSDecimalNumber, normalWorkingHours workingHours: NSDecimalNumber, totalHoursWorked hours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
     let extraHours = extraHoursWorked(hours)
-    let extraHourAmount = extraHourlyWage(salary, normalWorkingHours: workingHours, frequency: frequency)
+    let extraHourAmount = extraHourlyWage(salary, normalWorkingHours: workingHours, frequency: payFrequency)
     let totalPayResult = extraHours * extraHourAmount
     return NSDecimalNumber.roundToNearestTwo(totalPayResult)
   }

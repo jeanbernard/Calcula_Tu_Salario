@@ -12,37 +12,37 @@ class OvertimeTest: XCTestCase {
     hoursWorked = 8
   }
   
-  func testHourlyWagePerMonth() {
-    let frequency: HourlyWage = .monthly
-    let expectedHourlyWagePerMonth: NSDecimalNumber = 52.45
+  func testPaymentFrequencyPerMonth() {
+    let frequency: PaymentFrequency = .monthly
+    let expectedPaymentFrequencyPerMonth: NSDecimalNumber = 52.45
     
-    let hourlyWagePerMonth = Overtime.hourlyWage(salary, normalWorkingHours: hoursWorked, frequency: frequency)
+    let PaymentFrequencyPerMonth = Overtime.hourlyWage(salary, normalWorkingHours: hoursWorked, payFrequency: frequency)
     
-    XCTAssertEqual(expectedHourlyWagePerMonth, hourlyWagePerMonth)
+    XCTAssertEqual(expectedPaymentFrequencyPerMonth, PaymentFrequencyPerMonth)
   }
   
-  func testHourlyWagePerBiWeek() {
-    let frequency: HourlyWage = .biWeekly
-    let expectedHourlyWagePerBiWeek: NSDecimalNumber = 104.95
+  func testPaymentFrequencyPerBiWeek() {
+    let frequency: PaymentFrequency = .biWeekly
+    let expectedPaymentFrequencyPerBiWeek: NSDecimalNumber = 104.95
     
-    let hourlyWagePerBiWeek = Overtime.hourlyWage(salary, normalWorkingHours: hoursWorked, frequency: frequency)
+    let PaymentFrequencyPerBiWeek = Overtime.hourlyWage(salary, normalWorkingHours: hoursWorked, payFrequency: frequency)
     
-    XCTAssertEqual(expectedHourlyWagePerBiWeek, hourlyWagePerBiWeek)
+    XCTAssertEqual(expectedPaymentFrequencyPerBiWeek, PaymentFrequencyPerBiWeek)
   }
-
-  func testHourlyWagePerWeek() {
-    let frequency: HourlyWage = .weekly
-    let expectedHourlyWagePerWeek: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(227.27)
+  
+  func testPaymentFrequencyPerWeek() {
+    let frequency: PaymentFrequency = .weekly
+    let expectedPaymentFrequencyPerWeek: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(227.27)
     
-    let hourlyWagePerWeek = Overtime.hourlyWage(salary, normalWorkingHours: hoursWorked, frequency: frequency)
+    let PaymentFrequencyPerWeek = Overtime.hourlyWage(salary, normalWorkingHours: hoursWorked, payFrequency: frequency)
     
-    XCTAssertEqual(expectedHourlyWagePerWeek, hourlyWagePerWeek)
+    XCTAssertEqual(expectedPaymentFrequencyPerWeek, PaymentFrequencyPerWeek)
   }
   
   func testAmountOfExtraHoursWorked() {
     let expectedExtraHoursAmount: NSDecimalNumber = 21
     hoursWorked = 65
-    
+  
     let extraHoursAmount = Overtime.extraHoursWorked(hoursWorked)
     
     XCTAssertEqual(expectedExtraHoursAmount, extraHoursAmount)
@@ -51,7 +51,7 @@ class OvertimeTest: XCTestCase {
   
   func testExtraAmountPerHour() {
     let expectedExtraHourAmount: NSDecimalNumber = 70.81
-    let extraHourAmount = Overtime.extraHourlyWage(salary, normalWorkingHours: 8, frequency: HourlyWage.monthly)
+    let extraHourAmount = Overtime.extraHourlyWage(salary, normalWorkingHours: 8, frequency: PaymentFrequency.monthly)
     
     XCTAssertEqual(expectedExtraHourAmount, extraHourAmount)
     
@@ -60,9 +60,22 @@ class OvertimeTest: XCTestCase {
   func testOvertimePay() {
     let expectedOvertimePay: NSDecimalNumber = 1_487.01
     hoursWorked = 65
-    let totalOvertimePay = Overtime.totalPay(salary, normalWorkingHours: 8, totalHoursWorked: hoursWorked, frequency: HourlyWage.monthly)
+    let totalOvertimePay = Overtime.totalPay(salary, normalWorkingHours: 8, totalHoursWorked: hoursWorked, payFrequency: PaymentFrequency.monthly)
     
     XCTAssertEqual(expectedOvertimePay, totalOvertimePay)
   }
+  
+//  func test90HourWorkWeek() {
+//    let expectedExtraHoursThatApplyFor100Percent: NSDecimalNumber = 22
+//    let expectedExtraHoursThatApplyFor35Percent: NSDecimalNumber = 24
+//    let expectedExtraHours = (expectedExtraHoursThatApplyFor100Percent,expectedExtraHoursThatApplyFor35Percent)
+//    
+//    hoursWorked = 90
+//    
+//    let compensationByHours:(NSDecimalNumber, NSDecimalNumber) = Overtime.extraHoursWorked(hoursWorked)
+//    
+//    XCTAssertEqual(expectedExtraHours, compensationByHours)
+//    
+//  }
   
 }
