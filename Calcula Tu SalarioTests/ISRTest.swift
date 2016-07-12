@@ -105,19 +105,19 @@ class ISRTest: XCTestCase {
 
   func testISRMontlyRetentionAmount15Percent() {
     let expectedISRRetention: NSDecimalNumber = 1997.19
-    let ISRDeductionAmount = ISR.getMontlyRetentionAmount(firstScaleSalary)
+    let ISRDeductionAmount = ISR.getMonthlyRetentionAmount(firstScaleSalary)
     XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
   }
 
   func testISRMonthlyRetentionAmount20Percent() {
     let expectedISRRetention: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(4325.98)
-    let ISRDeductionAmount = ISR.getMontlyRetentionAmount(secondScaleSalary)
+    let ISRDeductionAmount = ISR.getMonthlyRetentionAmount(secondScaleSalary)
     XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
   }
 
   func testISRMontlyRetentionAmount25Percent() {
     let expectedISRRetention: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(8773.27)
-    let ISRDeductionAmount = ISR.getMontlyRetentionAmount(thirdScaleSalary)
+    let ISRDeductionAmount = ISR.getMonthlyRetentionAmount(thirdScaleSalary)
     XCTAssertEqual(expectedISRRetention, ISRDeductionAmount)
   }
   

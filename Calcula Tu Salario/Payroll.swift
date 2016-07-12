@@ -9,7 +9,7 @@ struct Payroll {
   
   static func calculateMonthlyNetSalary(salary: NSDecimalNumber) -> NSDecimalNumber {
     let salaryAfterAFP_SFS = Deduction.applyGovernmentTaxesToSalary(salary)
-    let salaryISRDeductionAmount = ISR.getMontlyRetentionAmount(salaryAfterAFP_SFS)
+    let salaryISRDeductionAmount = ISR.getMonthlyRetentionAmount(salaryAfterAFP_SFS)
     let netSalary: NSDecimalNumber = salaryAfterAFP_SFS - salaryISRDeductionAmount
     
     return netSalary

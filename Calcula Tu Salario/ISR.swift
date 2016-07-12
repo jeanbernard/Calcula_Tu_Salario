@@ -116,12 +116,12 @@ struct ISR {
     return NSDecimalNumber.roundToNearestTwo(totalISRRetention)
   }
   
-  static func getMontlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
+  static func getMonthlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
     return NSDecimalNumber.roundToNearestTwo(getYearlyRetentionAmount(salary) / 12)
   }
   
   static func getBiWeeklyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
-    return NSDecimalNumber.roundToNearestTwo(getMontlyRetentionAmount(salary) / 2)
+    return NSDecimalNumber.roundToNearestTwo(getMonthlyRetentionAmount(salary) / 2)
   }
 
 }
