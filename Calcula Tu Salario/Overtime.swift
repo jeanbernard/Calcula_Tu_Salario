@@ -10,9 +10,11 @@ private enum CompensationPercentage: NSDecimalNumber {
   case lessThan68Hours = 0.35
 }
 
-private struct WorkingHours {
+private enum WorkingHours {
   static let legalWorkingHours: NSDecimalNumber = 44
+  static let maximumAmountOfHours: NSDecimalNumber = 68
 }
+
 
 
 struct Overtime {
@@ -23,13 +25,15 @@ struct Overtime {
   }
   
   static func extraHoursWorked(hours: NSDecimalNumber) -> (hundredPercent: NSDecimalNumber, thiryFivePercent: NSDecimalNumber) {
-    //let extraHoursWorkedResult = hoursWorked - WorkingHours.legalWorkingHours
+    
+    let legalWorkingHours = WorkingHours.legalWorkingHours
+    let maximumAmountOfHours = WorkingHours.maximumAmountOfHours
     
     switch hours {
-    case hours where hours > 68:
-      return (hours - 68, 68 - 44)
-    case hours where hours < 68:
-      return (0, hours - 44)
+    case hours where hours > maximumAmountOfHours:
+      return (hours - maximumAmountOfHours, maximumAmountOfHours - legalWorkingHours)
+    case hours where hours < maximumAmountOfHours:
+      return (0, hours - legalWorkingHours)
     default:
       return (0,0)
     }
