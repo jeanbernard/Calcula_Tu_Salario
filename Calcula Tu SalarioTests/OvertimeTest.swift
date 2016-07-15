@@ -39,8 +39,8 @@ class OvertimeTest: XCTestCase {
     XCTAssertEqual(expectedPaymentFrequencyPerWeek, PaymentFrequencyPerWeek)
   }
   
-  func testAmountOfExtraHoursWorked() {
-    hoursWorked = 65
+  func testAmountOfExtraHoursWorkedOver68() {
+    hoursWorked = 90
     let expectedAmountOfExtraHours: (hundredPercent: NSDecimalNumber, thiryFivePercent: NSDecimalNumber) = (22, 24)
     let amountOfExtraHoursWorked = Overtime.extraHoursWorked(hoursWorked)
     
