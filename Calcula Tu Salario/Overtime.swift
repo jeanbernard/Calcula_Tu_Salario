@@ -24,7 +24,7 @@ struct Overtime {
     return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
   }
   
-  static func extraHoursWorked(hours: NSDecimalNumber) -> (hundredPercent: NSDecimalNumber, thiryFivePercent: NSDecimalNumber) {
+  static func amountOfExtraHoursWorked(hours: NSDecimalNumber) -> (hundredPercent: NSDecimalNumber, thiryFivePercent: NSDecimalNumber) {
     
     let legalWorkingHours = WorkingHours.legalWorkingHours
     let maximumAmountOfHours = WorkingHours.maximumAmountOfHours
