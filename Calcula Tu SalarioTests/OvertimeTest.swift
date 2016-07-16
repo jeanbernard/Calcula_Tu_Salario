@@ -57,6 +57,19 @@ class OvertimeTest: XCTestCase {
     XCTAssertEqual(expectedAmountOfExtraHours.thiryFivePercent, amountOfExtraHoursWorked.thiryFivePercent)
   }
   
+  func testExtraHourlyRate() {
+    let hourlyRate: NSDecimalNumber = 52.45
+    let expectedExtraHourlyRate:
+      (thiryPercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) = (70.81, 104.90)
+    
+    let extraHourlyRate = Overtime.extraRatePerHour(rate: hourlyRate)
+    
+    XCTAssertEqual(expectedExtraHourlyRate.thiryPercent, extraHourlyRate.thirtyPercent)
+    
+    XCTAssertEqual(expectedExtraHourlyRate.hundredPercent, extraHourlyRate.hundredPercent)
+    
+  }
+  
 //  func testExtraAmountPerHour65HourWorkWeek() {
 //    let expectedExtraHourAmount: NSDecimalNumber = 70.81
 //    let extraHourAmount = Overtime.extraHourlyWage(salary, normalWorkingHours: 8, frequency: PaymentFrequency.monthly)
