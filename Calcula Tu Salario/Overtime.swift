@@ -39,29 +39,28 @@ struct Overtime {
     }
   }
   
-  static func extraRatePerHour(rate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (thirtyPercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) {
+  static func extraRatePerHour(rate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
     
-    var rateAtHundredPercent: NSDecimalNumber = 0
-    
-    let rateAtThirtyFivePercent = NSDecimalNumber.roundToNearestTwo((hourlyRate * RatePercentage.lessThan68Hours) + hourlyRate)
+    var rateOver68Hours: NSDecimalNumber = 0
+    let rateUnder68Hours = NSDecimalNumber.roundToNearestTwo((hourlyRate * RatePercentage.lessThan68Hours) + hourlyRate)
     
     if hours > WorkingHours.maximumAmountOfHours {
-      rateAtHundredPercent = (hourlyRate * RatePercentage.greaterThan68Hours) + hourlyRate
+      rateOver68Hours = (hourlyRate * RatePercentage.greaterThan68Hours) + hourlyRate
     }
-    return (rateAtThirtyFivePercent, rateAtHundredPercent)
+    return (rateUnder68Hours, rateOver68Hours)
   }
   
-  static func payPerPercentage(hoursWorked hours: NSDecimalNumber, hourlyRateThirtyFivePercent thirty: NSDecimalNumber, hourlyRateHundredPercent hundred: NSDecimalNumber) -> (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) {
+  static func payPerPercentage(hoursWorked hours: NSDecimalNumber, hourlyRateUnder68Hours: NSDecimalNumber, hourlyRateOver68Hours: NSDecimalNumber) -> (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) {
     
     let extraHoursWorkedResult = extraHoursWorked(total: hours)
     
-    let totalAtThirtyFivePercent = extraHoursWorkedResult.under68Hours * thirty
-    var totalAtHundredPercent: NSDecimalNumber = 0
+    let totalUnder68Hours = extraHoursWorkedResult.under68Hours * hourlyRateUnder68Hours
+    var totalOver68Hours: NSDecimalNumber = 0
     
     if hours > WorkingHours.maximumAmountOfHours {
-      totalAtHundredPercent = extraHoursWorkedResult.over68Hours * hundred
+      totalOver68Hours = extraHoursWorkedResult.over68Hours * hourlyRateOver68Hours
     }
-    return (totalAtThirtyFivePercent, totalAtHundredPercent)
+    return (totalUnder68Hours, totalOver68Hours)
   }
   
 }
