@@ -6,7 +6,7 @@ enum PaymentFrequency: NSDecimalNumber {
   case weekly = 5.5
 }
 
-private enum CompensationPercentage {
+private enum RatePercentage {
   static let lessThan68Hours: NSDecimalNumber = 0.35
   static let greaterThan68Hours: NSDecimalNumber = 1
 }
@@ -44,10 +44,10 @@ struct Overtime {
     
     var rateAtHundredPercent: NSDecimalNumber = 0
     
-    let rateAtThirtyFivePercent = NSDecimalNumber.roundToNearestTwo((hourlyRate * CompensationPercentage.lessThan68Hours) + hourlyRate)
+    let rateAtThirtyFivePercent = NSDecimalNumber.roundToNearestTwo((hourlyRate * RatePercentage.lessThan68Hours) + hourlyRate)
     
-    if hours > 68 {
-      rateAtHundredPercent = (hourlyRate * CompensationPercentage.greaterThan68Hours) + hourlyRate
+    if hours > WorkingHours.maximumAmountOfHours {
+      rateAtHundredPercent = (hourlyRate * RatePercentage.greaterThan68Hours) + hourlyRate
     }
     return (rateAtThirtyFivePercent, rateAtHundredPercent)
   }
@@ -56,8 +56,8 @@ struct Overtime {
     let amountPerHour = ratePerHour(salary, normalWorkingHours: hours, payFrequency: frequency)
     let extraHoursWorked = Overtime.amountOfExtraHoursWorked(hoursWorked)
     
-    let lawPercentDiscountUnder35 = NSDecimalNumber.roundToNearestTwo((amountPerHour * CompensationPercentage.lessThan68Hours) + amountPerHour)
-    let lawPercentDiscountOver35 = (amountPerHour * CompensationPercentage.greaterThan68Hours) + amountPerHour
+    let lawPercentDiscountUnder35 = NSDecimalNumber.roundToNearestTwo((amountPerHour * RatePercentage.lessThan68Hours) + amountPerHour)
+    let lawPercentDiscountOver35 = (amountPerHour * RatePercentage.greaterThan68Hours) + amountPerHour
     
     let valueExtraHourBelow68 = lawPercentDiscountUnder35 * extraHoursWorked.thiryFivePercent
     
