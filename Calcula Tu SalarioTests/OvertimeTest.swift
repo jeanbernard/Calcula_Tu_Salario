@@ -39,22 +39,28 @@ class OvertimeTest: XCTestCase {
     XCTAssertEqual(expectedRatePerWeek, ratePerWeek)
   }
   
-  func testAmountOfExtraHoursWorked90HourWorkWeek() {
+  func testExtraHoursWorked90HourWorkWeek() {
     hoursWorked = 90
-    let expectedAmountOfExtraHours: (thiryFivePercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) = (24, 22)
-    let amountOfExtraHoursWorked = Overtime.amountOfExtraHoursWorked(hoursWorked)
+    let expectedAmountOfExtraHours: (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) = (24, 22)
+    let amountOfExtraHoursWorked = Overtime.extraHoursWorked(total: hoursWorked)
     
-    XCTAssertEqual(expectedAmountOfExtraHours.thiryFivePercent, amountOfExtraHoursWorked.thiryFivePercent)
-    XCTAssertEqual(expectedAmountOfExtraHours.hundredPercent, amountOfExtraHoursWorked.hundredPercent)
+    XCTAssertEqual(expectedAmountOfExtraHours.under68Hours,
+                   amountOfExtraHoursWorked.under68Hours)
+    
+    XCTAssertEqual(expectedAmountOfExtraHours.over68Hours,
+                   amountOfExtraHoursWorked.over68Hours)
   }
   
   func testAmountOfExtraHoursWorked65HourWorkWeek() {
     hoursWorked = 65
     let expectedAmountOfExtraHours: (thiryFivePercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) = (21, 0)
-    let amountOfExtraHoursWorked = Overtime.amountOfExtraHoursWorked(hoursWorked)
+    let amountOfExtraHoursWorked = Overtime.extraHoursWorked(total: hoursWorked)
     
-    XCTAssertEqual(expectedAmountOfExtraHours.thiryFivePercent, amountOfExtraHoursWorked.thiryFivePercent)
-    XCTAssertEqual(expectedAmountOfExtraHours.hundredPercent, amountOfExtraHoursWorked.hundredPercent)
+    XCTAssertEqual(expectedAmountOfExtraHours.thiryFivePercent,
+                   amountOfExtraHoursWorked.under68Hours)
+    
+    XCTAssertEqual(expectedAmountOfExtraHours.hundredPercent,
+                   amountOfExtraHoursWorked.over68Hours)
   }
   
   func testExtraHourlyRate90HourWorkWeek() {
