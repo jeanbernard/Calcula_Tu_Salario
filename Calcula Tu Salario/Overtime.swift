@@ -24,7 +24,7 @@ struct Overtime {
     return NSDecimalNumber.roundToNearestTwo(hourlyRateResult)
   }
   
-  static func extraHoursWorked(total hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
+  static func extraHoursWorked(hours hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
     
     let legalWorkingHours = WorkingHours.legalWorkingHours
     let maximumAmountOfHours = WorkingHours.maximumAmountOfHours
@@ -39,7 +39,7 @@ struct Overtime {
     }
   }
   
-  static func extraRatePerHour(rate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
+  static func extraRatePerHour(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
     
     var rateOver68Hours: NSDecimalNumber = 0
     let rateUnder68Hours = NSDecimalNumber.roundToNearestTwo((hourlyRate * RatePercentage.lessThan68Hours) + hourlyRate)
@@ -50,15 +50,16 @@ struct Overtime {
     return (rateUnder68Hours, rateOver68Hours)
   }
   
-  static func payPerPercentage(hoursWorked hours: NSDecimalNumber, hourlyRateUnder68Hours: NSDecimalNumber, hourlyRateOver68Hours: NSDecimalNumber) -> (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) {
+  static func totalPay(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) {
     
-    let extraHoursWorkedResult = extraHoursWorked(total: hours)
+    let extraHoursWorkedResult = extraHoursWorked(hours: hours)
+    let extraRatePerHourResult = extraRatePerHour(hourlyRate: hourlyRate, hoursWorked: hours)
     
-    let totalUnder68Hours = extraHoursWorkedResult.under68Hours * hourlyRateUnder68Hours
+    let totalUnder68Hours = extraHoursWorkedResult.under68Hours * extraRatePerHourResult.under68Hours
     var totalOver68Hours: NSDecimalNumber = 0
     
     if hours > WorkingHours.maximumAmountOfHours {
-      totalOver68Hours = extraHoursWorkedResult.over68Hours * hourlyRateOver68Hours
+      totalOver68Hours = extraHoursWorkedResult.over68Hours * extraRatePerHourResult.over68Hours
     }
     return (totalUnder68Hours, totalOver68Hours)
   }
