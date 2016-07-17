@@ -20,7 +20,7 @@ private enum WorkingHours {
 
 struct Overtime {
   
-  static func hourlyWage(salary: NSDecimalNumber, normalWorkingHours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
+  static func ratePerHour(salary: NSDecimalNumber, normalWorkingHours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
     let hourlyWageResult = (salary / payFrequency.rawValue) / normalWorkingHours
     return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
   }
@@ -53,7 +53,7 @@ struct Overtime {
   }
   
   static func extraHourlyWage(salary: NSDecimalNumber, normalWorkingHours hours: NSDecimalNumber, hoursWorked: NSDecimalNumber, frequency: PaymentFrequency) -> NSDecimalNumber {
-    let amountPerHour = hourlyWage(salary, normalWorkingHours: hours, payFrequency: frequency)
+    let amountPerHour = ratePerHour(salary, normalWorkingHours: hours, payFrequency: frequency)
     let extraHoursWorked = Overtime.amountOfExtraHoursWorked(hoursWorked)
     
     let lawPercentDiscountUnder35 = NSDecimalNumber.roundToNearestTwo((amountPerHour * CompensationPercentage.lessThan68Hours) + amountPerHour)
