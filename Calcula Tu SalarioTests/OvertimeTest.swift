@@ -84,11 +84,23 @@ class OvertimeTest: XCTestCase {
   }
   
   func testOvertimePay90HourWorkWeek() {
+    hoursWorked = 90
     let extraHourlyRate: (thirtyFivePercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) = (70.81, 104.90)
-    let expectedOvertimePay: (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) = (2_310.00, 1_701.60)
+    let expectedOvertimePay: (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) = (1_699.44, 2_307.80)    
+    let overtimePay = Overtime.payPerPercentage(hoursWorked: hoursWorked, hourlyRateThirtyFivePercent: extraHourlyRate.thirtyFivePercent, hourlyRateHundredPercent: extraHourlyRate.hundredPercent)
+    
+    XCTAssertEqual(expectedOvertimePay.totalAtThirtyPercent, overtimePay.totalAtThirtyPercent)
+    XCTAssertEqual(expectedOvertimePay.totalAtHundredPercent, overtimePay.totalAtHundredPercent)
+    
+  }
+  
+  func testOvertimePay65HourWorkWeek() {
+    hoursWorked = 65
+    let extraHourlyRate: (thirtyFivePercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) = (70.81, 0)
+    let expectedOvertimePay: (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) = (1_487.01, 0)
     //let expectedOvertimePay: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(4_007.24)
     
-    let overtimePay = Overtime.payPerPercentage(thirtyFivePercent: extraHourlyRate.thirtyFivePercent, hundredPercent: extraHourlyRate.hundredPercent)
+    let overtimePay = Overtime.payPerPercentage(hoursWorked: hoursWorked, hourlyRateThirtyFivePercent: extraHourlyRate.thirtyFivePercent, hourlyRateHundredPercent: extraHourlyRate.hundredPercent)
     
     XCTAssertEqual(expectedOvertimePay.totalAtThirtyPercent, overtimePay.totalAtThirtyPercent)
     XCTAssertEqual(expectedOvertimePay.totalAtHundredPercent, overtimePay.totalAtHundredPercent)

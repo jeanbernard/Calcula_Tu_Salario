@@ -52,21 +52,17 @@ struct Overtime {
     return (rateAtThirtyFivePercent, rateAtHundredPercent)
   }
   
-  static func payPerPercentage(thirtyFivePercent thirty: NSDecimalNumber, hundredPercent hundred: NSDecimalNumber) -> (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) {
+  static func payPerPercentage(hoursWorked hours: NSDecimalNumber, hourlyRateThirtyFivePercent thirty: NSDecimalNumber, hourlyRateHundredPercent hundred: NSDecimalNumber) -> (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) {
     
+    let extraHoursWorked = amountOfExtraHoursWorked(hours)
     
+    let totalAtThirtyFivePercent = extraHoursWorked.thiryFivePercent * thirty
+    var totalAtHundredPercent: NSDecimalNumber = 0
     
-    return (2_310.00, 1_701.60)
-    
+    if hours > WorkingHours.maximumAmountOfHours {
+      totalAtHundredPercent = extraHoursWorked.hundredPercent * hundred
+    }
+    return (totalAtThirtyFivePercent, totalAtHundredPercent)
   }
-  
-  
-  
-  //  static func totalPay(salary: NSDecimalNumber, normalWorkingHours workingHours: NSDecimalNumber, totalHoursWorked hours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
-  //    let extraHours = extraHoursWorked(hours)
-  //    let extraHourAmount = extraHourlyWage(salary, normalWorkingHours: workingHours, frequency: payFrequency)
-  //    let totalPayResult = extraHours * extraHourAmount
-  //    return NSDecimalNumber.roundToNearestTwo(totalPayResult)
-  //  }
   
 }
