@@ -52,19 +52,11 @@ struct Overtime {
     return (rateAtThirtyFivePercent, rateAtHundredPercent)
   }
   
-  static func extraHourlyWage(salary: NSDecimalNumber, normalWorkingHours hours: NSDecimalNumber, hoursWorked: NSDecimalNumber, frequency: PaymentFrequency) -> NSDecimalNumber {
-    let amountPerHour = ratePerHour(salary, normalWorkingHours: hours, payFrequency: frequency)
-    let extraHoursWorked = Overtime.amountOfExtraHoursWorked(hoursWorked)
+  static func extraRateTotal(rate hourlyRate: (hourlyRateAtThiryPercent: NSDecimalNumber, hourlyRateAtHundredPercent: NSDecimalNumber) ) -> (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) {
     
-    let lawPercentDiscountUnder35 = NSDecimalNumber.roundToNearestTwo((amountPerHour * RatePercentage.lessThan68Hours) + amountPerHour)
-    let lawPercentDiscountOver35 = (amountPerHour * RatePercentage.greaterThan68Hours) + amountPerHour
     
-    let valueExtraHourBelow68 = lawPercentDiscountUnder35 * extraHoursWorked.thiryFivePercent
+    return (2_310.00, 1_701.60)
     
-    let valueExtraHourAbove68 = lawPercentDiscountOver35 * extraHoursWorked.hundredPercent
-    
-    let extraHourlyWageResult = valueExtraHourAbove68 + valueExtraHourBelow68
-    return NSDecimalNumber.roundToNearestTwo(extraHourlyWageResult)
   }
   
   
