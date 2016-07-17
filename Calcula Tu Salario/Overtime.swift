@@ -52,7 +52,8 @@ struct Overtime {
     return (rateAtThirtyFivePercent, rateAtHundredPercent)
   }
   
-  static func extraRateTotal(rate hourlyRate: (hourlyRateAtThiryPercent: NSDecimalNumber, hourlyRateAtHundredPercent: NSDecimalNumber) ) -> (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) {
+  static func payPerPercentage(thirtyFivePercent thirty: NSDecimalNumber, hundredPercent hundred: NSDecimalNumber) -> (totalAtThirtyPercent: NSDecimalNumber, totalAtHundredPercent: NSDecimalNumber) {
+    
     
     
     return (2_310.00, 1_701.60)
