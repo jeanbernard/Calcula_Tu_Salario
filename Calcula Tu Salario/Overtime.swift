@@ -17,12 +17,11 @@ private enum WorkingHours {
 }
 
 
-
 struct Overtime {
   
-  static func ratePerHour(salary: NSDecimalNumber, normalWorkingHours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
-    let hourlyWageResult = (salary / payFrequency.rawValue) / normalWorkingHours
-    return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
+  static func ratePerHour(salary salary: NSDecimalNumber, workingHours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
+    let hourlyRateResult = (salary / payFrequency.rawValue) / workingHours
+    return NSDecimalNumber.roundToNearestTwo(hourlyRateResult)
   }
   
   static func amountOfExtraHoursWorked(hours: NSDecimalNumber) -> (thiryFivePercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) {
