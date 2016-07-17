@@ -25,16 +25,16 @@ struct Overtime {
     return NSDecimalNumber.roundToNearestTwo(hourlyWageResult)
   }
   
-  static func amountOfExtraHoursWorked(hours: NSDecimalNumber) -> (hundredPercent: NSDecimalNumber, thiryFivePercent: NSDecimalNumber) {
+  static func amountOfExtraHoursWorked(hours: NSDecimalNumber) -> (thiryFivePercent: NSDecimalNumber, hundredPercent: NSDecimalNumber) {
     
     let legalWorkingHours = WorkingHours.legalWorkingHours
     let maximumAmountOfHours = WorkingHours.maximumAmountOfHours
     
     switch hours {
     case hours where hours > maximumAmountOfHours:
-      return (hours - maximumAmountOfHours, maximumAmountOfHours - legalWorkingHours)
+      return (maximumAmountOfHours - legalWorkingHours, hours - maximumAmountOfHours)
     case hours where hours < maximumAmountOfHours:
-      return (0, hours - legalWorkingHours)
+      return (hours - legalWorkingHours, 0)
     default:
       return (0,0)
     }
