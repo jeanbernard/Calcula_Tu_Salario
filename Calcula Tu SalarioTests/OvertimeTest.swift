@@ -118,12 +118,12 @@ class OvertimeTest: XCTestCase {
                    overtimePay.totalOver68Hours)
   }
   
-  func testNightShift() {
-    let expectedNightShiftAmount: NSDecimalNumber = 60.32
+  func testNightShiftRate() {
+    let expectedNightShiftRate: NSDecimalNumber = 60.32
     
-    let nightShiftAmount = Overtime.nightShiftTotal(salary: salary, workingNightHours: 8, payFrequency: frequency)
+    let nightShiftRate = Overtime.nightShiftRate(salary: salary, workingNightHours: 8, payFrequency: frequency)
     
-    XCTAssertEqual(expectedNightShiftAmount, nightShiftAmount)
+    XCTAssertEqual(expectedNightShiftRate, nightShiftRate)
     
   }
   

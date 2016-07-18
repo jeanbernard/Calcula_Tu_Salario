@@ -9,6 +9,7 @@ enum PaymentFrequency: NSDecimalNumber {
 private enum RatePercentage {
   static let lessThan68Hours: NSDecimalNumber = 0.35
   static let greaterThan68Hours: NSDecimalNumber = 1
+  static let nightShift: NSDecimalNumber = 0.15
 }
 
 private enum WorkingHours {
@@ -64,11 +65,11 @@ struct Overtime {
     return (totalUnder68Hours, totalOver68Hours)
   }
   
-  static func nightShiftTotal(salary salary: NSDecimalNumber, workingNightHours nightHours: NSDecimalNumber, payFrequency frequency: PaymentFrequency) -> NSDecimalNumber {
+  static func nightShiftRate(salary salary: NSDecimalNumber, workingNightHours nightHours: NSDecimalNumber, payFrequency frequency: PaymentFrequency) -> NSDecimalNumber {
     
     let normalRatePerHour = ratePerHour(salary: salary, workingHours: nightHours, payFrequency: frequency)
     
-    let nightlyRate = NSDecimalNumber.roundToNearestTwo((normalRatePerHour * 0.15) + normalRatePerHour)
+    let nightlyRate = NSDecimalNumber.roundToNearestTwo((normalRatePerHour * RatePercentage.nightShift) + normalRatePerHour)
     
     return nightlyRate
   }
