@@ -64,4 +64,13 @@ struct Overtime {
     return (totalUnder68Hours, totalOver68Hours)
   }
   
+  static func nightShiftTotal(salary salary: NSDecimalNumber, workingNightHours nightHours: NSDecimalNumber, payFrequency frequency: PaymentFrequency) -> NSDecimalNumber {
+    
+    let normalRatePerHour = ratePerHour(salary: salary, workingHours: nightHours, payFrequency: frequency)
+    
+    let nightlyRate = NSDecimalNumber.roundToNearestTwo((normalRatePerHour * 0.15) + normalRatePerHour)
+    
+    return nightlyRate
+  }
+  
 }
