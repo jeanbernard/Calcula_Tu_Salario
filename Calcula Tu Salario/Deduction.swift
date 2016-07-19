@@ -1,11 +1,3 @@
-//
-//  Deduction.swift
-//  Calcula Tu Salario
-//
-//  Created by Jean Bernard on 6/30/16.
-//  Copyright © 2016 Jean Bernard. All rights reserved.
-//
-
 import Foundation
 
 struct Deduction {
