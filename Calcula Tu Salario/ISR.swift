@@ -7,26 +7,26 @@
 //
 
 import Foundation
-import Darwin
 
-private struct Percentage {
-  static let FirstScalePercentage: NSDecimalNumber = 0.15
-  static let SecondScalePercentage: NSDecimalNumber = 0.20
-  static let ThirdScalePercentage: NSDecimalNumber = 0.25
+
+private enum Percentage {
+  static let firstScalePercentage: NSDecimalNumber = 0.15
+  static let secondScalePercentage: NSDecimalNumber = 0.20
+  static let thirdScalePercentage: NSDecimalNumber = 0.25
 }
 
-private struct Scale {
-  static let ExemptFromISRScale: NSDecimalNumber = 409_281.00
-  static let LowerBoundFirstScale: NSDecimalNumber = 409_281.01
-  static let HigherBoundFirstScale: NSDecimalNumber = 613_921.00
-  static let LowerBoundSecondScale: NSDecimalNumber = 613_921.01
-  static let HigherBoundSecondScale: NSDecimalNumber = 852_667.00
-  static let LowerBoundThirdScale: NSDecimalNumber = 852_667.01
+private enum Scale {
+  static let exemptFromISRScale: NSDecimalNumber = 409_281.00
+  static let lowerBoundFirstScale: NSDecimalNumber = 409_281.01
+  static let higherBoundFirstScale: NSDecimalNumber = 613_921.00
+  static let lowerBoundSecondScale: NSDecimalNumber = 613_921.01
+  static let higherBoundSecondScale: NSDecimalNumber = 852_667.00
+  static let lowerBoundThirdScale: NSDecimalNumber = 852_667.01
 }
 
-private struct RateNumber {
-  static let SecondScaleRateNumber: NSDecimalNumber = 30_696.00
-  static let ThirdScaleRateNumber: NSDecimalNumber = 78_446.00
+private enum RateNumber {
+  static let secondScaleRateNumber: NSDecimalNumber = 30_696.00
+  static let thirdScaleRateNumber: NSDecimalNumber = 78_446.00
 }
 
 
@@ -35,7 +35,7 @@ struct ISR {
   static func isSalaryExemptFromISR(salary: NSDecimalNumber) -> Bool {
     let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
     
-    let isSalaryExemptFromISR = yearlySalary < Scale.ExemptFromISRScale
+    let isSalaryExemptFromISR = yearlySalary < Scale.exemptFromISRScale
     
     if isSalaryExemptFromISR {
       return true
@@ -47,25 +47,25 @@ struct ISR {
     
     let yearlySalary = calculateYearlySalary(salary)
     
-    let isSalaryInFirstScale = yearlySalary >= Scale.LowerBoundFirstScale
-      && yearlySalary <= Scale.HigherBoundFirstScale
+    let isSalaryInFirstScale = yearlySalary >= Scale.lowerBoundFirstScale
+      && yearlySalary <= Scale.higherBoundFirstScale
     
-    let isSalaryInSecondScale = yearlySalary >= Scale.LowerBoundSecondScale
-      && yearlySalary <= Scale.HigherBoundSecondScale
+    let isSalaryInSecondScale = yearlySalary >= Scale.lowerBoundSecondScale
+      && yearlySalary <= Scale.higherBoundSecondScale
     
-    let isSalaryInThirdScale = yearlySalary >= Scale.LowerBoundThirdScale
+    let isSalaryInThirdScale = yearlySalary >= Scale.lowerBoundThirdScale
       && yearlySalary <= NSDecimalNumber(double: DBL_MAX)
     
     if isSalaryInFirstScale {
-      return Percentage.FirstScalePercentage
+      return Percentage.firstScalePercentage
     }
       
     else if isSalaryInSecondScale {
-      return Percentage.SecondScalePercentage
+      return Percentage.secondScalePercentage
     }
       
     else if isSalaryInThirdScale {
-      return Percentage.ThirdScalePercentage
+      return Percentage.thirdScalePercentage
     }
     
     return 0.0
@@ -74,14 +74,17 @@ struct ISR {
   static func getSurplus(salary: NSDecimalNumber) -> NSDecimalNumber {
     
     let ISRPercentage = getPercentage(salary)
+    let firstScale = Percentage.firstScalePercentage
+    let secondScale = Percentage.secondScalePercentage
+    let thirdScale = Percentage.thirdScalePercentage
     
     switch ISRPercentage {
-    case Percentage.FirstScalePercentage:
-      return Scale.LowerBoundFirstScale
-    case Percentage.SecondScalePercentage:
-      return Scale.LowerBoundSecondScale
-    case Percentage.ThirdScalePercentage:
-      return Scale.LowerBoundThirdScale
+    case firstScale:
+      return Scale.lowerBoundFirstScale
+    case secondScale:
+      return Scale.lowerBoundSecondScale
+    case thirdScale:
+      return Scale.lowerBoundThirdScale
     default:
       return 0.0
     }
@@ -90,11 +93,14 @@ struct ISR {
 
   static func getRateNumber(percent: NSDecimalNumber) -> NSDecimalNumber {
     
+    let secondScale = Percentage.secondScalePercentage
+    let thirdScale = Percentage.thirdScalePercentage
+    
     switch percent {
-    case Percentage.SecondScalePercentage:
-      return RateNumber.SecondScaleRateNumber
-    case Percentage.ThirdScalePercentage:
-      return RateNumber.ThirdScaleRateNumber
+    case secondScale:
+      return RateNumber.secondScaleRateNumber
+    case thirdScale:
+      return RateNumber.thirdScaleRateNumber
     default:
       return 0.0
     }
