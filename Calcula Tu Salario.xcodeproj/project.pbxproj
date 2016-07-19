@@ -238,15 +238,18 @@
 					157134F51D25CC5700DE9110 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = CC4GQ4QN24;
+						LastSwiftMigration = 0800;
 					};
 					157135091D25CC5800DE9110 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = CC4GQ4QN24;
+						LastSwiftMigration = 0800;
 						TestTargetID = 157134F51D25CC5700DE9110;
 					};
 					157135141D25CC5800DE9110 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = CC4GQ4QN24;
+						LastSwiftMigration = 0800;
 						TestTargetID = 157134F51D25CC5700DE9110;
 					};
 				};
@@ -477,6 +480,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-Salario";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -488,6 +492,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-Salario";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -499,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-SalarioTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calcula Tu Salario.app/Calcula Tu Salario";
 			};
 			name = Debug;
@@ -511,6 +517,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-SalarioTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calcula Tu Salario.app/Calcula Tu Salario";
 			};
 			name = Release;
@@ -522,6 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-SalarioUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = "Calcula Tu Salario";
 			};
 			name = Debug;
@@ -533,6 +541,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-SalarioUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = "Calcula Tu Salario";
 			};
 			name = Release;
