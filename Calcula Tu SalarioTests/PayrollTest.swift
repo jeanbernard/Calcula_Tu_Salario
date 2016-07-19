@@ -25,18 +25,21 @@ class PayrollTest: XCTestCase {
   }
   
   func test15PercentBiWeeklyNetSalaryAfterOtherDeductions() {
-    //FIXME: Check this test in the future.
     let coop: NSDecimalNumber = 6300
     let gym: NSDecimalNumber = 1097.5
     let salary: NSDecimalNumber = 50_400
     let expectedNetSalary: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(15_314.59)
     let netSalary = Payroll.calculateBiWeeklyNetSalary(salary)
-    let result = netSalary.decimalNumberBySubtracting(coop).decimalNumberBySubtracting(gym)
+    let result = netSalary - coop - gym
     XCTAssertEqual(expectedNetSalary, result)
   }
   
-  func test20PercentNetSalary() {
+  func test20PercentBiWeeklyNetSalary() {
+    let salary: NSDecimalNumber = 60_000.00
+    let expectedBiWeeklyNetSalary: NSDecimalNumber = 26_418.61
+    let biWeeklyNetSalary = Payroll.calculateBiWeeklyNetSalary(salary)
     
+    XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
   }
   
   func test25PercentNetSalary() {
