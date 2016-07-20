@@ -42,8 +42,12 @@ class PayrollTest: XCTestCase {
     XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
   }
   
-  func test25PercentNetSalary() {
+  func test25PercentBiWeeklyNetSalary() {
+    let salary: NSDecimalNumber = 80_000.00
+    let expectedBiWeeklyNetSalary: NSDecimalNumber = 33_840.37
+    let biWeeklyNetSalary = Payroll.calculateBiWeeklyNetSalary(salary)
     
+    XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
   }
   
 }
