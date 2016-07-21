@@ -50,4 +50,17 @@ class PayrollTest: XCTestCase {
     XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
   }
   
+  func test15PercentBiWeeklyNetSalaryWithOvertimePay() {
+    let salary: NSDecimalNumber = 50_400
+    let hoursWorked: NSDecimalNumber = 65
+    let workingHours: NSDecimalNumber = 8
+    let payFrequency: PaymentFrequency = .monthly
+    let expectedNetSalaryWithOvertimePay: NSDecimalNumber = 44_112.12
+    
+    let biWeeklyNetSalaryWithOvertimePay = Payroll.calculateMonthlyNetSalaryWithOvertimePay(salary: salary, workingHours: workingHours, hoursWorked: hoursWorked, payFrequency: payFrequency)
+    
+    XCTAssertEqual(expectedNetSalaryWithOvertimePay, biWeeklyNetSalaryWithOvertimePay)
+    
+  }
+  
 }

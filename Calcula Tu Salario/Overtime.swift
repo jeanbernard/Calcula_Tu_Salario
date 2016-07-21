@@ -43,12 +43,13 @@ struct Overtime {
   static func extraRatePerHour(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
     
     var rateOver68Hours: NSDecimalNumber = 0
-    let rateUnder68Hours = NSDecimalNumber.roundToNearestTwo((hourlyRate * RatePercentage.lessThan68Hours) + hourlyRate)
+    let rateUnder68Hours = (hourlyRate * RatePercentage.lessThan68Hours) + hourlyRate
     
     if hours > WorkingHours.maximumAmountOfHours {
       rateOver68Hours = (hourlyRate * RatePercentage.greaterThan68Hours) + hourlyRate
     }
-    return (rateUnder68Hours, rateOver68Hours)
+    return (NSDecimalNumber.roundToNearestTwo(rateUnder68Hours),
+            NSDecimalNumber.roundToNearestTwo(rateOver68Hours))
   }
   
   static func totalPay(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) {
@@ -62,7 +63,8 @@ struct Overtime {
     if hours > WorkingHours.maximumAmountOfHours {
       totalOver68Hours = extraHoursWorkedResult.over68Hours * extraRatePerHourResult.over68Hours
     }
-    return (totalUnder68Hours, totalOver68Hours)
+    return (NSDecimalNumber.roundToNearestTwo(totalUnder68Hours),
+            NSDecimalNumber.roundToNearestTwo(totalOver68Hours))
   }
   
   static func nightShiftRate(salary salary: NSDecimalNumber, workingNightHours nightHours: NSDecimalNumber, payFrequency frequency: PaymentFrequency) -> NSDecimalNumber {
