@@ -20,7 +20,8 @@ private enum WorkingHours {
 
 struct Overtime {
   
-  static func ratePerHour(salary salary: NSDecimalNumber, workingHours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
+  static func ratePerHour(salary salary: NSDecimalNumber, workingHours: NSDecimalNumber,
+                                  payFrequency: PaymentFrequency) -> NSDecimalNumber {
     let hourlyRateResult = (salary / payFrequency.rawValue) / workingHours
     return NSDecimalNumber.roundToNearestTwo(hourlyRateResult)
   }
@@ -40,7 +41,8 @@ struct Overtime {
     }
   }
   
-  static func extraRatePerHour(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
+  static func extraRatePerHour(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) ->
+      (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) {
     
     var rateOver68Hours: NSDecimalNumber = 0
     let rateUnder68Hours = (hourlyRate * RatePercentage.lessThan68Hours) + hourlyRate
@@ -52,7 +54,8 @@ struct Overtime {
             NSDecimalNumber.roundToNearestTwo(rateOver68Hours))
   }
   
-  static func totalPay(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) {
+  static func totalPay(hourlyRate hourlyRate: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) ->
+      (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) {
     
     let extraHoursWorkedResult = extraHoursWorked(hours: hours)
     let extraRatePerHourResult = extraRatePerHour(hourlyRate: hourlyRate, hoursWorked: hours)
@@ -67,21 +70,27 @@ struct Overtime {
             NSDecimalNumber.roundToNearestTwo(totalOver68Hours))
   }
   
-  static func nightShiftRate(salary salary: NSDecimalNumber, workingNightHours nightHours: NSDecimalNumber, payFrequency frequency: PaymentFrequency) -> NSDecimalNumber {
+  static func nightShiftRate(salary salary: NSDecimalNumber, workingNightHours nightHours: NSDecimalNumber,
+                                      payFrequency frequency: PaymentFrequency) -> NSDecimalNumber {
     
-    let normalRatePerHour = ratePerHour(salary: salary, workingHours: nightHours, payFrequency: frequency)
-    let nightlyRate = NSDecimalNumber.roundToNearestTwo((normalRatePerHour * RatePercentage.nightShift) + normalRatePerHour)
+    let normalRatePerHour = ratePerHour(salary: salary,
+                                        workingHours: nightHours,
+                                        payFrequency: frequency)
+    let nightlyRate = (normalRatePerHour * RatePercentage.nightShift) + normalRatePerHour
     
-    return nightlyRate
+    return NSDecimalNumber.roundToNearestTwo(nightlyRate)
   }
   
-  static func nightShiftTotalPay(salary salary: NSDecimalNumber, workingNightHours: NSDecimalNumber, payFrequency: PaymentFrequency) -> NSDecimalNumber {
+  static func nightShiftTotalPay(salary salary: NSDecimalNumber, workingNightHours: NSDecimalNumber,
+                                          payFrequency: PaymentFrequency) -> NSDecimalNumber {
     
-    let hourlyNightShiftRate = nightShiftRate(salary: salary, workingNightHours: workingNightHours, payFrequency: payFrequency)
-    let nightShiftAmountTotal = NSDecimalNumber.roundToNearestTwo((hourlyNightShiftRate * workingNightHours) * payFrequency.rawValue)
+    let hourlyNightShiftRate = nightShiftRate(salary: salary,
+                                              workingNightHours: workingNightHours,
+                                              payFrequency: payFrequency)
+    let nightShiftAmountTotal = (hourlyNightShiftRate * workingNightHours) * payFrequency.rawValue
     let totalPay = nightShiftAmountTotal - salary
     
-    return totalPay
+    return NSDecimalNumber.roundToNearestTwo(totalPay)
   }
   
 }

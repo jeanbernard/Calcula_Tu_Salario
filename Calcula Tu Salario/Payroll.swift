@@ -26,10 +26,13 @@ struct Payroll {
     let salaryAfterAFP_SFS = Deduction.applyGovernmentTaxesToSalary(salary)
     let totalDeductions = salary - salaryAfterAFP_SFS
     
-    let ratePerHour = Overtime.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
-    let overtimePay = Overtime.totalPay(hourlyRate: ratePerHour, hoursWorked: hoursWorked)
-    let salaryAfterGovDeductionsAndOvertimePay = salaryAfterAFP_SFS + overtimePay.totalUnder68Hours + overtimePay.totalOver68Hours
+    let ratePerHour = Overtime.ratePerHour(salary: salary,
+                                           workingHours: workingHours,
+                                           payFrequency: frequency)
+    let overtimePay = Overtime.totalPay(hourlyRate: ratePerHour,
+                                        hoursWorked: hoursWorked)
     
+    let salaryAfterGovDeductionsAndOvertimePay = salaryAfterAFP_SFS + overtimePay.totalUnder68Hours + overtimePay.totalOver68Hours
     let ISRDeductionAmount = ISR.getMonthlyRetentionAmount(salaryAfterGovDeductionsAndOvertimePay)
     
     let netSalary = salary + overtimePay.totalUnder68Hours + overtimePay.totalOver68Hours - totalDeductions - ISRDeductionAmount
