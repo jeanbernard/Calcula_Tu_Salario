@@ -22,13 +22,17 @@ struct Payroll {
   }
   
   static func netSalaryWithOvertimePay(salary salary: NSDecimalNumber, workingHours: NSDecimalNumber, hoursWorked: NSDecimalNumber, frequency: PaymentFrequency) -> NSDecimalNumber {
+    
     let salaryAfterAFP_SFS = Deduction.applyGovernmentTaxesToSalary(salary)
     let totalDeductions = salary - salaryAfterAFP_SFS
+    
     let ratePerHour = Overtime.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
-    let salaryAfterOvertimePay = Overtime.totalPay(hourlyRate: ratePerHour, hoursWorked: hoursWorked)
-    let salaryAfterGovDeductionsAndOvertimePay = salaryAfterAFP_SFS + salaryAfterOvertimePay.totalUnder68Hours
-    let salaryISRDeductionAmount = ISR.getMonthlyRetentionAmount(salaryAfterGovDeductionsAndOvertimePay)
-    let netSalary = salary + salaryAfterOvertimePay.totalUnder68Hours - totalDeductions - salaryISRDeductionAmount
+    let overtimePay = Overtime.totalPay(hourlyRate: ratePerHour, hoursWorked: hoursWorked)
+    let salaryAfterGovDeductionsAndOvertimePay = salaryAfterAFP_SFS + overtimePay.totalUnder68Hours
+    
+    let ISRDeductionAmount = ISR.getMonthlyRetentionAmount(salaryAfterGovDeductionsAndOvertimePay)
+    
+    let netSalary = salary + overtimePay.totalUnder68Hours - totalDeductions - ISRDeductionAmount
     
     return netSalary
   }
