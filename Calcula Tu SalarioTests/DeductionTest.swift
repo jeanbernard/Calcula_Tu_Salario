@@ -13,13 +13,13 @@ class DeductionTest: XCTestCase {
   
   func testAFPDeduction() {
     let expectedAFPDeduction: NSDecimalNumber = 1446.48
-    let afpDeduction = Deduction.calculateAFPDeduction(salary)
+    let afpDeduction = Deduction.calculateAFP(salary)
     XCTAssertEqual(expectedAFPDeduction, afpDeduction)
   }
   
   func testSFSDeduction() {
     let expectedSFSDeduction: NSDecimalNumber = 1532.16
-    let sfsDeduction = Deduction.calculateSFSDeduction(salary)
+    let sfsDeduction = Deduction.calculateSFS(salary)
     XCTAssertEqual(expectedSFSDeduction, sfsDeduction)
   }
   

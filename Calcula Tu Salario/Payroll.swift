@@ -18,7 +18,6 @@ struct Payroll {
   static func calculateBiWeeklyNetSalary(salary: NSDecimalNumber) -> NSDecimalNumber {
     let calculateSalary = calculateMonthlyNetSalary(salary)
     return NSDecimalNumber.roundToNearestTwo(calculateSalary / 2)
-
   }
   
   static func netSalaryWithOvertimePay(salary salary: NSDecimalNumber, workingHours: NSDecimalNumber, hoursWorked: NSDecimalNumber, frequency: PaymentFrequency) -> NSDecimalNumber {
