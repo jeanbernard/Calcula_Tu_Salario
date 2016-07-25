@@ -23,6 +23,7 @@
 		1571352A1D25D70F00DE9110 /* Deduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135291D25D70F00DE9110 /* Deduction.swift */; };
 		1571352E1D26D99F00DE9110 /* DeductionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352D1D26D99F00DE9110 /* DeductionTest.swift */; };
 		157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */; };
+		15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E3336A1D452E030017114E /* SalaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		157135291D25D70F00DE9110 /* Deduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deduction.swift; sourceTree = "<group>"; };
 		1571352D1D26D99F00DE9110 /* DeductionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeductionTest.swift; sourceTree = "<group>"; };
 		1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtil.swift; sourceTree = "<group>"; };
+		15E3336A1D452E030017114E /* SalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +128,8 @@
 		157134F81D25CC5800DE9110 /* Calcula Tu Salario */ = {
 			isa = PBXGroup;
 			children = (
+				15E333691D452DB60017114E /* View Controllers */,
 				155B67771D2DDD3D002E8C9F /* Model */,
-				157134FD1D25CC5800DE9110 /* Main.storyboard */,
 				157135311D27204D00DE9110 /* Supporting Files */,
 			);
 			path = "Calcula Tu Salario";
@@ -166,6 +168,15 @@
 				157135051D25CC5800DE9110 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		15E333691D452DB60017114E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				157134FD1D25CC5800DE9110 /* Main.storyboard */,
+				15E3336A1D452E030017114E /* SalaryViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +337,7 @@
 				155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */,
 				15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */,
 				157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */,
+				15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */,
 				155B67791D2DE092002E8C9F /* ISR.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,
 			);
