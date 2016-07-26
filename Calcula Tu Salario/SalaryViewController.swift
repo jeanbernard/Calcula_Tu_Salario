@@ -10,7 +10,7 @@ class SalaryViewController: UIViewController {
   }
   
   @IBAction func payMeButtonPressed(sender: UIButton) {
-    
   }
+
   
 }
