@@ -17,9 +17,11 @@ class SalaryViewController: UIViewController {
   }
   
   @IBAction func payMeButtonPressed(sender: UIButton) {
-    if let introducedSalary = salaryTextField.text {
+    if let introducedSalary = salaryTextField.text where salaryTextField.text != "" {
       let salary = NSDecimalNumber(string: introducedSalary)
       calculatedSalary = Payroll.calculateMonthlyNetSalary(salary)
+    } else {
+      //TODO: Add UIAlertController "Must enter salary."
     }
   }
   

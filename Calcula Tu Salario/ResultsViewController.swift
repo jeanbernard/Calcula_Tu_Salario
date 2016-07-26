@@ -20,7 +20,7 @@ extension ResultsViewController: UITableViewDataSource {
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -34,4 +34,13 @@ extension ResultsViewController: UITableViewDataSource {
     
     return cell!
   }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    if section == 0 {
+      return "Ingresos"
+    } else {
+      return "Deducciones"
+    }
+  }
+  
 }
