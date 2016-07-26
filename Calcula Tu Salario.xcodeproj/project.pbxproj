@@ -24,6 +24,7 @@
 		1571352E1D26D99F00DE9110 /* DeductionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352D1D26D99F00DE9110 /* DeductionTest.swift */; };
 		157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */; };
 		15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B960A71D46E9CD000D377E /* ResultsViewController.swift */; };
+		15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */; };
 		15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E3336A1D452E030017114E /* SalaryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		1571352D1D26D99F00DE9110 /* DeductionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeductionTest.swift; sourceTree = "<group>"; };
 		1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtil.swift; sourceTree = "<group>"; };
 		15B960A71D46E9CD000D377E /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		15E3336A1D452E030017114E /* SalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 				157134FD1D25CC5800DE9110 /* Main.storyboard */,
 				15E3336A1D452E030017114E /* SalaryViewController.swift */,
 				15B960A71D46E9CD000D377E /* ResultsViewController.swift */,
+				15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */,
 				155B67791D2DE092002E8C9F /* ISR.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,
+				15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */,
 				15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
