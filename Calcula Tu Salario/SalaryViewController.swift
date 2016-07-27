@@ -2,8 +2,6 @@ import UIKit
 
 class SalaryViewController: UIViewController {
   
-  var calculatedSalary: NSDecimalNumber = 0.0
-  
   @IBOutlet weak var salaryTextField: UITextField!
   
   override func viewDidLoad() {
@@ -12,16 +10,13 @@ class SalaryViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let destinationVC = segue.destinationViewController as? ResultsViewController {
-      destinationVC.result = calculatedSalary
-    }
-  }
-  
-  @IBAction func payMeButtonPressed(sender: UIButton) {
-    if let introducedSalary = salaryTextField.text where salaryTextField.text != "" {
-      let salary = NSDecimalNumber(string: introducedSalary)
-      calculatedSalary = Payroll.calculateMonthlyNetSalary(salary)
-    } else {
-      //TODO: Add UIAlertController "Must enter salary."
+      if let introducedSalary = salaryTextField.text where salaryTextField.text != "" {
+        let salary = NSDecimalNumber(string: introducedSalary)
+        let salaryViewModel = SalaryViewModel(salary: salary)
+        destinationVC.salaryViewModel = salaryViewModel
+      } else {
+        //TODO: Add UIAlertController "Must enter salary."
+      }
     }
   }
   

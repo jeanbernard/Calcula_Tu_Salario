@@ -31,7 +31,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="payMeButtonPressed:" destination="oOH-fH-fLk" eventType="touchUpInside" id="Su2-qf-UD7"/>
                                     <segue destination="e7u-LT-NnX" kind="show" id="jj6-rA-E00"/>
                                 </connections>
                             </button>
