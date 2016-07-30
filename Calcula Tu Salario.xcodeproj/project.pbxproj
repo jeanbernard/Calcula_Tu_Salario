@@ -103,12 +103,12 @@
 		155B67771D2DDD3D002E8C9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				157135291D25D70F00DE9110 /* Deduction.swift */,
 				155B67781D2DE092002E8C9F /* ISR.swift */,
 				155B677C1D305E6D002E8C9F /* Overtime.swift */,
 				15453ADB1D2A6C2000515D9A /* Payroll.swift */,
-				157135291D25D70F00DE9110 /* Deduction.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		157134ED1D25CC5700DE9110 = {
@@ -134,10 +134,10 @@
 		157134F81D25CC5800DE9110 /* Calcula Tu Salario */ = {
 			isa = PBXGroup;
 			children = (
-				15BF2DA41D48B8B800874418 /* View Models */,
-				15E333691D452DB60017114E /* View Controllers */,
 				155B67771D2DDD3D002E8C9F /* Model */,
 				157135311D27204D00DE9110 /* Supporting Files */,
+				15E333691D452DB60017114E /* View Controllers */,
+				15BF2DA41D48B8B800874418 /* View Models */,
 			);
 			path = "Calcula Tu Salario";
 			sourceTree = "<group>";
@@ -146,12 +146,12 @@
 			isa = PBXGroup;
 			children = (
 				1571350E1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift */,
-				157135271D25CE0C00DE9110 /* ISRTest.swift */,
-				1571352D1D26D99F00DE9110 /* DeductionTest.swift */,
 				151A29821D296EC2000E2F45 /* CompareTest.swift */,
-				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
-				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
+				1571352D1D26D99F00DE9110 /* DeductionTest.swift */,
+				157135271D25CE0C00DE9110 /* ISRTest.swift */,
 				157135101D25CC5800DE9110 /* Info.plist */,
+				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
+				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
 			);
 			path = "Calcula Tu SalarioTests";
 			sourceTree = "<group>";
@@ -168,13 +168,13 @@
 		157135311D27204D00DE9110 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */,
 				157134F91D25CC5800DE9110 /* AppDelegate.swift */,
 				157135001D25CC5800DE9110 /* Assets.xcassets */,
-				157135021D25CC5800DE9110 /* LaunchScreen.storyboard */,
 				157135051D25CC5800DE9110 /* Info.plist */,
+				157135021D25CC5800DE9110 /* LaunchScreen.storyboard */,
+				1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		15BF2DA41D48B8B800874418 /* View Models */ = {
@@ -182,18 +182,18 @@
 			children = (
 				15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */,
 			);
-			name = "View Models";
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		15E333691D452DB60017114E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				157134FD1D25CC5800DE9110 /* Main.storyboard */,
-				15E3336A1D452E030017114E /* SalaryViewController.swift */,
-				15B960A71D46E9CD000D377E /* ResultsViewController.swift */,
 				15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */,
+				15B960A71D46E9CD000D377E /* ResultsViewController.swift */,
+				15E3336A1D452E030017114E /* SalaryViewController.swift */,
 			);
-			name = "View Controllers";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +406,7 @@
 				157134FE1D25CC5800DE9110 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		157135021D25CC5800DE9110 /* LaunchScreen.storyboard */ = {
@@ -414,6 +415,7 @@
 				157135031D25CC5800DE9110 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -508,7 +510,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Calcula Tu Salario/Info.plist";
+				INFOPLIST_FILE = "Calcula Tu Salario/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-Salario";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -520,7 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Calcula Tu Salario/Info.plist";
+				INFOPLIST_FILE = "Calcula Tu Salario/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbernard.Calcula-Tu-Salario";
 				PRODUCT_NAME = "$(TARGET_NAME)";
