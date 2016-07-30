@@ -16,7 +16,13 @@ class ResultsViewController: UIViewController {
 
 extension ResultsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return salaryViewModel.deductions.count
+    
+    if section == 0 {
+      return 1
+    } else {
+      return salaryViewModel.deductions.count
+    }
+    
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -25,17 +31,18 @@ extension ResultsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as? ResultTableViewCell
+    let deductionNames = salaryViewModel.deductions.keys.sort()
+    let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultTableViewCell
     
     if indexPath.section == 0 {
-      cell?.titleLabel.text = "Salario"
-      cell?.amountLabel.text = "$10,000.00"
+      cell.titleLabel.text = "Salario"
+      cell.amountLabel.text = "$10,000.00"
     } else {
-      cell?.titleLabel.text = "Hello"
-      cell?.amountLabel.text = "\(salaryViewModel.deductions[indexPath.row])"
+      cell.titleLabel.text = "\(deductionNames[indexPath.row])"
+      cell.amountLabel.text = "\(salaryViewModel.deductions[deductionNames[indexPath.row]]!)"
     }
     
-    return cell!
+    return cell
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
