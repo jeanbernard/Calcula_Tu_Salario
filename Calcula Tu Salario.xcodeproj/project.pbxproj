@@ -199,20 +199,20 @@
 			children = (
 				15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */,
 			);
-			name = "View Model Tests";
+			path = "View Model Tests";
 			sourceTree = "<group>";
 		};
 		15EAFEAB1D4D0D400027F17D /* Model Tests */ = {
 			isa = PBXGroup;
 			children = (
-				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
-				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
 				1571350E1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift */,
 				151A29821D296EC2000E2F45 /* CompareTest.swift */,
 				1571352D1D26D99F00DE9110 /* DeductionTest.swift */,
 				157135271D25CE0C00DE9110 /* ISRTest.swift */,
+				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
+				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
 			);
-			name = "Model Tests";
+			path = "Model Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
