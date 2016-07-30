@@ -27,6 +27,7 @@
 		15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */; };
 		15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */; };
 		15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E3336A1D452E030017114E /* SalaryViewController.swift */; };
+		15EAFEAD1D4D0DA20027F17D /* SalaryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
 		15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		15E3336A1D452E030017114E /* SalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
+		15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,13 +147,9 @@
 		1571350D1D25CC5800DE9110 /* Calcula Tu SalarioTests */ = {
 			isa = PBXGroup;
 			children = (
-				1571350E1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift */,
-				151A29821D296EC2000E2F45 /* CompareTest.swift */,
-				1571352D1D26D99F00DE9110 /* DeductionTest.swift */,
-				157135271D25CE0C00DE9110 /* ISRTest.swift */,
+				15EAFEAB1D4D0D400027F17D /* Model Tests */,
+				15EAFEAA1D4D0D260027F17D /* View Model Tests */,
 				157135101D25CC5800DE9110 /* Info.plist */,
-				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
-				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
 			);
 			path = "Calcula Tu SalarioTests";
 			sourceTree = "<group>";
@@ -194,6 +192,27 @@
 				15E3336A1D452E030017114E /* SalaryViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		15EAFEAA1D4D0D260027F17D /* View Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */,
+			);
+			name = "View Model Tests";
+			sourceTree = "<group>";
+		};
+		15EAFEAB1D4D0D400027F17D /* Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
+				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
+				1571350E1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift */,
+				151A29821D296EC2000E2F45 /* CompareTest.swift */,
+				1571352D1D26D99F00DE9110 /* DeductionTest.swift */,
+				157135271D25CE0C00DE9110 /* ISRTest.swift */,
+			);
+			name = "Model Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				155B677B1D305B3A002E8C9F /* OvertimeTest.swift in Sources */,
+				15EAFEAD1D4D0DA20027F17D /* SalaryViewModelTest.swift in Sources */,
 				15453ADA1D29840A00515D9A /* CompareTest.swift in Sources */,
 				1571350F1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift in Sources */,
 				1571352E1D26D99F00DE9110 /* DeductionTest.swift in Sources */,
