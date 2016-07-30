@@ -15,11 +15,4 @@ struct SalaryViewModel {
   init() {
     
   }
-  
-  private mutating func calculateDeductions(salary: NSDecimalNumber) -> [NSDecimalNumber] {
-    deductions.append(Deduction.calculateAFP(salary))
-    deductions.append(Deduction.calculateSFS(salary))
-    return deductions
-  }
-  
 }
