@@ -17,12 +17,23 @@ struct Deduction {
     return NSDecimalNumber.roundToNearestTwo(sfsDeduction)
   }
   
-  static func applyGovernmentTaxesToSalary(salary: NSDecimalNumber) -> NSDecimalNumber {
+  static func applyGovernmentTaxes(toSalary salary: NSDecimalNumber) -> NSDecimalNumber {
     let afpDeduction = Deduction.calculateAFP(salary)
     let sfsDeduction = Deduction.calculateSFS(salary)
     let totalDeductions = afpDeduction + sfsDeduction
     let salaryAfterGovernmentTaxes = salary - totalDeductions
     return salaryAfterGovernmentTaxes
+  }
+  
+  static func obtainAll(forSalary salary: NSDecimalNumber) -> [String: NSDecimalNumber] {
+    var deductions = [String: NSDecimalNumber]()
+    let afpDeduction = calculateAFP(salary)
+    let sfsDeduction = calculateSFS(salary)
+    
+    deductions.updateValue(sfsDeduction, forKey: "SFS")
+    deductions.updateValue(afpDeduction, forKey: "AFP")
+    
+    return deductions
   }
   
 }

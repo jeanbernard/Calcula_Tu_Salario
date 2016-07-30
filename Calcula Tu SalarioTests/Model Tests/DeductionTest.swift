@@ -25,8 +25,15 @@ class DeductionTest: XCTestCase {
   
   func testSalaryAfterApplyingAFP_SFS() {
     let expectedSalaryAfterGovernmentTaxes = 47421.36
-    let totalSalaryAfterGovernmentTaxes = Deduction.applyGovernmentTaxesToSalary(salary)
+    let totalSalaryAfterGovernmentTaxes = Deduction.applyGovernmentTaxes(toSalary: salary)
     XCTAssertEqual(expectedSalaryAfterGovernmentTaxes, totalSalaryAfterGovernmentTaxes)
+  }
+  
+  func testObtainAllDeductions() {
+    let expectedDeductions: [String: NSDecimalNumber] = ["AFP": 1446.48, "SFS": 1532.16]
+    let deductions = Deduction.obtainAll(forSalary: salary)
+    
+    XCTAssertEqual(expectedDeductions, deductions)
   }
   
 }
