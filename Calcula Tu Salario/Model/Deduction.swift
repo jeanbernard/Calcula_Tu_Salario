@@ -25,17 +25,6 @@ struct Deduction {
     return salaryAfterGovernmentTaxes
   }
   
-  static func obtainAll(forSalary salary: NSDecimalNumber) -> [String: NSDecimalNumber] {
-    var deductions = [String: NSDecimalNumber]()
-    let afpDeduction = calculateAFP(salary)
-    let sfsDeduction = calculateSFS(salary)
-    
-    deductions.updateValue(sfsDeduction, forKey: "SFS")
-    deductions.updateValue(afpDeduction, forKey: "AFP")
-    
-    return deductions
-  }
-  
 }
 
 
