@@ -10,6 +10,8 @@ class ResultsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     resultsTableView.dataSource = self
+    resultsTableView.tableFooterView = UIView()
+    resultsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
     resultLabel.text = salaryViewModel.netSalary
   }
 }
