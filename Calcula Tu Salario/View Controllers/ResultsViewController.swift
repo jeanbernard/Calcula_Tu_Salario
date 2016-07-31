@@ -47,8 +47,8 @@ extension ResultsViewController: UITableViewDataSource {
       cell.titleLabel.text = "Salario"
       cell.amountLabel.text = salaryViewModel.income
     } else {
-      cell.titleLabel.text = "\(deductionNames[indexPath.row])"
-      cell.amountLabel.text = "\(salaryViewModel.deductions[deductionNames[indexPath.row]]!)"
+      cell.titleLabel.text = deductionNames[indexPath.row]
+      cell.amountLabel.text = salaryViewModel.deductions[deductionNames[indexPath.row]]!
     }
     
     return cell

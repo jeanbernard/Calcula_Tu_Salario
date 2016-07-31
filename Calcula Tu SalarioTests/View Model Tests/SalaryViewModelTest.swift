@@ -13,9 +13,9 @@ class SalaryViewModelTest: XCTestCase {
   }
   
   func testDeductionsResult() {
-    let expectedAFPDeduction: NSDecimalNumber = 1446.48
-    let expectedSFSDeduction: NSDecimalNumber = 1532.16
-    let expectedISR: NSDecimalNumber = 1997.19
+    let expectedAFPDeduction = "$1,446.48"
+    let expectedSFSDeduction = "$1,532.16"
+    let expectedISR = "$1,997.19"
 
     let salaryViewModelDeductions = SalaryViewModel(salary: salary)
     
