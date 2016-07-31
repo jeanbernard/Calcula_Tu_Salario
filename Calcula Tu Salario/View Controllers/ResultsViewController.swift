@@ -10,10 +10,15 @@ class ResultsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     resultsTableView.dataSource = self
-    resultsTableView.tableFooterView = UIView()
-    resultsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+    prepareTableView(resultsTableView)
     resultLabel.text = salaryViewModel.netSalary
   }
+}
+
+private func prepareTableView(tableView: UITableView) -> UITableView {
+  tableView.tableFooterView = UIView()
+  tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+  return tableView
 }
 
 //MARK: Data Source
