@@ -6,7 +6,7 @@ class SalaryViewModelTest: XCTestCase {
   let salary: NSDecimalNumber = 50_400.00
 
   func testNetSalaryResult() {
-    let expectedNetResult = "45424.17"
+    let expectedNetResult = "$45,424.17"
     let netResult = SalaryViewModel(salary: salary)
     
     XCTAssertEqual(expectedNetResult, netResult.netSalary)
