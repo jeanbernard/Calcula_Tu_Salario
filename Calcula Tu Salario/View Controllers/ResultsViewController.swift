@@ -10,9 +10,11 @@ class ResultsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     resultsTableView.dataSource = self
-    resultLabel.text = "$\(salaryViewModel.netSalary)"
+    resultLabel.text = salaryViewModel.netSalary
   }
 }
+
+//MARK: Data Source
 
 extension ResultsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +38,7 @@ extension ResultsViewController: UITableViewDataSource {
     
     if indexPath.section == 0 {
       cell.titleLabel.text = "Salario"
-      cell.amountLabel.text = "$10,000.00"
+      cell.amountLabel.text = salaryViewModel.income
     } else {
       cell.titleLabel.text = "\(deductionNames[indexPath.row])"
       cell.amountLabel.text = "\(salaryViewModel.deductions[deductionNames[indexPath.row]]!)"
