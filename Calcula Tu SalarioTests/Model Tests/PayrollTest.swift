@@ -75,6 +75,19 @@ class PayrollTest: XCTestCase {
     XCTAssertEqual(expectedNetSalaryWithOvertimePay, monthlyNetSalaryWithOvertimePay)
     
   }
-
+  
+  func testAllDeductions() {
+    let salary: NSDecimalNumber = 50_400
+    let expectedDeductions: [String: NSDecimalNumber] = [
+      "AFP": 1446.48,
+      "SFS": 1532.16,
+      "ISR": 1997.19
+    ]
+    
+    let deductions = Payroll.obtainAllDeductions(forSalary: salary)
+    
+    XCTAssertEqual(expectedDeductions, deductions)
+  }
+  
   
 }

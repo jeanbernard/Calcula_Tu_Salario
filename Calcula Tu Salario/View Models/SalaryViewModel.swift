@@ -9,13 +9,11 @@ struct SalaryViewModel {
   init(salary: NSDecimalNumber) {
     self.netSalary = "\(Payroll.calculateMonthlyNetSalary(salary))"
     self.income = "\(salary)"
-    self.deductions = Deduction.obtainAll(forSalary: salary)
+    self.deductions = Payroll.obtainAllDeductions(forSalary: salary)
   }
   
   init() {
     
   }
-  
-  
-  
+
 }

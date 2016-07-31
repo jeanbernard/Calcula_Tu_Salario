@@ -39,4 +39,17 @@ struct Payroll {
     return netSalary
   }
   
+  static func obtainAllDeductions(forSalary salary: NSDecimalNumber) -> [String: NSDecimalNumber] {
+    var allDeductions: [String: NSDecimalNumber] = [:]
+    let afpDeduction = Deduction.calculateAFP(salary)
+    let sfsDeduction = Deduction.calculateSFS(salary)
+    let isrDeduction = ISR.getMonthlyRetentionAmount(calculateAFP_SFS(salary))
+    
+    allDeductions.updateValue(afpDeduction, forKey: "AFP")
+    allDeductions.updateValue(sfsDeduction, forKey: "SFS")
+    allDeductions.updateValue(isrDeduction, forKey: "ISR")
+    
+    return allDeductions
+  }
+  
 }
