@@ -33,7 +33,7 @@ extension ResultsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    let deductionNames = salaryViewModel.deductions.keys.sort()
+    let deductionNames = [String](salaryViewModel.deductions.keys)
     let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultTableViewCell
     
     if indexPath.section == 0 {
