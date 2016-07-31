@@ -6,6 +6,7 @@ class SalaryViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    prepareGestureRecognizer()
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -18,6 +19,14 @@ class SalaryViewController: UIViewController {
         //TODO: Add UIAlertController "Must enter salary."
       }
     }
+  }
+  
+  private func prepareGestureRecognizer() {
+    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SalaryViewController.tappedOut)))
+  }
+  
+  @objc private func tappedOut() {
+    salaryTextField.resignFirstResponder()
   }
   
 }

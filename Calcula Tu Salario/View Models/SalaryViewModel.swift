@@ -15,5 +15,7 @@ struct SalaryViewModel {
   init() {
     
   }
+  
+  
 
 }
