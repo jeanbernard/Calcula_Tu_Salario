@@ -17,6 +17,7 @@ This project is a work in progress so i'll post here what you should consider if
 * I have yet to configure Travis CI however the unit tests can be run manually from inside Xcode. It'll even show you the current code coverage (currently stands at 78%! 😎)
 * The project has to be run either on an iPhone 6 or iPhone 6S simulator because I still need to set up Auto Layout 📱.
 * I decided to use MVVM as opposed to the traditional MVC 🤓. For more info on MVVM: http://artsy.github.io/blog/2015/09/24/mvvm-in-swift/
+* I follow this style guide for organizing my Swift code https://github.com/raywenderlich/swift-style-guide
 * TDD is the almighty God 😇. If you want to contribute, you must appease the TDD God with unit tests.
 
 #Features
