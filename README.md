@@ -1,5 +1,7 @@
 #Calcula Tu Salario
 
+![](https://travis-ci.org/jeanbernard/Calcula_Tu_Salario.svg?branch=master)
+
 Look man, math is hard 🤔. You know what's just as hard as math? Dominican labor laws 🇩🇴. Both are used to calculate how much you earn for a living. Bummer, I know 😞.
 
 I mean, you wanna know if the accounting people are messing with your monthly burguer budget but don't have the time nor the appropiate math/law skills to calculate it yourself 😟.
