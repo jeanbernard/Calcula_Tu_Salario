@@ -20,6 +20,13 @@ private enum WorkingHours {
 
 struct Overtime {
   
+  static func doesSalaryApplyForOvertimePay(salary: NSDecimalNumber, hoursWorked: NSDecimalNumber) -> Bool {
+    if hoursWorked > WorkingHours.legalWorkingHours {
+      return true
+    }
+    return false
+  }
+  
   static func ratePerHour(salary salary: NSDecimalNumber, workingHours: NSDecimalNumber,
                                   payFrequency: PaymentFrequency) -> NSDecimalNumber {
     let hourlyRateResult = (salary / payFrequency.rawValue) / workingHours

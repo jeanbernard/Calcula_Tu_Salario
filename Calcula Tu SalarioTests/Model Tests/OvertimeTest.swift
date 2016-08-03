@@ -16,6 +16,13 @@ class OvertimeTest: XCTestCase {
     frequency = .monthly
   }
   
+  func testIfSalaryAppliesForOvertimePay() {
+    hoursWorked = 65
+    let doesSalaryApplyForOvertimePay = Overtime.doesSalaryApplyForOvertimePay(salary, hoursWorked: hoursWorked)
+    
+    XCTAssertTrue(doesSalaryApplyForOvertimePay)
+  }
+  
   func testHourlyRatePerMonth() {
     let expectedRatePerMonth: NSDecimalNumber = 52.45
     let ratePerMonth = Overtime.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
