@@ -48,4 +48,10 @@ class CompareTest: XCTestCase {
     XCTAssertFalse(number <= notSameNumber)
   }
   
+  func testSameNumberIsFalse() {
+    let number: NSDecimalNumber = 44
+    let sameNumber: NSDecimalNumber = 44
+    XCTAssertFalse(number > sameNumber)
+  }
+  
 }

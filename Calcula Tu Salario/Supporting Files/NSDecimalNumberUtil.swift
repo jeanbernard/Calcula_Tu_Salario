@@ -30,24 +30,15 @@ func / (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
 //MARK: Overloaded Comparison Operators
 
 func > (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-  if lhs.compare(rhs).rawValue == -1 {
-    return false
-  }
-  return true
+  return lhs.compare(rhs) == NSComparisonResult.OrderedDescending
 }
 
 func < (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-  if lhs.compare(rhs).rawValue == 1 {
-    return false
-  }
-  return true
+  return lhs.compare(rhs) == NSComparisonResult.OrderedAscending
 }
 
 func == (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-  if lhs.compare(rhs).rawValue == 0 {
-    return true
-  }
-  return false
+  return lhs.compare(rhs) == NSComparisonResult.OrderedSame
 }
 
 func >= (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
