@@ -52,4 +52,25 @@ struct Payroll {
     return allDeductions
   }
   
+  static func obtainAllEarnings(forSalary salary: NSDecimalNumber, hoursWorked hours: NSDecimalNumber) -> [String: NSDecimalNumber] {
+    var allEarnings: [String: NSDecimalNumber] = [:]
+    var netSalary = salary
+    var extraHours: (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber)?
+    let salaryAppliesForOvertime = Overtime.doesSalaryApplyForOvertimePay(salary, hoursWorked: hours)
+    
+    if salaryAppliesForOvertime {
+      netSalary = netSalaryWithOvertimePay(salary: salary, workingHours: 8, hoursWorked: hours, frequency: PaymentFrequency.monthly)
+      let hourlyRate = Overtime.ratePerHour(salary: salary, workingHours: 8, payFrequency: PaymentFrequency.monthly)
+      extraHours = Overtime.totalPay(hourlyRate: hourlyRate, hoursWorked: hours)
+      
+      let totalOvertimePay = extraHours!.totalUnder68Hours + extraHours!.totalOver68Hours
+      
+      allEarnings.updateValue(totalOvertimePay, forKey: "Horas Extra")
+    }
+    
+    allEarnings.updateValue(netSalary, forKey: "Salario")
+    
+    return allEarnings
+  }
+  
 }

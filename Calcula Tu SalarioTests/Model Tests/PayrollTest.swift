@@ -89,5 +89,43 @@ class PayrollTest: XCTestCase {
     XCTAssertEqual(expectedDeductions, deductions)
   }
   
+  func testAllEarnings() {
+    let salary: NSDecimalNumber = 50_400
+    let hours: NSDecimalNumber = 44
+    let expectedEarnings: [String: NSDecimalNumber] = [
+      "Salario": 50_400,
+    ]
+    
+    let earnings = Payroll.obtainAllEarnings(forSalary: salary, hoursWorked: hours)
+    
+    XCTAssertEqual(expectedEarnings, earnings)
+  }
+  
+  func testAllEarningsWithOvertimePayUnder68Hours() {
+    let salary: NSDecimalNumber = 50_400
+    let hours: NSDecimalNumber = 65
+    let expectedEarnings: [String: NSDecimalNumber] = [
+    "Salario": 51_607.02,
+    "Horas Extra": 7_494.9
+    ]
+    
+    let earnings = Payroll.obtainAllEarnings(forSalary: salary, hoursWorked: hours)
+    
+    XCTAssertEqual(expectedEarnings, earnings)
+  }
+  
+  func testAllEarningsWithOvertimePayOver68Hours() {
+    let salary: NSDecimalNumber = 50_400
+    let hours: NSDecimalNumber = 89
+    let expectedEarnings: [String: NSDecimalNumber] = [
+      "Salario": 61_346.42,
+      "Horas Extra": 19_669.14
+    ]
+    
+    let earnings = Payroll.obtainAllEarnings(forSalary: salary, hoursWorked: hours)
+    
+    XCTAssertEqual(expectedEarnings, earnings)
+  }
+  
   
 }
