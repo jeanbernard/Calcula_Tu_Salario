@@ -24,11 +24,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Cuánto me van a pagar?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Tpc-hj-wqB">
-                                <rect key="frame" x="20" y="72" width="560" height="34"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="¿Cuánto ganas?" textAlignment="center" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="pix-7L-S3h">
                                 <rect key="frame" x="20" y="249" width="560" height="55"/>
                                 <color key="textColor" red="0.97396391630172729" green="0.70611584186553955" blue="0.17488420009613037" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,24 +44,36 @@
                                     <segue destination="e7u-LT-NnX" kind="show" id="jj6-rA-E00"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Cuánto me van a pagar?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Tpc-hj-wqB">
+                                <rect key="frame" x="20" y="95" width="560" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Tpc-hj-wqB" secondAttribute="trailing" id="7L5-xX-wBq"/>
-                            <constraint firstItem="Tpc-hj-wqB" firstAttribute="leading" secondItem="7Ag-F4-Up6" secondAttribute="leadingMargin" id="7da-Tv-TMN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="be1-17-1JM" secondAttribute="trailing" id="BUu-qa-8SZ"/>
                             <constraint firstAttribute="bottom" secondItem="vf8-H0-eLD" secondAttribute="bottom" constant="20" symbolic="YES" id="Fu6-ND-bmc"/>
                             <constraint firstItem="vf8-H0-eLD" firstAttribute="trailing" secondItem="pix-7L-S3h" secondAttribute="trailing" id="MXE-gh-utX"/>
+                            <constraint firstItem="Tpc-hj-wqB" firstAttribute="leading" secondItem="be1-17-1JM" secondAttribute="leading" id="RH4-oL-K3S"/>
                             <constraint firstItem="pix-7L-S3h" firstAttribute="leading" secondItem="7Ag-F4-Up6" secondAttribute="leadingMargin" id="STl-uD-vhI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pix-7L-S3h" secondAttribute="trailing" id="YAc-Yi-RDM"/>
+                            <constraint firstItem="Tpc-hj-wqB" firstAttribute="trailing" secondItem="be1-17-1JM" secondAttribute="trailing" id="cXJ-g1-knA"/>
                             <constraint firstItem="vf8-H0-eLD" firstAttribute="leading" secondItem="pix-7L-S3h" secondAttribute="leading" id="gMM-gy-JQN"/>
+                            <constraint firstItem="be1-17-1JM" firstAttribute="top" secondItem="Tpc-hj-wqB" secondAttribute="bottom" constant="63" id="gcc-HY-dfe"/>
                             <constraint firstItem="pix-7L-S3h" firstAttribute="top" secondItem="be1-17-1JM" secondAttribute="bottom" constant="29" id="kOs-OA-zQd"/>
-                            <constraint firstItem="be1-17-1JM" firstAttribute="top" secondItem="Tpc-hj-wqB" secondAttribute="bottom" constant="86" id="lG2-Si-zjd"/>
+                            <constraint firstItem="Tpc-hj-wqB" firstAttribute="top" secondItem="UJM-VJ-Euh" secondAttribute="bottom" constant="31" id="mBu-sK-RaX"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="leading" secondItem="7Ag-F4-Up6" secondAttribute="leadingMargin" id="oo9-T5-q1t"/>
-                            <constraint firstItem="Tpc-hj-wqB" firstAttribute="top" secondItem="UJM-VJ-Euh" secondAttribute="bottom" constant="8" id="sjC-mM-kS9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="DMs-JA-2m3"/>
+                    <navigationItem key="navigationItem" id="DMs-JA-2m3">
+                        <barButtonItem key="rightBarButtonItem" title="Págame!" id="av4-uZ-i3d">
+                            <color key="tintColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="e7u-LT-NnX" kind="show" id="MRC-2E-xUT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="salaryTextField" destination="pix-7L-S3h" id="rrY-hh-9e8"/>
                     </connections>
@@ -243,4 +250,7 @@
             <point key="canvasLocation" x="-847.20000000000005" y="-250.52473763118442"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jj6-rA-E00"/>
+    </inferredMetricsTieBreakers>
 </document>

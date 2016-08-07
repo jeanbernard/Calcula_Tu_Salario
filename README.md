@@ -8,7 +8,7 @@ Rejoice! This iOS app deals with the math *AND* laws for you. Hooray! 🎉 Now y
 
 #Getting Started
 
-Thank you stopping by and taking an interest in the repo :]
+Thank you for stopping by and taking an interest in the repo :]
 
 This project is a work in progress so i'll post here what you should consider if you wanna check it out:
 

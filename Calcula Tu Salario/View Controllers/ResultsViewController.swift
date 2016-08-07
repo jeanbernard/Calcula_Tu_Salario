@@ -11,7 +11,7 @@ class ResultsViewController: UIViewController {
     super.viewDidLoad()
     resultsTableView.dataSource = self
     prepareTableView(resultsTableView)
-    resultLabel.text = salaryViewModel.netSalary
+    resultLabel.text = salaryViewModel.viewNetSalary
   }
 }
 
@@ -29,7 +29,7 @@ extension ResultsViewController: UITableViewDataSource {
     if section == 0 {
       return 1
     } else {
-      return salaryViewModel.deductions.count
+      return salaryViewModel.viewDeductions.count
     }
     
   }
@@ -40,15 +40,15 @@ extension ResultsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    let deductionNames = [String](salaryViewModel.deductions.keys)
+    let deductionNames = [String](salaryViewModel.viewDeductions.keys)
     let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultTableViewCell
     
     if indexPath.section == 0 {
       cell.titleLabel.text = "Salario"
-      cell.amountLabel.text = salaryViewModel.income
+      cell.amountLabel.text = salaryViewModel.viewIncome
     } else {
       cell.titleLabel.text = deductionNames[indexPath.row]
-      cell.amountLabel.text = salaryViewModel.deductions[deductionNames[indexPath.row]]!
+      cell.amountLabel.text = salaryViewModel.viewDeductions[deductionNames[indexPath.row]]!
     }
     
     return cell

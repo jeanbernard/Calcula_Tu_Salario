@@ -9,7 +9,7 @@ class SalaryViewModelTest: XCTestCase {
     let expectedNetResult = "$45,424.17"
     let netResult = SalaryViewModel(salary: salary)
     
-    XCTAssertEqual(expectedNetResult, netResult.netSalary)
+    XCTAssertEqual(expectedNetResult, netResult.viewNetSalary)
   }
   
   func testDeductionsResult() {
@@ -20,11 +20,11 @@ class SalaryViewModelTest: XCTestCase {
     let salaryViewModelDeductions = SalaryViewModel(salary: salary)
     
     XCTAssertEqual(expectedAFPDeduction,
-                   salaryViewModelDeductions.deductions["AFP"])
+                   salaryViewModelDeductions.viewDeductions["AFP"])
     XCTAssertEqual(expectedSFSDeduction,
-                   salaryViewModelDeductions.deductions["SFS"])
+                   salaryViewModelDeductions.viewDeductions["SFS"])
     XCTAssertEqual(expectedISR,
-                   salaryViewModelDeductions.deductions["ISR"])
+                   salaryViewModelDeductions.viewDeductions["ISR"])
 
   }
   

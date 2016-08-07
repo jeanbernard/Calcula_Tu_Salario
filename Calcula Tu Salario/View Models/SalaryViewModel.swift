@@ -2,14 +2,15 @@ import Foundation
 
 struct SalaryViewModel {
   
-  var netSalary: String?
-  var income: String?
-  var deductions: [String: String] = [:]
+  var viewNetSalary: String?
+  var viewIncome: String?
+  var viewDeductions: [String: String] = [:]
   
   init(salary: NSDecimalNumber) {
-    self.netSalary = formatNumberToCurrencyString(Payroll.calculateMonthlyNetSalary(salary))
-    self.income = formatNumberToCurrencyString(salary)
-    self.deductions = formatDictionaryToCurrencyString(Payroll.obtainAllDeductions(forSalary: salary))
+    let payroll = Payroll(withSalary: salary, frequency: PayrollFrequency.monthly)
+    self.viewNetSalary = formatNumberToCurrencyString(payroll.netSalary)
+    self.viewIncome = formatNumberToCurrencyString(salary)
+    self.viewDeductions = formatDictionaryToCurrencyString(payroll.deductions)
   }
   
   init() {

@@ -1,6 +1,8 @@
 import Foundation
 
-private enum Percentage {
+//MARK: Constants
+
+private enum ISRPercentage {
   static let firstScalePercentage: NSDecimalNumber = 0.15
   static let secondScalePercentage: NSDecimalNumber = 0.20
   static let thirdScalePercentage: NSDecimalNumber = 0.25
@@ -20,10 +22,16 @@ private enum RateNumber {
   static let thirdScaleRateNumber: NSDecimalNumber = 78_446.00
 }
 
+private enum TaxPercentage {
+  static let AFP: NSDecimalNumber = 0.0287
+  static let SFS: NSDecimalNumber = 0.0304
+}
 
-struct ISR {
+//MARK: Tax Implementation
+
+extension Tax {
   
-  static func isSalaryExemptFromISR(salary: NSDecimalNumber) -> Bool {
+  func isSalaryExemptFromISR(salary: NSDecimalNumber) -> Bool {
     let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)
     
     let isSalaryExemptFromISR = yearlySalary < Scale.exemptFromISRScale
@@ -34,9 +42,10 @@ struct ISR {
     return false
   }
   
-  static func getPercentage(salary: NSDecimalNumber) -> NSDecimalNumber {
+  func getPercentage(salary: NSDecimalNumber) -> NSDecimalNumber {
     
     let yearlySalary = calculateYearlySalary(salary)
+    let salaryDoesNotApplyForISR: NSDecimalNumber = 0.0
     
     let isSalaryInFirstScale = yearlySalary >= Scale.lowerBoundFirstScale
       && yearlySalary <= Scale.higherBoundFirstScale
@@ -48,28 +57,28 @@ struct ISR {
       && yearlySalary <= NSDecimalNumber(double: DBL_MAX)
     
     if isSalaryInFirstScale {
-      return Percentage.firstScalePercentage
+      return ISRPercentage.firstScalePercentage
     }
       
     else if isSalaryInSecondScale {
-      return Percentage.secondScalePercentage
+      return ISRPercentage.secondScalePercentage
     }
       
     else if isSalaryInThirdScale {
-      return Percentage.thirdScalePercentage
+      return ISRPercentage.thirdScalePercentage
     }
     
-    return 0.0
+    return salaryDoesNotApplyForISR
   }
-
-  static func getSurplus(salary: NSDecimalNumber) -> NSDecimalNumber {
+  
+  func getSurplus(salary: NSDecimalNumber) -> NSDecimalNumber {
     
-    let ISRPercentage = getPercentage(salary)
-    let firstScale = Percentage.firstScalePercentage
-    let secondScale = Percentage.secondScalePercentage
-    let thirdScale = Percentage.thirdScalePercentage
+    let ISRDeductionPercentage = getPercentage(salary)
+    let firstScale = ISRPercentage.firstScalePercentage
+    let secondScale = ISRPercentage.secondScalePercentage
+    let thirdScale = ISRPercentage.thirdScalePercentage
     
-    switch ISRPercentage {
+    switch ISRDeductionPercentage {
     case firstScale:
       return Scale.lowerBoundFirstScale
     case secondScale:
@@ -81,11 +90,11 @@ struct ISR {
     }
     
   }
-
-  static func getRateNumber(percent: NSDecimalNumber) -> NSDecimalNumber {
+  
+  func getRateNumber(percent: NSDecimalNumber) -> NSDecimalNumber {
     
-    let secondScale = Percentage.secondScalePercentage
-    let thirdScale = Percentage.thirdScalePercentage
+    let secondScale = ISRPercentage.secondScalePercentage
+    let thirdScale = ISRPercentage.thirdScalePercentage
     
     switch percent {
     case secondScale:
@@ -96,8 +105,8 @@ struct ISR {
       return 0.0
     }
   }
-
-  static func getYearlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
+  
+  func getYearlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
     
     let yearlySalary = calculateYearlySalary(salary)
     let ISRSurplus = getSurplus(salary)
@@ -113,14 +122,32 @@ struct ISR {
     return NSDecimalNumber.roundToNearestTwo(totalISRRetention)
   }
   
-  static func getMonthlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
+  func getMonthlyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
     return NSDecimalNumber.roundToNearestTwo(getYearlyRetentionAmount(salary) / 12)
   }
   
-  static func getBiWeeklyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
+  func getBiWeeklyRetentionAmount(salary: NSDecimalNumber) -> NSDecimalNumber {
     return NSDecimalNumber.roundToNearestTwo(getMonthlyRetentionAmount(salary) / 2)
   }
-
+  
+  
+  func obtainDeductions(forSalary salary: NSDecimalNumber) -> [String: NSDecimalNumber] {
+    
+    let tax: (AFP: NSDecimalNumber, SFS: NSDecimalNumber) =
+      (salary * TaxPercentage.AFP, salary * TaxPercentage.SFS)
+    
+    let isr = getMonthlyRetentionAmount(salary - tax.AFP - tax.SFS)
+    
+    var taxDeductions: [String: NSDecimalNumber] = [
+      "AFP": tax.AFP,
+      "SFS": tax.SFS,
+      "ISR": isr
+    ]
+    
+    roundTax(&taxDeductions)
+    return taxDeductions
+  }
+  
 }
 
 private func calculateYearlySalary(salary: NSDecimalNumber) -> NSDecimalNumber {
@@ -128,4 +155,8 @@ private func calculateYearlySalary(salary: NSDecimalNumber) -> NSDecimalNumber {
   return salary * oneYear
 }
 
-
+private func roundTax(inout taxDeductions: [String: NSDecimalNumber]) {
+  for (key, value) in taxDeductions {
+    taxDeductions[key] = NSDecimalNumber.roundToNearestTwo(value)
+  }
+}
