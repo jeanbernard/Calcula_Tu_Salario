@@ -1,9 +1,5 @@
 import Foundation
 
-enum PayrollFrequency: NSDecimalNumber {
-  case monthly = 1
-  case biWeekly = 2
-}
 
 struct Payroll: Tax {
   
@@ -11,21 +7,33 @@ struct Payroll: Tax {
   var deductions: [String: NSDecimalNumber] = [:]
   var income: [String: NSDecimalNumber] = [:]
   var netSalary: NSDecimalNumber = 0.0
-  var frequency: PayrollFrequency = .monthly
   
-  init(withSalary salary: NSDecimalNumber, frequency: PayrollFrequency) {
-    self.frequency = frequency
+  init(withSalary salary: NSDecimalNumber) {
+    self.salary = salary
     self.deductions = obtainDeductions(forSalary: salary)
     self.income.updateValue(salary, forKey: "Salary")
-    self.netSalary = calculateNet(salary: salary, deductions: deductions, frequency: frequency)
+    self.netSalary = calculateNet(salary: salary, deductions: deductions)
   }
   
   init() {
     
   }
   
-  private func calculateNet(salary salary: NSDecimalNumber, deductions: [String: NSDecimalNumber],
-                                   frequency: PayrollFrequency) -> NSDecimalNumber {
+  mutating func calculateBiWeeklyPayroll() {
+    salary = NSDecimalNumber.roundToNearestTwo(salary / 2)
+    netSalary = NSDecimalNumber.roundToNearestTwo(netSalary / 2)
+    
+    for (key, value) in deductions {
+      deductions[key] = NSDecimalNumber.roundToNearestTwo(value / 2)
+    }
+    
+    for (key, value) in income {
+      income[key] = NSDecimalNumber.roundToNearestTwo(value / 2)
+    }
+    
+  }
+  
+  private func calculateNet(salary salary: NSDecimalNumber, deductions: [String: NSDecimalNumber]) -> NSDecimalNumber {
     
     var netSalary = salary
     
@@ -33,20 +41,9 @@ struct Payroll: Tax {
       netSalary = netSalary - deduction
     }
     
-    return calculatePayFrequency(forNetSalary: netSalary, withFrequency: frequency)
+    return netSalary
   }
   
-  private func calculatePayFrequency(forNetSalary netSalary: NSDecimalNumber, withFrequency frequency: PayrollFrequency) -> NSDecimalNumber {
-    
-    switch frequency {
-    case .monthly:
-      return netSalary
-    case .biWeekly:
-      let biWeeklyNetSalary = NSDecimalNumber.roundToNearestTwo(netSalary / 2)
-      return biWeeklyNetSalary
-    }
-    
-  }
   
 }
 

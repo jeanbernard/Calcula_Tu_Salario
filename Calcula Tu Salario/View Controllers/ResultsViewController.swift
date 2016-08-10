@@ -6,6 +6,7 @@ class ResultsViewController: UIViewController {
   
   @IBOutlet weak var resultLabel: UILabel!
   @IBOutlet weak var resultsTableView: UITableView!
+  @IBOutlet weak var segmentedControl: UISegmentedControl!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -13,7 +14,28 @@ class ResultsViewController: UIViewController {
     prepareTableView(resultsTableView)
     resultLabel.text = salaryViewModel.viewNetSalary
   }
+
+  @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
+    
+    let monthly = 0
+    let biWeekly = 1
+    
+    switch segmentedControl.selectedSegmentIndex {
+    case monthly:
+      salaryViewModel.showMonthlyResults()
+      resultLabel.text = salaryViewModel.viewNetSalary
+      resultsTableView.reloadData()
+    case biWeekly:
+      salaryViewModel.showBiWeeklyResults()
+      resultLabel.text = salaryViewModel.viewNetSalary
+      resultsTableView.reloadData()
+    default:
+      break
+    }
+  }
+  
 }
+
 
 private func prepareTableView(tableView: UITableView) -> UITableView {
   tableView.tableFooterView = UIView()

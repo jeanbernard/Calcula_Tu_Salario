@@ -2,19 +2,43 @@ import Foundation
 
 struct SalaryViewModel {
   
-  var viewNetSalary: String?
-  var viewIncome: String?
-  var viewDeductions: [String: String] = [:]
+  private var salary: NSDecimalNumber = 0.0
+  private var payroll: Payroll = Payroll()
+  
+  
+  var viewNetSalary: String? {
+    get {
+      return formatNumberToCurrencyString(payroll.netSalary)
+    }
+  }
+  
+  var viewIncome: String? {
+    get {
+      return formatNumberToCurrencyString(payroll.salary)
+    }
+  }
+  
+  var viewDeductions: [String: String] {
+    get {
+      return formatDictionaryToCurrencyString(payroll.deductions)
+    }
+  }
   
   init(salary: NSDecimalNumber) {
-    let payroll = Payroll(withSalary: salary, frequency: PayrollFrequency.monthly)
-    self.viewNetSalary = formatNumberToCurrencyString(payroll.netSalary)
-    self.viewIncome = formatNumberToCurrencyString(salary)
-    self.viewDeductions = formatDictionaryToCurrencyString(payroll.deductions)
+    self.salary = salary
+    payroll = Payroll(withSalary: salary)
   }
   
   init() {
     
+  }
+  
+  mutating func showBiWeeklyResults() {
+    payroll.calculateBiWeeklyPayroll()
+  }
+  
+  mutating func showMonthlyResults() {
+    payroll = Payroll(withSalary: salary)
   }
   
   private func formatNumberToCurrencyString(number: NSDecimalNumber) -> String? {
@@ -27,6 +51,7 @@ struct SalaryViewModel {
     return nil
   }
   
+  
   private func formatDictionaryToCurrencyString(dictionary: [String: NSDecimalNumber]) -> [String: String] {
     var stringyDictionary: [String: String] = [:]
     
@@ -35,5 +60,5 @@ struct SalaryViewModel {
     }
     return stringyDictionary
   }
-
+  
 }

@@ -85,7 +85,7 @@
         <!--Results View Controller-->
         <scene sceneID="fX5-Dl-IVY">
             <objects>
-                <viewController id="e7u-LT-NnX" customClass="ResultsViewController" customModule="Calcula_Tu_Salario" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="e7u-LT-NnX" customClass="ResultsViewController" customModule="Calcula_Tu_Salario" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JDP-lV-e3Z"/>
                         <viewControllerLayoutGuide type="bottom" id="HT7-Ak-mM8"/>
@@ -94,26 +94,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensual" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8K-5S-cVG">
-                                <rect key="frame" x="20" y="72" width="560" height="26"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="21"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99,999,999.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="C2c-jY-Mc9">
-                                <rect key="frame" x="20" y="106" width="560" height="70"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
-                                <color key="textColor" red="0.97396391630172729" green="0.70611584186553955" blue="0.17488420009613037" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nQp-Je-6cz">
-                                <rect key="frame" x="20" y="193" width="560" height="399"/>
+                                <rect key="frame" x="0.0" y="211" width="600" height="407"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultCell" id="YQC-0n-Nv2" customClass="ResultTableViewCell" customModule="Calcula_Tu_Salario" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YQC-0n-Nv2" id="090-qZ-gaI">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$50,400.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ub9-CR-KtW">
@@ -177,59 +166,57 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="210" width="400" height="590"/>
+                                </variation>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YvS-fy-qDO">
+                                <rect key="frame" x="203" y="72" width="194" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="194" id="LJI-DC-eIr"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Mensual"/>
+                                    <segment title="Quincenal"/>
+                                </segments>
+                                <color key="tintColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="e7u-LT-NnX" eventType="valueChanged" id="YZs-CX-8tT"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99,999,999.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="C2c-jY-Mc9">
+                                <rect key="frame" x="20" y="119" width="560" height="70"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
+                                <color key="textColor" red="0.97396391630172729" green="0.70611584186553955" blue="0.17488420009613037" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="132" width="360" height="70"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="nQp-Je-6cz" firstAttribute="centerX" secondItem="C2c-jY-Mc9" secondAttribute="centerX" id="2Nb-qR-EPF"/>
-                            <constraint firstItem="nQp-Je-6cz" firstAttribute="top" secondItem="C2c-jY-Mc9" secondAttribute="bottom" constant="8" symbolic="YES" id="3sD-YB-WCz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="C2c-jY-Mc9" secondAttribute="trailing" id="684-yN-LCv"/>
-                            <constraint firstItem="z8K-5S-cVG" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="BLF-22-Qxp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="z8K-5S-cVG" secondAttribute="trailing" id="Fp0-Ou-P47"/>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="z8K-5S-cVG" secondAttribute="bottom" constant="8" symbolic="YES" id="GPH-nj-eHH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nQp-Je-6cz" secondAttribute="trailing" id="Han-S7-Jbd"/>
-                            <constraint firstItem="HT7-Ak-mM8" firstAttribute="top" secondItem="nQp-Je-6cz" secondAttribute="bottom" constant="8" symbolic="YES" id="IUn-ol-Dxx"/>
-                            <constraint firstItem="nQp-Je-6cz" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="K3Y-jV-X5b">
-                                <variation key="widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstItem="nQp-Je-6cz" firstAttribute="top" secondItem="C2c-jY-Mc9" secondAttribute="bottom" constant="17" id="aP5-5h-wmY">
-                                <variation key="widthClass=compact" constant="8" symbolic="YES"/>
-                            </constraint>
-                            <constraint firstItem="nQp-Je-6cz" firstAttribute="bottom" secondItem="HT7-Ak-mM8" secondAttribute="top" id="aaP-5a-ThO"/>
-                            <constraint firstItem="z8K-5S-cVG" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="8" symbolic="YES" id="alm-Db-R5e"/>
-                            <constraint firstItem="nQp-Je-6cz" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leading" id="dQG-XO-Cez"/>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="jGZ-Qz-zuP"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="7Ag-6c-8OZ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="nQp-Je-6cz" secondAttribute="bottom" constant="-18" id="AFv-dk-8An"/>
+                            <constraint firstItem="YvS-fy-qDO" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="8" symbolic="YES" id="VME-d6-U2g"/>
+                            <constraint firstAttribute="trailing" secondItem="nQp-Je-6cz" secondAttribute="trailing" id="fjA-0j-yxU"/>
+                            <constraint firstItem="nQp-Je-6cz" firstAttribute="top" secondItem="C2c-jY-Mc9" secondAttribute="bottom" constant="22" id="nnf-op-dUh"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="YvS-fy-qDO" secondAttribute="bottom" constant="19" id="qVe-DU-zVu"/>
+                            <constraint firstItem="nQp-Je-6cz" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leading" id="sRC-lq-5Sl"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="centerX" secondItem="nQp-Je-6cz" secondAttribute="centerX" id="uoc-PE-0R4"/>
+                            <constraint firstItem="YvS-fy-qDO" firstAttribute="centerX" secondItem="C2c-jY-Mc9" secondAttribute="centerX" id="zdX-Wd-y9G"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2Nb-qR-EPF"/>
-                                <exclude reference="3sD-YB-WCz"/>
-                                <exclude reference="aaP-5a-ThO"/>
-                                <exclude reference="dQG-XO-Cez"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="2Nb-qR-EPF"/>
-                                <include reference="3sD-YB-WCz"/>
-                                <exclude reference="Han-S7-Jbd"/>
-                                <exclude reference="K3Y-jV-X5b"/>
-                                <exclude reference="aP5-5h-wmY"/>
-                                <include reference="aaP-5a-ThO"/>
-                                <include reference="dQG-XO-Cez"/>
-                                <exclude reference="IUn-ol-Dxx"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="sQg-Ni-3Oz"/>
                     <connections>
                         <outlet property="resultLabel" destination="C2c-jY-Mc9" id="d2Y-tV-TFN"/>
                         <outlet property="resultsTableView" destination="nQp-Je-6cz" id="ROw-WV-Kl2"/>
+                        <outlet property="segmentedControl" destination="YvS-fy-qDO" id="sqn-KD-dEV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8v-1R-7sA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="-251"/>
+            <point key="canvasLocation" x="518" y="-251"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HRG-pd-zSh">
