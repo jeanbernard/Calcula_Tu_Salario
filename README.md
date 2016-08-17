@@ -1,6 +1,7 @@
 #Calcula Tu Salario
 
-![](https://travis-ci.org/jeanbernard/Calcula_Tu_Salario.svg?branch=master)
+![](https://travis-ci.org/jeanbernard/Calcula_Tu_Salario.svg?branch=master) [![codecov](https://codecov.io/gh/jeanbernard/Calcula_Tu_Salario/branch/master/graph/badge.svg)](https://codecov.io/gh/jeanbernard/Calcula_Tu_Salario)
+
 
 Look man, math is hard 🤔. You know what's just as hard as math? Dominican labor laws 🇩🇴. Both are used to calculate how much you earn for a living. Bummer, I know 😞.
 
