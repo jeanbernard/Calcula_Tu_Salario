@@ -5,16 +5,15 @@ struct SalaryViewModel {
   private var salary: NSDecimalNumber = 0.0
   private var payroll: Payroll = Payroll()
   
-  
   var viewNetSalary: String? {
     get {
       return formatNumberToCurrencyString(payroll.netSalary)
     }
   }
   
-  var viewIncome: String? {
+  var viewIncome: [String: String] {
     get {
-      return formatNumberToCurrencyString(payroll.salary)
+      return formatDictionaryToCurrencyString(payroll.incomes)
     }
   }
   
@@ -27,6 +26,11 @@ struct SalaryViewModel {
   init(salary: NSDecimalNumber) {
     self.salary = salary
     payroll = Payroll(withSalary: salary)
+  }
+  
+  init(salary: NSDecimalNumber, andExtraHours extraHours: [String: NSDecimalNumber]) {
+    self.salary = salary
+    payroll = Payroll(withSalary: salary, andExtraHours: extraHours)
   }
   
   init() {

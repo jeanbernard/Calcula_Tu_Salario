@@ -17,13 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
     // Sets background to a blank/empty image
-    UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+    //UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
     // Sets shadow (line below the bar) to a blank image
-    UINavigationBar.appearance().shadowImage = UIImage()
+    //UINavigationBar.appearance().shadowImage = UIImage()
     // Sets the translucent background color
-    UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+    //UINavigationBar.appearance().barTintColor = UIColor(red: 248/255, green: 180/255, blue: 45/255, alpha: 0.2)
+   // UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+   // UINavigationBar.appearance().backgroundColor = UIColor(red: 248.0, green: 180.0, blue: 45, alpha: 0.5)
     // Set translucent. (Default value is already true, so this can be removed if desired.)
-    UINavigationBar.appearance().translucent = true
+    //UINavigationBar.appearance().translucent = false
+    UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     return true
   }
 

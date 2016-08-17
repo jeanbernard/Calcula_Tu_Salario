@@ -5,14 +5,25 @@ struct Payroll: Tax {
   
   var salary: NSDecimalNumber = 0.0
   var deductions: [String: NSDecimalNumber] = [:]
-  var income: [String: NSDecimalNumber] = [:]
+  var incomes: [String: NSDecimalNumber] = [:]
   var netSalary: NSDecimalNumber = 0.0
+  var extraHours: [String: NSDecimalNumber] = [:]
   
   init(withSalary salary: NSDecimalNumber) {
     self.salary = salary
     self.deductions = obtainDeductions(forSalary: salary)
-    self.income.updateValue(salary, forKey: "Salary")
-    self.netSalary = calculateNet(salary: salary, deductions: deductions)
+    self.incomes.updateValue(salary, forKey: "Salario")
+    calculateNet()
+  }
+  
+  init(withSalary salary: NSDecimalNumber, andExtraHours extraHours: [String: NSDecimalNumber]) {
+    self.salary = salary
+    self.extraHours = extraHours
+    self.deductions = obtainDeductions(forSalary: salary)
+    self.incomes.updateValue(salary, forKey: "Salario")
+    obtainExtraHoursIncome()
+    overtimePayISRRetention()
+    calculateNet()
   }
   
   init() {
@@ -27,22 +38,39 @@ struct Payroll: Tax {
       deductions[key] = NSDecimalNumber.roundToNearestTwo(value / 2)
     }
     
-    for (key, value) in income {
-      income[key] = NSDecimalNumber.roundToNearestTwo(value / 2)
+    for (key, value) in incomes {
+      incomes[key] = NSDecimalNumber.roundToNearestTwo(value / 2)
     }
     
   }
   
-  private func calculateNet(salary salary: NSDecimalNumber, deductions: [String: NSDecimalNumber]) -> NSDecimalNumber {
+  
+  private mutating func calculateNet() {
     
-    var netSalary = salary
+    for income in incomes.values {
+      netSalary = netSalary + income
+    }
     
     for deduction in deductions.values {
       netSalary = netSalary - deduction
     }
     
-    return netSalary
   }
+  
+  private mutating func obtainExtraHoursIncome() {
+    let ratePerHour = Overtime.ratePerHour(salary: salary, workingHours: 8, payFrequency: .monthly)
+    let extraTotal = Overtime.totalPay(forHourlyRate: ratePerHour, andExtraHoursWorked: extraHours)
+    let horasExtra = extraTotal.totalUnder68Hours + extraTotal.totalOver68Hours
+    incomes.updateValue(horasExtra, forKey: "Horas Extra")
+  }
+  
+  private mutating func overtimePayISRRetention() {
+    let salaryAfterGovRetention = salary - deductions["AFP"]! - deductions["SFS"]!
+    let salaryAfterAddingOvertimePay = salaryAfterGovRetention + incomes["Horas Extra"]!
+    let isrRetention = getMonthlyRetentionAmount(salaryAfterAddingOvertimePay)
+    deductions.updateValue(isrRetention, forKey: "ISR")
+  }
+  
   
   
 }

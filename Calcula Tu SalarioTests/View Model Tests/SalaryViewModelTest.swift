@@ -44,7 +44,7 @@ class SalaryViewModelTest: XCTestCase {
     salaryViewModel.showBiWeeklyResults()
     
     XCTAssertEqual(expectedIncome,
-                   salaryViewModel.viewIncome)
+                   salaryViewModel.viewIncome["Salario"])
     XCTAssertEqual(expectedNetResult,
                    salaryViewModel.viewNetSalary)
     XCTAssertEqual(expectedAFPDeduction,
@@ -67,7 +67,7 @@ class SalaryViewModelTest: XCTestCase {
     salaryViewModel.showMonthlyResults()
     
     XCTAssertEqual(expectedIncome,
-                   salaryViewModel.viewIncome)
+                   salaryViewModel.viewIncome["Salario"])
     XCTAssertEqual(expectedNetResult,
                    salaryViewModel.viewNetSalary)
     XCTAssertEqual(expectedAFPDeduction,

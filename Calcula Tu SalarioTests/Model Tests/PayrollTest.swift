@@ -60,7 +60,6 @@ class PayrollTest: XCTestCase {
     XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
   }
 
-
   func testAllDeductions() {
     let salary: NSDecimalNumber = 50_400
     let payroll = Payroll(withSalary: salary)
@@ -73,6 +72,32 @@ class PayrollTest: XCTestCase {
     let deductions = payroll.deductions
     
     XCTAssertEqual(expectedDeductions, deductions)
+  }
+  
+  func testOvertimeRetentionAmount() {
+    let salary: NSDecimalNumber = 50_400
+    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Nightly": 0, "Holiday": 0]
+    let payroll = Payroll(withSalary: salary, andExtraHours: extraHours)
+    let retentionAmount = payroll.deductions["ISR"]
+    
+    let expectedRetentionAmount = NSDecimalNumber.roundToNearestTwo(3_309.24)
+    
+    XCTAssertEqual(expectedRetentionAmount, retentionAmount)
+    
+  }
+  
+  func testIncome() {
+    let salary: NSDecimalNumber = 50_400
+    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Nightly": 0, "Holiday": 0]
+    let payroll = Payroll(withSalary: salary, andExtraHours: extraHours)
+    
+    let expectedIncome: [String: NSDecimalNumber] = [
+      "Salario": 50_400,
+      "Horas Extra": 7_494.90
+    ]
+    
+    XCTAssertEqual(expectedIncome, payroll.incomes)
+    
   }
   
 }

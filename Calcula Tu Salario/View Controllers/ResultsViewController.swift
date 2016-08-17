@@ -49,7 +49,7 @@ extension ResultsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     if section == 0 {
-      return 1
+      return salaryViewModel.viewIncome.count
     } else {
       return salaryViewModel.viewDeductions.count
     }
@@ -63,11 +63,12 @@ extension ResultsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
     let deductionNames = [String](salaryViewModel.viewDeductions.keys)
+    let incomeNames = [String](salaryViewModel.viewIncome.keys)
     let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultTableViewCell
     
     if indexPath.section == 0 {
-      cell.titleLabel.text = "Salario"
-      cell.amountLabel.text = salaryViewModel.viewIncome
+      cell.titleLabel.text = incomeNames[indexPath.row]
+      cell.amountLabel.text = salaryViewModel.viewIncome[incomeNames[indexPath.row]]!
     } else {
       cell.titleLabel.text = deductionNames[indexPath.row]
       cell.amountLabel.text = salaryViewModel.viewDeductions[deductionNames[indexPath.row]]!
