@@ -1,55 +1,45 @@
 import UIKit
 
 private enum Segue: String {
-  case showExtraHours
   case showResults
 }
 
-class SalaryViewController: UIViewController, ExtraHoursDelegate {
+class SalaryViewController: UIViewController {
   
   @IBOutlet weak var salaryTextField: UITextField!
-  @IBOutlet weak var diurnasTextLabel: UILabel!
-  @IBOutlet weak var nocturnasTextLabel: UILabel!
-  @IBOutlet weak var feriadasTextLabel: UILabel!
+  @IBOutlet weak var dailyLabel: UILabel!
+  @IBOutlet weak var holidayLabel: UILabel!
+  @IBOutlet weak var dailyTextField: UITextField!
+  @IBOutlet weak var holidayTextField: UITextField!
   
-  @IBOutlet weak var diurnasResultLabel: UILabel!
-  @IBOutlet weak var nocturnasResultLabel: UILabel!
-  @IBOutlet weak var feriadasResultLabel: UILabel!
-  
-  var extraHours: [String: NSDecimalNumber] = [:]
+  private var extraHours: [String: NSDecimalNumber] = [:]
   
   override func viewDidLoad() {
     super.viewDidLoad()
     prepareGestureRecognizer()
-    textVisibility(forLabel: diurnasTextLabel, withResult: diurnasResultLabel)
-    textVisibility(forLabel: nocturnasTextLabel, withResult: nocturnasResultLabel)
-    textVisibility(forLabel: feriadasTextLabel, withResult: feriadasResultLabel)
+    holidayTextField.delegate = self
+    dailyTextField.delegate = self
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
+    allTextFieldsResignFirstResponder()
+    
     if let identifier = segue.identifier {
       switch identifier {
-        
-      case Segue.showExtraHours.rawValue:
-        if let destinationNavCon = segue.destinationViewController as? UINavigationController {
-          if let extraHoursVC = destinationNavCon.visibleViewController as? ExtraHoursViewController {
-            extraHoursVC.delegate = self
-          }
-        }
         
       case Segue.showResults.rawValue:
         if let destinationVC = segue.destinationViewController as? ResultsViewController {
           if let introducedSalary = salaryTextField.text where salaryTextField.text != "" {
             let salary = NSDecimalNumber(string: introducedSalary)
             var salaryViewModel = SalaryViewModel()
+            getExtraHoursFromTextFields()
             
             if extraHours.isEmpty {
               salaryViewModel = SalaryViewModel(salary: salary)
             } else {
               salaryViewModel = SalaryViewModel(salary: salary, andExtraHours: extraHours)
             }
-            
             destinationVC.salaryViewModel = salaryViewModel
           } else {
             //TO-DO: Add UIAlertController "Must enter salary."
@@ -63,48 +53,41 @@ class SalaryViewController: UIViewController, ExtraHoursDelegate {
     
   }
   
-  func userEnteredDaytimeHours(hours: String) {
-    diurnasResultLabel.text = hours
-    textVisibility(forLabel: diurnasTextLabel, withResult: diurnasResultLabel)
-    let hoursStringToNumber = NSDecimalNumber(string: hours)
-    extraHours.updateValue(hoursStringToNumber, forKey: "Daily")
-  }
-  
-  func userEnteredNighttimeHours(hours: String) {
-    nocturnasResultLabel.text = hours
-    textVisibility(forLabel: nocturnasTextLabel, withResult: nocturnasResultLabel)
-    let hoursStringToNumber = NSDecimalNumber(string: hours)
-    extraHours.updateValue(hoursStringToNumber, forKey: "Nightly")
-  }
-  
-  func userEntetedHolidayHours(hours: String) {
-    feriadasResultLabel.text = hours
-    textVisibility(forLabel: feriadasTextLabel, withResult: feriadasResultLabel)
-    let hoursStringToNumber = NSDecimalNumber(string: hours)
-    extraHours.updateValue(hoursStringToNumber, forKey: "Holiday")
-  }
-  
   private func prepareGestureRecognizer() {
-    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SalaryViewController.tappedOut)))
+    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SalaryViewController.allTextFieldsResignFirstResponder)))
   }
   
-  @objc private func tappedOut() {
+  @objc private func allTextFieldsResignFirstResponder() {
     salaryTextField.resignFirstResponder()
+    dailyTextField.resignFirstResponder()
+    holidayTextField.resignFirstResponder()
   }
   
-  private func textVisibility(forLabel label: UILabel, withResult result: UILabel) {
-    
-    let isResultLabelEmpty = result.text == " "
-    let isLabelHidden = !result.hidden
-    
-    if isResultLabelEmpty && isLabelHidden {
-      result.hidden = true
-      label.hidden = true
+  private func getExtraHoursFromTextFields() {
+    if let dailyHours = dailyTextField.text where dailyTextField.text != "" {
+      let dailyHoursStringToNumber = NSDecimalNumber(string: dailyHours)
+      extraHours.updateValue(dailyHoursStringToNumber, forKey: "Daily")
     }
-    else {
-      result.hidden = false
-      label.hidden = false
+    
+    if let holidayHours = holidayTextField.text where holidayTextField.text != "" {
+      let holidayHoursStringToNumber = NSDecimalNumber(string: holidayHours)
+      extraHours.updateValue(holidayHoursStringToNumber, forKey: "Holiday")
     }
   }
   
+}
+
+extension SalaryViewController: UITextFieldDelegate {
+  func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    
+    if dailyTextField.text!.isEmpty {
+      extraHours.removeValueForKey("Daily")
+    }
+    
+    if holidayTextField.text!.isEmpty {
+      extraHours.removeValueForKey("Holiday")
+    }
+    
+    return true
+  }
 }

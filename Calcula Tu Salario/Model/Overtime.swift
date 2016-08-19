@@ -46,7 +46,7 @@ struct Overtime {
     switch totalExtraHours {
     case totalExtraHours where totalExtraHours > maximumAmountOfHours:
       return (maximumAmountOfHours - legalWorkingHours, totalExtraHours - maximumAmountOfHours)
-    case totalExtraHours where totalExtraHours < maximumAmountOfHours:
+    case totalExtraHours where totalExtraHours <= maximumAmountOfHours:
       return (totalExtraHours - legalWorkingHours, 0)
     default:
       return (0,0)

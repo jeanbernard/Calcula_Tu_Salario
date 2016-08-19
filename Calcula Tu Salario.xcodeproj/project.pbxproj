@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1512787C1D5D52B30086C2CE /* ExtraHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1512787B1D5D52B30086C2CE /* ExtraHoursViewController.swift */; };
 		151C97691D577C7300D8BCF9 /* TaxImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151C97681D577C7300D8BCF9 /* TaxImpl.swift */; };
 		152BB59F1D5409BA006DD461 /* Tax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152BB59E1D5409BA006DD461 /* Tax.swift */; };
 		15453ADA1D29840A00515D9A /* CompareTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A29821D296EC2000E2F45 /* CompareTest.swift */; };
@@ -48,7 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1512787B1D5D52B30086C2CE /* ExtraHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraHoursViewController.swift; sourceTree = "<group>"; };
 		151A29821D296EC2000E2F45 /* CompareTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareTest.swift; sourceTree = "<group>"; };
 		151C97681D577C7300D8BCF9 /* TaxImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxImpl.swift; sourceTree = "<group>"; };
 		152BB59E1D5409BA006DD461 /* Tax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tax.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				157134FD1D25CC5800DE9110 /* Main.storyboard */,
-				1512787B1D5D52B30086C2CE /* ExtraHoursViewController.swift */,
 				15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */,
 				15B960A71D46E9CD000D377E /* ResultsViewController.swift */,
 				15E3336A1D452E030017114E /* SalaryViewController.swift */,
@@ -374,7 +371,6 @@
 				15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */,
 				151C97691D577C7300D8BCF9 /* TaxImpl.swift in Sources */,
 				157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */,
-				1512787C1D5D52B30086C2CE /* ExtraHoursViewController.swift in Sources */,
 				152BB59F1D5409BA006DD461 /* Tax.swift in Sources */,
 				15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,
