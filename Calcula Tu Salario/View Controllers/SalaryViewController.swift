@@ -12,12 +12,12 @@ class SalaryViewController: UIViewController {
   @IBOutlet weak var dailyTextField: UITextField!
   @IBOutlet weak var holidayTextField: UITextField!
   
-  private var extraHours: [String: NSDecimalNumber] = [:]
+  private var extraHours: NSDecimalNumber = 0.0
   
   override func viewDidLoad() {
     super.viewDidLoad()
     prepareGestureRecognizer()
-    holidayTextField.delegate = self
+    //holidayTextField.delegate = self
     dailyTextField.delegate = self
   }
   
@@ -35,7 +35,7 @@ class SalaryViewController: UIViewController {
             var salaryViewModel = SalaryViewModel()
             getExtraHoursFromTextFields()
             
-            if extraHours.isEmpty {
+            if extraHours == 0 {
               salaryViewModel = SalaryViewModel(salary: salary)
             } else {
               salaryViewModel = SalaryViewModel(salary: salary, andExtraHours: extraHours)
@@ -66,27 +66,27 @@ class SalaryViewController: UIViewController {
   private func getExtraHoursFromTextFields() {
     if let dailyHours = dailyTextField.text where dailyTextField.text != "" {
       let dailyHoursStringToNumber = NSDecimalNumber(string: dailyHours)
-      extraHours.updateValue(dailyHoursStringToNumber, forKey: "Daily")
+      extraHours = dailyHoursStringToNumber
     }
     
-    if let holidayHours = holidayTextField.text where holidayTextField.text != "" {
-      let holidayHoursStringToNumber = NSDecimalNumber(string: holidayHours)
-      extraHours.updateValue(holidayHoursStringToNumber, forKey: "Holiday")
-    }
+//    if let holidayHours = holidayTextField.text where holidayTextField.text != "" {
+//      let holidayHoursStringToNumber = NSDecimalNumber(string: holidayHours)
+//      extraHours.updateValue(holidayHoursStringToNumber, forKey: "Holiday")
+//    }
   }
-  
+
 }
 
 extension SalaryViewController: UITextFieldDelegate {
   func textFieldShouldEndEditing(textField: UITextField) -> Bool {
     
     if dailyTextField.text!.isEmpty {
-      extraHours.removeValueForKey("Daily")
+      extraHours = 0.0
     }
-    
-    if holidayTextField.text!.isEmpty {
-      extraHours.removeValueForKey("Holiday")
-    }
+//    
+//    if holidayTextField.text!.isEmpty {
+//      extraHours.removeValueForKey("Holiday")
+//    }
     
     return true
   }

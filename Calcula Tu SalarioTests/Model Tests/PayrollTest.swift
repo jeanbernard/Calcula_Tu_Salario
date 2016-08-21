@@ -76,7 +76,7 @@ class PayrollTest: XCTestCase {
   
   func testOvertimeRetentionAmount() {
     let salary: NSDecimalNumber = 50_400
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 21
     let payroll = Payroll(withSalary: salary, andExtraHours: extraHours)
     let retentionAmount = payroll.deductions["ISR"]
     
@@ -88,7 +88,7 @@ class PayrollTest: XCTestCase {
   
   func testIncome() {
     let salary: NSDecimalNumber = 50_400
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 21
     let payroll = Payroll(withSalary: salary, andExtraHours: extraHours)
     
     let expectedIncome: [String: NSDecimalNumber] = [

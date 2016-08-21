@@ -28,7 +28,7 @@ struct SalaryViewModel {
     payroll = Payroll(withSalary: salary)
   }
   
-  init(salary: NSDecimalNumber, andExtraHours extraHours: [String: NSDecimalNumber]) {
+  init(salary: NSDecimalNumber, andExtraHours extraHours: NSDecimalNumber) {
     self.salary = salary
     payroll = Payroll(withSalary: salary, andExtraHours: extraHours)
   }

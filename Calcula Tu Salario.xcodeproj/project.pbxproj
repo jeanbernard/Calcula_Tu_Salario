@@ -24,6 +24,8 @@
 		157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */; };
 		15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B960A71D46E9CD000D377E /* ResultsViewController.swift */; };
 		15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */; };
+		15C302C71D68C98100401BDC /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C302C61D68C98100401BDC /* Holiday.swift */; };
+		15C302C91D68CA2500401BDC /* HolidayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C302C81D68CA2500401BDC /* HolidayTest.swift */; };
 		15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */; };
 		15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E3336A1D452E030017114E /* SalaryViewController.swift */; };
 		15EAFEAD1D4D0DA20027F17D /* SalaryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */; };
@@ -70,6 +72,8 @@
 		1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtil.swift; sourceTree = "<group>"; };
 		15B960A71D46E9CD000D377E /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
+		15C302C61D68C98100401BDC /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
+		15C302C81D68CA2500401BDC /* HolidayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayTest.swift; sourceTree = "<group>"; };
 		15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		15E3336A1D452E030017114E /* SalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
 		15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewModelTest.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				15453ADB1D2A6C2000515D9A /* Payroll.swift */,
 				152BB59E1D5409BA006DD461 /* Tax.swift */,
 				151C97681D577C7300D8BCF9 /* TaxImpl.swift */,
+				15C302C61D68C98100401BDC /* Holiday.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				157135271D25CE0C00DE9110 /* TaxTest.swift */,
 				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
 				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
+				15C302C81D68CA2500401BDC /* HolidayTest.swift */,
 			);
 			path = "Model Tests";
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			files = (
 				155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */,
 				15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */,
+				15C302C71D68C98100401BDC /* Holiday.swift in Sources */,
 				15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */,
 				151C97691D577C7300D8BCF9 /* TaxImpl.swift in Sources */,
 				157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */,
@@ -389,6 +396,7 @@
 				1571350F1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift in Sources */,
 				15453ADE1D2A6C3800515D9A /* PayrollTest.swift in Sources */,
 				157135281D25CE0C00DE9110 /* TaxTest.swift in Sources */,
+				15C302C91D68CA2500401BDC /* HolidayTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

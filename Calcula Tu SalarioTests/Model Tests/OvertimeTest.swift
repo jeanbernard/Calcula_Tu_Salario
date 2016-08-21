@@ -7,6 +7,7 @@ class OvertimeTest: XCTestCase {
   var hoursWorked: NSDecimalNumber = 0
   var workingHours: NSDecimalNumber = 0
   var frequency: PaymentFrequency = .monthly
+  let payroll: Overtime = Payroll()
   
   override func setUp() {
     super.setUp()
@@ -14,27 +15,26 @@ class OvertimeTest: XCTestCase {
     hoursWorked = 44
     workingHours = 8
     frequency = .monthly
+    
   }
   
   func testIfSalaryAppliesForOvertimePay() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Holiday": 8]
-    
-    let doesSalaryApplyForOvertimePay = Overtime.doesSalaryApplyForOvertimePay(extraHours: extraHours)
+    let extraHours: NSDecimalNumber = 29
+    let doesSalaryApplyForOvertimePay = payroll.doesSalaryApplyForOvertimePay(extraHours: extraHours)
     
     XCTAssertTrue(doesSalaryApplyForOvertimePay)
   }
   
   func testIfSalaryDoesNotApplyForOvertimePay() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 0, "Holiday": 0]
-    
-    let doesSalaryApplyForOvertimePay = Overtime.doesSalaryApplyForOvertimePay(extraHours: extraHours)
+    let extraHours: NSDecimalNumber = 0
+    let doesSalaryApplyForOvertimePay = payroll.doesSalaryApplyForOvertimePay(extraHours: extraHours)
     
     XCTAssertFalse(doesSalaryApplyForOvertimePay)
   }
   
   func testHourlyRatePerMonth() {
     let expectedRatePerMonth: NSDecimalNumber = 52.45
-    let ratePerMonth = Overtime.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
+    let ratePerMonth = payroll.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
     
     XCTAssertEqual(expectedRatePerMonth, ratePerMonth)
   }
@@ -42,7 +42,7 @@ class OvertimeTest: XCTestCase {
   func testHourlyRatePerBiWeek() {
     frequency = .biWeekly
     let expectedRatePerBiWeek: NSDecimalNumber = 104.95
-    let ratePerMonthPerBiWeek = Overtime.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
+    let ratePerMonthPerBiWeek = payroll.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
     
     XCTAssertEqual(expectedRatePerBiWeek, ratePerMonthPerBiWeek)
   }
@@ -50,15 +50,15 @@ class OvertimeTest: XCTestCase {
   func testHourlyRatePerWeek() {
     frequency = .weekly
     let expectedRatePerWeek: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(227.27)
-    let ratePerWeek = Overtime.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
+    let ratePerWeek = payroll.ratePerHour(salary: salary, workingHours: workingHours, payFrequency: frequency)
     
     XCTAssertEqual(expectedRatePerWeek, ratePerWeek)
   }
   
   func testExtraHoursWorked90HourWorkWeek() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 46, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 46
     let expectedExtraHours: (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) = (24, 22)
-    let extraHoursWorked = Overtime.extraHoursWorked(hours: extraHours)
+    let extraHoursWorked = payroll.extraHoursWorked(hours: extraHours)
     
     XCTAssertEqual(expectedExtraHours.under68Hours,
                    extraHoursWorked.under68Hours)
@@ -68,9 +68,9 @@ class OvertimeTest: XCTestCase {
   }
   
   func testExtraHoursWorked65HourWorkWeek() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 21
     let expectedExtraHours: (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) = (21, 0)
-    let extraHoursWorked = Overtime.extraHoursWorked(hours: extraHours)
+    let extraHoursWorked = payroll.extraHoursWorked(hours: extraHours)
     
     XCTAssertEqual(expectedExtraHours.under68Hours,
                    extraHoursWorked.under68Hours)
@@ -80,9 +80,9 @@ class OvertimeTest: XCTestCase {
   }
   
   func testExtraHoursWorked44HourWorkWeek() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 0, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 0
     let expectedExtraHours: (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) = (0, 0)
-    let extraHoursWorked = Overtime.extraHoursWorked(hours: extraHours)
+    let extraHoursWorked = payroll.extraHoursWorked(hours: extraHours)
     
     XCTAssertEqual(expectedExtraHours.under68Hours,
                    extraHoursWorked.under68Hours)
@@ -93,10 +93,10 @@ class OvertimeTest: XCTestCase {
   
   func testExtraHourlyRate90HourWorkWeek() {
     let hourlyRate: NSDecimalNumber = 52.45
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 46, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 46
     let expectedExtraHourlyRate: (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) = (70.81, 104.90)
     
-    let extraHourlyRate = Overtime.extraRatePerHour(rate: hourlyRate, extraHours: extraHours)
+    let extraHourlyRate = payroll.extraRatePerHour(rate: hourlyRate, extraHours: extraHours)
     
     XCTAssertEqual(expectedExtraHourlyRate.under68Hours,
                    extraHourlyRate.under68Hours)
@@ -107,11 +107,11 @@ class OvertimeTest: XCTestCase {
   
   func testExtraHourlyRate65HourWorkWeek() {
     let normalHourlyRate: NSDecimalNumber = 52.45
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 21
     let expectedExtraHourlyRate:
       (under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber) = (70.81, 0)
     
-    let extraHourlyRate = Overtime.extraRatePerHour(rate: normalHourlyRate, extraHours: extraHours)
+    let extraHourlyRate = payroll.extraRatePerHour(rate: normalHourlyRate, extraHours: extraHours)
     
     XCTAssertEqual(expectedExtraHourlyRate.under68Hours,
                    extraHourlyRate.under68Hours)
@@ -121,20 +121,20 @@ class OvertimeTest: XCTestCase {
   }
   
   func testTotalExtraHoursWorked() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 19, "Holiday": 2]
+    let extraHours: NSDecimalNumber = 21
     let expectedTotalExtraHours: NSDecimalNumber = 65
     
-    let totalExtraHours = Overtime.totalExtraHoursWorked(forHours: extraHours)
+    let totalExtraHours = payroll.totalExtraHoursWorked(forHours: extraHours)
     
     XCTAssertEqual(expectedTotalExtraHours, totalExtraHours)
   }
   
   
   func testOvertimePay90HourWorkWeek() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 46, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 46
     let normalHourlyRate: NSDecimalNumber = 52.45
     let expectedOvertimePay: (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) = (1_699.44, 2_307.80)
-    let overtimePay = Overtime.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
+    let overtimePay = payroll.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
     
     XCTAssertEqual(expectedOvertimePay.totalUnder68Hours,
                    overtimePay.totalUnder68Hours)
@@ -144,10 +144,10 @@ class OvertimeTest: XCTestCase {
   }
   
   func testOvertimePay65HourWorkWeek() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 21, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 21
     let normalHourlyRate: NSDecimalNumber = 52.45
     let expectedOvertimePay: (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) = (1_487.01, 0)
-    let overtimePay = Overtime.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
+    let overtimePay = payroll.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
     
     XCTAssertEqual(expectedOvertimePay.totalUnder68Hours,
                    overtimePay.totalUnder68Hours)
@@ -157,10 +157,10 @@ class OvertimeTest: XCTestCase {
   }
   
   func testOvertimePay68HourWorkWeek() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 24, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 24
     let normalHourlyRate: NSDecimalNumber = 264.37
     let expectedOvertimePay: (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) = (8_565.6, 0)
-    let overtimePay = Overtime.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
+    let overtimePay = payroll.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
 
     XCTAssertEqual(expectedOvertimePay.totalUnder68Hours,
                    overtimePay.totalUnder68Hours)
@@ -171,10 +171,10 @@ class OvertimeTest: XCTestCase {
   }
   
   func testOvertimePay69HourWorkWeek() {
-    let extraHours: [String: NSDecimalNumber] = ["Daily": 25, "Holiday": 0]
+    let extraHours: NSDecimalNumber = 25
     let normalHourlyRate: NSDecimalNumber = 264.37
     let expectedOvertimePay: (totalUnder68Hours: NSDecimalNumber, totalOver68Hours: NSDecimalNumber) = (8_565.6, 528.74)
-    let overtimePay = Overtime.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
+    let overtimePay = payroll.totalPay(forHourlyRate: normalHourlyRate, andExtraHoursWorked: extraHours)
     
     XCTAssertEqual(expectedOvertimePay.totalUnder68Hours,
                    overtimePay.totalUnder68Hours)
@@ -186,7 +186,7 @@ class OvertimeTest: XCTestCase {
   
   func testNightShiftRate() {
     let expectedNightShiftRate: NSDecimalNumber = 60.32
-    let nightShiftRate = Overtime.nightShiftRate(salary: salary, workingNightHours: workingHours, payFrequency: frequency)
+    let nightShiftRate = payroll.nightShiftRate(salary: salary, workingNightHours: workingHours, payFrequency: frequency)
     
     XCTAssertEqual(expectedNightShiftRate, nightShiftRate)
   }
