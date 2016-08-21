@@ -20,12 +20,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Cuánto ganas mensualmente?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be1-17-1JM">
-                                <rect key="frame" x="20" y="72" width="560" height="28"/>
+                                <rect key="frame" x="20" y="84" width="560" height="28"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$18,000.00" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="pix-7L-S3h">
-                                <rect key="frame" x="20" y="120" width="560" height="55"/>
+                                <rect key="frame" x="20" y="132" width="560" height="55"/>
                                 <color key="textColor" red="0.97396391630172729" green="0.70611584186553955" blue="0.17488420009613037" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="46"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -37,7 +37,7 @@
                             <constraint firstItem="be1-17-1JM" firstAttribute="leading" secondItem="7Ag-F4-Up6" secondAttribute="leadingMargin" id="Kh3-Jk-fGK"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="trailing" secondItem="pix-7L-S3h" secondAttribute="trailing" id="TMw-np-xOS"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="leading" secondItem="pix-7L-S3h" secondAttribute="leading" id="n4Z-k5-NgD"/>
-                            <constraint firstItem="be1-17-1JM" firstAttribute="top" secondItem="UJM-VJ-Euh" secondAttribute="bottom" constant="8" symbolic="YES" id="uKP-k8-fsu"/>
+                            <constraint firstItem="be1-17-1JM" firstAttribute="top" secondItem="UJM-VJ-Euh" secondAttribute="bottom" constant="20" id="uKP-k8-fsu"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="trailing" secondItem="7Ag-F4-Up6" secondAttribute="trailingMargin" id="yum-af-Z0W"/>
                         </constraints>
                     </view>
