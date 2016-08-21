@@ -145,20 +145,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YvS-fy-qDO">
-                                <rect key="frame" x="203" y="72" width="194" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="194" id="LJI-DC-eIr"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Mensual"/>
-                                    <segment title="Quincenal"/>
-                                </segments>
-                                <color key="tintColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="segmentedControlValueChanged:" destination="e7u-LT-NnX" eventType="valueChanged" id="YZs-CX-8tT"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99,999,999.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="C2c-jY-Mc9">
                                 <rect key="frame" x="20" y="119" width="560" height="70"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
@@ -168,18 +154,33 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="7Ag-6c-8OZ"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="55" id="876-eE-BlP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="nQp-Je-6cz" secondAttribute="bottom" constant="-18" id="AFv-dk-8An"/>
-                            <constraint firstItem="YvS-fy-qDO" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="8" symbolic="YES" id="VME-d6-U2g"/>
                             <constraint firstAttribute="trailing" secondItem="nQp-Je-6cz" secondAttribute="trailing" id="fjA-0j-yxU"/>
-                            <constraint firstItem="nQp-Je-6cz" firstAttribute="top" secondItem="C2c-jY-Mc9" secondAttribute="bottom" constant="22" id="nnf-op-dUh"/>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="YvS-fy-qDO" secondAttribute="bottom" constant="19" id="qVe-DU-zVu"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="hMn-yF-Dvr"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="centerX" secondItem="nQp-Je-6cz" secondAttribute="centerX" id="mU1-x2-dsg"/>
+                            <constraint firstItem="nQp-Je-6cz" firstAttribute="top" secondItem="C2c-jY-Mc9" secondAttribute="bottom" constant="22" id="pMH-KC-lL2"/>
                             <constraint firstItem="nQp-Je-6cz" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leading" id="sRC-lq-5Sl"/>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="centerX" secondItem="nQp-Je-6cz" secondAttribute="centerX" id="uoc-PE-0R4"/>
-                            <constraint firstItem="YvS-fy-qDO" firstAttribute="centerX" secondItem="C2c-jY-Mc9" secondAttribute="centerX" id="zdX-Wd-y9G"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sQg-Ni-3Oz"/>
+                    <navigationItem key="navigationItem" id="sQg-Ni-3Oz">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="YvS-fy-qDO">
+                            <rect key="frame" x="203" y="8" width="194" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="194" id="LJI-DC-eIr"/>
+                            </constraints>
+                            <segments>
+                                <segment title="Mensual"/>
+                                <segment title="Quincenal"/>
+                            </segments>
+                            <color key="tintColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="segmentedControlValueChanged:" destination="e7u-LT-NnX" eventType="valueChanged" id="YZs-CX-8tT"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="resultLabel" destination="C2c-jY-Mc9" id="d2Y-tV-TFN"/>
                         <outlet property="resultsTableView" destination="nQp-Je-6cz" id="ROw-WV-Kl2"/>
