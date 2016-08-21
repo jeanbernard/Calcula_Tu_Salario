@@ -30,61 +30,14 @@
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="46"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Trabajó horas extra?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWf-g9-ycS">
-                                <rect key="frame" x="20" y="205" width="224" height="28"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diurnas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-Zi-zzW">
-                                <rect key="frame" x="20" y="253" width="58" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feriadas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26p-wB-u7H">
-                                <rect key="frame" x="179" y="253" width="65" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="horas" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OLc-br-d20">
-                                <rect key="frame" x="86" y="253" width="58" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="58" id="83z-h7-weL"/>
-                                </constraints>
-                                <color key="textColor" red="0.97254901959999995" green="0.70588235290000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="horas" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vKN-TP-UeI">
-                                <rect key="frame" x="252" y="252" width="58" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="58" id="2Ae-Zf-zI4"/>
-                                </constraints>
-                                <color key="textColor" red="0.97254901959999995" green="0.70588235290000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vKN-TP-UeI" firstAttribute="leading" secondItem="26p-wB-u7H" secondAttribute="trailing" constant="8" symbolic="YES" id="0u6-9q-n3Z"/>
                             <constraint firstItem="pix-7L-S3h" firstAttribute="top" secondItem="be1-17-1JM" secondAttribute="bottom" constant="20" id="2HI-Eu-r2J"/>
-                            <constraint firstItem="iWf-g9-ycS" firstAttribute="leading" secondItem="hHo-Zi-zzW" secondAttribute="leading" id="8JC-py-gm3"/>
-                            <constraint firstItem="pix-7L-S3h" firstAttribute="leading" secondItem="iWf-g9-ycS" secondAttribute="leading" id="CAm-FF-04F"/>
-                            <constraint firstItem="OLc-br-d20" firstAttribute="baseline" secondItem="26p-wB-u7H" secondAttribute="baseline" id="Fed-xc-cM2"/>
-                            <constraint firstItem="hHo-Zi-zzW" firstAttribute="baseline" secondItem="OLc-br-d20" secondAttribute="baseline" id="Igy-wp-K2m"/>
-                            <constraint firstItem="26p-wB-u7H" firstAttribute="bottom" secondItem="vKN-TP-UeI" secondAttribute="bottom" id="J2T-fm-rJS"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="leading" secondItem="7Ag-F4-Up6" secondAttribute="leadingMargin" id="Kh3-Jk-fGK"/>
-                            <constraint firstItem="26p-wB-u7H" firstAttribute="centerY" secondItem="vKN-TP-UeI" secondAttribute="centerY" id="Rv9-Jz-jca"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="trailing" secondItem="pix-7L-S3h" secondAttribute="trailing" id="TMw-np-xOS"/>
-                            <constraint firstItem="iWf-g9-ycS" firstAttribute="top" secondItem="pix-7L-S3h" secondAttribute="bottom" constant="30" id="XHH-C4-2iT"/>
-                            <constraint firstItem="iWf-g9-ycS" firstAttribute="trailing" secondItem="26p-wB-u7H" secondAttribute="trailing" id="fEx-y6-sH5"/>
-                            <constraint firstItem="26p-wB-u7H" firstAttribute="leading" secondItem="OLc-br-d20" secondAttribute="trailing" constant="35" id="ixP-78-dvm"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="leading" secondItem="pix-7L-S3h" secondAttribute="leading" id="n4Z-k5-NgD"/>
-                            <constraint firstItem="hHo-Zi-zzW" firstAttribute="top" secondItem="iWf-g9-ycS" secondAttribute="bottom" constant="20" id="rAQ-xr-Vgr"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="top" secondItem="UJM-VJ-Euh" secondAttribute="bottom" constant="8" symbolic="YES" id="uKP-k8-fsu"/>
-                            <constraint firstItem="OLc-br-d20" firstAttribute="leading" secondItem="hHo-Zi-zzW" secondAttribute="trailing" constant="8" symbolic="YES" id="xMs-Dg-iPS"/>
                             <constraint firstItem="be1-17-1JM" firstAttribute="trailing" secondItem="7Ag-F4-Up6" secondAttribute="trailingMargin" id="yum-af-Z0W"/>
                         </constraints>
                     </view>
@@ -100,10 +53,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dailyLabel" destination="hHo-Zi-zzW" id="0xs-bD-nJ5"/>
-                        <outlet property="dailyTextField" destination="OLc-br-d20" id="qOZ-sF-6SF"/>
-                        <outlet property="holidayLabel" destination="26p-wB-u7H" id="aSy-w8-FVt"/>
-                        <outlet property="holidayTextField" destination="vKN-TP-UeI" id="UcG-Cn-jG1"/>
                         <outlet property="salaryTextField" destination="pix-7L-S3h" id="rrY-hh-9e8"/>
                     </connections>
                 </viewController>
