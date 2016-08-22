@@ -47,7 +47,7 @@
                         </barButtonItem>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="VCg-8a-PhV">
                             <connections>
-                                <segue destination="thO-XX-ee6" kind="presentation" id="sGw-H6-eEJ"/>
+                                <segue destination="thO-XX-ee6" kind="presentation" identifier="showSettings" id="sGw-H6-eEJ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Calcular" id="av4-uZ-i3d">

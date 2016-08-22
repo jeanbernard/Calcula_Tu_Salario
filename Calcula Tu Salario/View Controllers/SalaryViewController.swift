@@ -7,8 +7,8 @@ private enum Segue: String {
 
 class SalaryViewController: UIViewController {
   
+  var isNightShiftOn: Bool?
   @IBOutlet weak var salaryTextField: UITextField!
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,6 +33,13 @@ class SalaryViewController: UIViewController {
           }
         }
         
+      case Segue.showSettings.rawValue:
+        if let navCon = segue.destinationViewController as? UINavigationController {
+          if let settingsVC = navCon.visibleViewController as? SettingsTableViewController {
+            settingsVC.delegate = self
+          }
+        }
+        
       default: break
         
       }
@@ -48,6 +55,12 @@ class SalaryViewController: UIViewController {
     salaryTextField.resignFirstResponder()
   }
   
+}
+
+extension SalaryViewController: SettingsDelegate {
+  func isNightShiftEnabled(switchButton: UISwitch) {
+    isNightShiftOn = switchButton.on
+  }
 }
 
 
