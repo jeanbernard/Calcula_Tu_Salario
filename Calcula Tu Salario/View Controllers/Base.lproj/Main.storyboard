@@ -45,6 +45,11 @@
                         <barButtonItem key="backBarButtonItem" title="Atrás" id="ukk-zl-hrA">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="VCg-8a-PhV">
+                            <connections>
+                                <segue destination="thO-XX-ee6" kind="presentation" id="sGw-H6-eEJ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Calcular" id="av4-uZ-i3d">
                             <color key="tintColor" red="0.97254901959999995" green="0.70588235290000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -58,7 +63,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDX-bL-WY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370" y="-255"/>
+            <point key="canvasLocation" x="-370" y="-231"/>
+        </scene>
+        <!--Configuración-->
+        <scene sceneID="55R-6c-Xg8">
+            <objects>
+                <tableViewController id="rNZ-LI-eKd" customClass="SettingsTableViewController" customModule="Calcula_Tu_Salario" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="rio-su-hTV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Horario" footerTitle="Trabajas entre 9:00 PM a 7:00 AM" id="X32-vH-c55">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="b8I-lW-RS2">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8I-lW-RS2" id="m7q-gv-OZa">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2aA-bY-MRh">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nocturno" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czl-Yp-cYA">
+                                                    <rect key="frame" x="16" y="11" width="72" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="czl-Yp-cYA" firstAttribute="centerY" secondItem="m7q-gv-OZa" secondAttribute="centerY" id="B0b-WG-bGa"/>
+                                                <constraint firstItem="czl-Yp-cYA" firstAttribute="centerY" secondItem="2aA-bY-MRh" secondAttribute="centerY" id="PPi-kC-snL"/>
+                                                <constraint firstItem="czl-Yp-cYA" firstAttribute="leading" secondItem="m7q-gv-OZa" secondAttribute="leadingMargin" constant="8" id="Q8R-im-plp"/>
+                                                <constraint firstItem="2aA-bY-MRh" firstAttribute="trailing" secondItem="m7q-gv-OZa" secondAttribute="trailingMargin" id="eKK-Nw-PMR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="rNZ-LI-eKd" id="XXv-Yz-WXv"/>
+                            <outlet property="delegate" destination="rNZ-LI-eKd" id="ZAe-aZ-HHQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Configuración" id="5dX-R0-cYQ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="5MJ-JL-Zzb">
+                            <color key="tintColor" red="0.97254901959999995" green="0.70588235290000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="rNZ-LI-eKd" id="deD-OK-l5M"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F6q-FD-tK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="-928"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="fX5-Dl-IVY">
@@ -209,6 +271,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgH-Jk-aZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1041" y="-255"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MHW-vP-NYU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="thO-XX-ee6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b8s-Be-Wfp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rNZ-LI-eKd" kind="relationship" relationship="rootViewController" id="UEH-Rg-j2q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d3w-2K-tTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370" y="-928"/>
         </scene>
     </scenes>
 </document>

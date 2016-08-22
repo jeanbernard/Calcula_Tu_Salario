@@ -2,13 +2,13 @@ import UIKit
 
 private enum Segue: String {
   case showResults
+  case showSettings
 }
 
 class SalaryViewController: UIViewController {
   
   @IBOutlet weak var salaryTextField: UITextField!
   
-  private var extraHours: NSDecimalNumber = 0.0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -18,6 +18,7 @@ class SalaryViewController: UIViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
     if let identifier = segue.identifier {
+      
       switch identifier {
         
       case Segue.showResults.rawValue:
@@ -31,8 +32,11 @@ class SalaryViewController: UIViewController {
             //TO-DO: Add UIAlertController "Must enter salary."
           }
         }
+        
       default: break
+        
       }
+      
     }
   }
   

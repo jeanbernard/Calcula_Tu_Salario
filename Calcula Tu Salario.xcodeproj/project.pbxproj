@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		151C97691D577C7300D8BCF9 /* TaxImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151C97681D577C7300D8BCF9 /* TaxImpl.swift */; };
 		152BB59F1D5409BA006DD461 /* Tax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152BB59E1D5409BA006DD461 /* Tax.swift */; };
+		153BFA9E1D6BBEC70035ECE8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */; };
 		15453ADA1D29840A00515D9A /* CompareTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A29821D296EC2000E2F45 /* CompareTest.swift */; };
 		15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15453ADB1D2A6C2000515D9A /* Payroll.swift */; };
 		15453ADE1D2A6C3800515D9A /* PayrollTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15453ADD1D2A6C3800515D9A /* PayrollTest.swift */; };
@@ -52,6 +53,7 @@
 		151A29821D296EC2000E2F45 /* CompareTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareTest.swift; sourceTree = "<group>"; };
 		151C97681D577C7300D8BCF9 /* TaxImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxImpl.swift; sourceTree = "<group>"; };
 		152BB59E1D5409BA006DD461 /* Tax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tax.swift; sourceTree = "<group>"; };
+		153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		15453ADB1D2A6C2000515D9A /* Payroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payroll.swift; sourceTree = "<group>"; };
 		15453ADD1D2A6C3800515D9A /* PayrollTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayrollTest.swift; sourceTree = "<group>"; };
 		155B677A1D305B3A002E8C9F /* OvertimeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimeTest.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */,
 				15B960A71D46E9CD000D377E /* ResultsViewController.swift */,
 				15E3336A1D452E030017114E /* SalaryViewController.swift */,
+				153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */,
 				152BB59F1D5409BA006DD461 /* Tax.swift in Sources */,
 				15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */,
+				153BFA9E1D6BBEC70035ECE8 /* SettingsTableViewController.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,
 				15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */,
 				15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */,
