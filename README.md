@@ -25,8 +25,8 @@ This project is a work in progress so i'll post here what you should consider if
 ##Version 1.0
 
 - [x] Calculates monthly net salary taking into account all the deductions that come from government taxes (AFP, SFS, ISR).
+- [x] Calculate payroll based on a night shift schedule.
 - [ ] A detailed view showing the calculations.
-- [ ] Calculate payroll based on a night shift schedule.
 
 ##Coming soon
 
