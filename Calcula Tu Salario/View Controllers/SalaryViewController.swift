@@ -7,7 +7,7 @@ private enum Segue: String {
 
 class SalaryViewController: UIViewController {
   
-  var isNightShiftOn: Bool?
+  var isNightShiftOn: Bool = false
   @IBOutlet weak var salaryTextField: UITextField!
   
   override func viewDidLoad() {
@@ -26,7 +26,7 @@ class SalaryViewController: UIViewController {
           if let introducedSalary = salaryTextField.text where salaryTextField.text != "" {
             let salary = NSDecimalNumber(string: introducedSalary)
             var salaryViewModel = SalaryViewModel()
-            salaryViewModel = SalaryViewModel(salary: salary)
+            salaryViewModel = SalaryViewModel(salary: salary, shift: isNightShiftOn)
             destinationVC.salaryViewModel = salaryViewModel
           } else {
             //TO-DO: Add UIAlertController "Must enter salary."

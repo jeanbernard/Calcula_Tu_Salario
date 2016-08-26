@@ -1,17 +1,22 @@
 import Foundation
 
 
-struct Payroll: Tax, Holiday, Overtime {
+struct Payroll: Tax, Holiday, Overtime, NightShift {
   
   var salary: NSDecimalNumber = 0.0
   var deductions: [String: NSDecimalNumber] = [:]
   var incomes: [String: NSDecimalNumber] = [:]
   var netSalary: NSDecimalNumber = 0.0
+  var shift: Bool = false
   
-  init(withSalary salary: NSDecimalNumber) {
+  init(withSalary salary: NSDecimalNumber, andShift shift: Bool) {
     self.salary = salary
+    self.shift = shift
     self.deductions = obtainDeductions(forSalary: salary)
     self.incomes.updateValue(salary, forKey: "Salario")
+    if shift {
+      calculateNightShift()
+    }
     calculateNet()
   }
   
@@ -44,6 +49,30 @@ struct Payroll: Tax, Holiday, Overtime {
       netSalary = netSalary - deduction
     }
     
+  }
+  
+  private mutating func calculateNightShift() {
+    let nightShiftRatePerHour = nightShiftRate(forSalary: salary)
+    let nightShiftAmount = nightShiftTotalPay(forSalary: salary, andNightlyRate: nightShiftRatePerHour)
+    incomes.updateValue(nightShiftAmount, forKey: "Horas Nocturnas")
+    calculateNightShiftRetention()
+  }
+  
+  private mutating func calculateNightShiftRetention() {
+    var salaryAfterGovernmentRetention: NSDecimalNumber = 0.0
+    var salaryAfterAddingNightPay: NSDecimalNumber = 0.0
+    
+    if let
+      afpDeduction = deductions["AFP"],
+      sfsDeduction = deductions["SFS"],
+      nightShiftHours = incomes["Horas Nocturnas"]
+    {
+      salaryAfterGovernmentRetention = salary - afpDeduction - sfsDeduction
+      salaryAfterAddingNightPay = salaryAfterGovernmentRetention + nightShiftHours
+    }
+    
+    let isrRetention = getMonthlyRetentionAmount(salaryAfterAddingNightPay)
+    deductions.updateValue(isrRetention, forKey: "ISR")
   }
   
 }

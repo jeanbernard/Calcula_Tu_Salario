@@ -10,6 +10,8 @@
 		151C97691D577C7300D8BCF9 /* TaxImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151C97681D577C7300D8BCF9 /* TaxImpl.swift */; };
 		152BB59F1D5409BA006DD461 /* Tax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152BB59E1D5409BA006DD461 /* Tax.swift */; };
 		153BFA9E1D6BBEC70035ECE8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */; };
+		153BFAA01D6BD4FA0035ECE8 /* NightShiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */; };
+		153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFAA11D6BD5540035ECE8 /* NightShift.swift */; };
 		15453ADA1D29840A00515D9A /* CompareTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A29821D296EC2000E2F45 /* CompareTest.swift */; };
 		15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15453ADB1D2A6C2000515D9A /* Payroll.swift */; };
 		15453ADE1D2A6C3800515D9A /* PayrollTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15453ADD1D2A6C3800515D9A /* PayrollTest.swift */; };
@@ -54,6 +56,8 @@
 		151C97681D577C7300D8BCF9 /* TaxImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxImpl.swift; sourceTree = "<group>"; };
 		152BB59E1D5409BA006DD461 /* Tax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tax.swift; sourceTree = "<group>"; };
 		153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightShiftTest.swift; sourceTree = "<group>"; };
+		153BFAA11D6BD5540035ECE8 /* NightShift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
 		15453ADB1D2A6C2000515D9A /* Payroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payroll.swift; sourceTree = "<group>"; };
 		15453ADD1D2A6C3800515D9A /* PayrollTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayrollTest.swift; sourceTree = "<group>"; };
 		155B677A1D305B3A002E8C9F /* OvertimeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimeTest.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				152BB59E1D5409BA006DD461 /* Tax.swift */,
 				151C97681D577C7300D8BCF9 /* TaxImpl.swift */,
 				15C302C61D68C98100401BDC /* Holiday.swift */,
+				153BFAA11D6BD5540035ECE8 /* NightShift.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
 				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
 				15C302C81D68CA2500401BDC /* HolidayTest.swift */,
+				153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */,
 			);
 			path = "Model Tests";
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */,
 				155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */,
 				15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */,
 				15C302C71D68C98100401BDC /* Holiday.swift in Sources */,
@@ -401,6 +408,7 @@
 				15453ADE1D2A6C3800515D9A /* PayrollTest.swift in Sources */,
 				157135281D25CE0C00DE9110 /* TaxTest.swift in Sources */,
 				15C302C91D68CA2500401BDC /* HolidayTest.swift in Sources */,
+				153BFAA01D6BD4FA0035ECE8 /* NightShiftTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

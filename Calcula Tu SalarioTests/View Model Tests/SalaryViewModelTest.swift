@@ -12,7 +12,7 @@ class SalaryViewModelTest: XCTestCase {
   
   func testNetSalaryResult() {
     let expectedNetResult = "$45,424.17"
-    let netResult = SalaryViewModel(salary: salary)
+    let netResult = SalaryViewModel(salary: salary, shift: false)
     
     XCTAssertEqual(expectedNetResult, netResult.viewNetSalary)
   }
@@ -22,7 +22,7 @@ class SalaryViewModelTest: XCTestCase {
     let expectedSFSDeduction = "$1,532.16"
     let expectedISR = "$1,997.19"
     
-    let salaryViewModelDeductions = SalaryViewModel(salary: salary)
+    let salaryViewModelDeductions = SalaryViewModel(salary: salary, shift: false)
     
     XCTAssertEqual(expectedAFPDeduction,
                    salaryViewModelDeductions.viewDeductions["AFP"])
@@ -40,7 +40,7 @@ class SalaryViewModelTest: XCTestCase {
     let expectedSFSDeduction = "$766.08"
     let expectedISR = "$998.60"
     
-    var salaryViewModel = SalaryViewModel(salary: salary)
+    var salaryViewModel = SalaryViewModel(salary: salary, shift: false)
     salaryViewModel.showBiWeeklyResults()
     
     XCTAssertEqual(expectedIncome,
@@ -63,7 +63,7 @@ class SalaryViewModelTest: XCTestCase {
     let expectedSFSDeduction = "$1,532.16"
     let expectedISR = "$1,997.19"
     
-    var salaryViewModel = SalaryViewModel(salary: salary)
+    var salaryViewModel = SalaryViewModel(salary: salary, shift: false)
     salaryViewModel.showMonthlyResults()
     
     XCTAssertEqual(expectedIncome,
