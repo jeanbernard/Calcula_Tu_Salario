@@ -1,11 +1,13 @@
 import XCTest
 @testable import Calcula_Tu_Salario
 
+let customDeductions: [Deduction] = []
+
 class PayrollTest: XCTestCase {
   
   func testExemptFromTaxesNetSalary() {
     let salary: NSDecimalNumber = 30_000
-    let payroll = Payroll(withSalary: salary, andShift: false)
+    let payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions)
     let expectedNetSalary: NSDecimalNumber = 28_227
     let netSalaryExemptFromTaxes = payroll.netSalary
     XCTAssertEqual(expectedNetSalary, netSalaryExemptFromTaxes)
@@ -13,7 +15,7 @@ class PayrollTest: XCTestCase {
   
   func test15PercentMonthlyNetSalary() {
     let salary: NSDecimalNumber = 50_400
-    let payroll = Payroll(withSalary: salary, andShift: false)
+    let payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions)
     let expectedNetSalary: NSDecimalNumber = 45_424.17
     let netSalary = payroll.netSalary
     XCTAssertEqual(expectedNetSalary, netSalary)
@@ -21,7 +23,7 @@ class PayrollTest: XCTestCase {
 
   func test15PercentBiWeeklyNetSalary() {
     let salary: NSDecimalNumber = 50_400
-    var payroll = Payroll(withSalary: salary, andShift: false)
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions)
     let expectedNetSalary: NSDecimalNumber = 22_712.09
     payroll.calculateBiWeeklyPayroll()
     let netSalary = payroll.netSalary
@@ -32,7 +34,7 @@ class PayrollTest: XCTestCase {
     let coop: NSDecimalNumber = 6300
     let gym: NSDecimalNumber = 1097.5
     let salary: NSDecimalNumber = 50_400
-    var payroll = Payroll(withSalary: salary, andShift: false)
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions)
     let expectedNetSalary: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(15_314.59)
     payroll.calculateBiWeeklyPayroll()
     let netSalary = payroll.netSalary
@@ -42,7 +44,7 @@ class PayrollTest: XCTestCase {
 
   func test20PercentBiWeeklyNetSalary() {
     let salary: NSDecimalNumber = 60_000.00
-    var payroll = Payroll(withSalary: salary, andShift: false)
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions)
     let expectedBiWeeklyNetSalary: NSDecimalNumber = 26_418.61
     payroll.calculateBiWeeklyPayroll()
     let biWeeklyNetSalary = payroll.netSalary
@@ -52,7 +54,7 @@ class PayrollTest: XCTestCase {
 
   func test25PercentBiWeeklyNetSalary() {
     let salary: NSDecimalNumber = 80_000.00
-    var payroll = Payroll(withSalary: salary, andShift: false)
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions)
     let expectedBiWeeklyNetSalary: NSDecimalNumber = 33_840.37
     payroll.calculateBiWeeklyPayroll()
     let biWeeklyNetSalary = payroll.netSalary
@@ -62,7 +64,7 @@ class PayrollTest: XCTestCase {
 
   func testAllDeductions() {
     let salary: NSDecimalNumber = 50_400
-    let payroll = Payroll(withSalary: salary, andShift: false)
+    let payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions)
     let expectedDeductions: [String: NSDecimalNumber] = [
       "AFP": 1446.48,
       "SFS": 1532.16,
@@ -76,7 +78,7 @@ class PayrollTest: XCTestCase {
   
   func testNightShiftISRRetentionAmount() {
     let salary: NSDecimalNumber = 50_400
-    let payroll = Payroll(withSalary: salary, andShift: true)
+    let payroll = Payroll(withSalary: salary, andShift: true, andDeductions: customDeductions)
     let expectedRetentionAmount: NSDecimalNumber = 3_322.31
     let retentionAmount = payroll.deductions["ISR"]
     

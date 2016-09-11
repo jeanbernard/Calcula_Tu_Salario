@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		151C97691D577C7300D8BCF9 /* TaxImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151C97681D577C7300D8BCF9 /* TaxImpl.swift */; };
 		152BB59F1D5409BA006DD461 /* Tax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152BB59E1D5409BA006DD461 /* Tax.swift */; };
+		153157571D85BBEE0027F3A5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153157561D85BBEE0027F3A5 /* Extensions.swift */; };
+		153157591D85C7A50027F3A5 /* Deduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153157581D85C7A50027F3A5 /* Deduction.swift */; };
 		153BFA9E1D6BBEC70035ECE8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */; };
 		153BFAA01D6BD4FA0035ECE8 /* NightShiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */; };
 		153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFAA11D6BD5540035ECE8 /* NightShift.swift */; };
@@ -25,6 +27,9 @@
 		1571351A1D25CC5800DE9110 /* Calcula_Tu_SalarioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135191D25CC5800DE9110 /* Calcula_Tu_SalarioUITests.swift */; };
 		157135281D25CE0C00DE9110 /* TaxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135271D25CE0C00DE9110 /* TaxTest.swift */; };
 		157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */; };
+		157DC3341D7F840B007593B7 /* SalaryViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC3331D7F840B007593B7 /* SalaryViewControllerDataSource.swift */; };
+		157DC3391D7F8CBC007593B7 /* DeductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC3381D7F8CBC007593B7 /* DeductionTableViewCell.swift */; };
+		157DC33B1D7FA014007593B7 /* SalaryViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC33A1D7FA014007593B7 /* SalaryViewControllerDelegate.swift */; };
 		15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B960A71D46E9CD000D377E /* ResultsViewController.swift */; };
 		15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */; };
 		15C302C71D68C98100401BDC /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C302C61D68C98100401BDC /* Holiday.swift */; };
@@ -55,6 +60,8 @@
 		151A29821D296EC2000E2F45 /* CompareTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareTest.swift; sourceTree = "<group>"; };
 		151C97681D577C7300D8BCF9 /* TaxImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxImpl.swift; sourceTree = "<group>"; };
 		152BB59E1D5409BA006DD461 /* Tax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tax.swift; sourceTree = "<group>"; };
+		153157561D85BBEE0027F3A5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		153157581D85C7A50027F3A5 /* Deduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deduction.swift; sourceTree = "<group>"; };
 		153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightShiftTest.swift; sourceTree = "<group>"; };
 		153BFAA11D6BD5540035ECE8 /* NightShift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
@@ -76,6 +83,9 @@
 		1571351B1D25CC5800DE9110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		157135271D25CE0C00DE9110 /* TaxTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxTest.swift; sourceTree = "<group>"; };
 		1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtil.swift; sourceTree = "<group>"; };
+		157DC3331D7F840B007593B7 /* SalaryViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewControllerDataSource.swift; sourceTree = "<group>"; };
+		157DC3381D7F8CBC007593B7 /* DeductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeductionTableViewCell.swift; sourceTree = "<group>"; };
+		157DC33A1D7FA014007593B7 /* SalaryViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewControllerDelegate.swift; sourceTree = "<group>"; };
 		15B960A71D46E9CD000D377E /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
 		15C302C61D68C98100401BDC /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
@@ -113,12 +123,13 @@
 		155B67771D2DDD3D002E8C9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				153157581D85C7A50027F3A5 /* Deduction.swift */,
+				15C302C61D68C98100401BDC /* Holiday.swift */,
+				153BFAA11D6BD5540035ECE8 /* NightShift.swift */,
 				155B677C1D305E6D002E8C9F /* Overtime.swift */,
 				15453ADB1D2A6C2000515D9A /* Payroll.swift */,
 				152BB59E1D5409BA006DD461 /* Tax.swift */,
 				151C97681D577C7300D8BCF9 /* TaxImpl.swift */,
-				15C302C61D68C98100401BDC /* Holiday.swift */,
-				153BFAA11D6BD5540035ECE8 /* NightShift.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,11 +189,37 @@
 			children = (
 				157134F91D25CC5800DE9110 /* AppDelegate.swift */,
 				157135001D25CC5800DE9110 /* Assets.xcassets */,
+				153157561D85BBEE0027F3A5 /* Extensions.swift */,
 				157135051D25CC5800DE9110 /* Info.plist */,
 				157135021D25CC5800DE9110 /* LaunchScreen.storyboard */,
 				1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		157DC3351D7F8994007593B7 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				157DC3381D7F8CBC007593B7 /* DeductionTableViewCell.swift */,
+				15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		157DC3361D7F89D7007593B7 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				157DC3331D7F840B007593B7 /* SalaryViewControllerDataSource.swift */,
+			);
+			path = "Data Sources";
+			sourceTree = "<group>";
+		};
+		157DC3371D7F8A0D007593B7 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				157DC33A1D7FA014007593B7 /* SalaryViewControllerDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		15BF2DA41D48B8B800874418 /* View Models */ = {
@@ -196,8 +233,10 @@
 		15E333691D452DB60017114E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				157DC3361D7F89D7007593B7 /* Data Sources */,
+				157DC3371D7F8A0D007593B7 /* Delegates */,
+				157DC3351D7F8994007593B7 /* Table View Cells */,
 				157134FD1D25CC5800DE9110 /* Main.storyboard */,
-				15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */,
 				15B960A71D46E9CD000D377E /* ResultsViewController.swift */,
 				15E3336A1D452E030017114E /* SalaryViewController.swift */,
 				153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */,
@@ -218,11 +257,11 @@
 			children = (
 				1571350E1D25CC5800DE9110 /* Calcula_Tu_SalarioTests.swift */,
 				151A29821D296EC2000E2F45 /* CompareTest.swift */,
-				157135271D25CE0C00DE9110 /* TaxTest.swift */,
-				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
-				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
 				15C302C81D68CA2500401BDC /* HolidayTest.swift */,
 				153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */,
+				155B677A1D305B3A002E8C9F /* OvertimeTest.swift */,
+				15453ADD1D2A6C3800515D9A /* PayrollTest.swift */,
+				157135271D25CE0C00DE9110 /* TaxTest.swift */,
 			);
 			path = "Model Tests";
 			sourceTree = "<group>";
@@ -381,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157DC3341D7F840B007593B7 /* SalaryViewControllerDataSource.swift in Sources */,
 				153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */,
 				155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */,
 				15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */,
@@ -392,8 +432,12 @@
 				15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */,
 				153BFA9E1D6BBEC70035ECE8 /* SettingsTableViewController.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,
+				157DC3391D7F8CBC007593B7 /* DeductionTableViewCell.swift in Sources */,
+				153157591D85C7A50027F3A5 /* Deduction.swift in Sources */,
 				15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */,
+				153157571D85BBEE0027F3A5 /* Extensions.swift in Sources */,
 				15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */,
+				157DC33B1D7FA014007593B7 /* SalaryViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

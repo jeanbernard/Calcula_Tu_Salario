@@ -5,6 +5,7 @@ struct SalaryViewModel {
   private var salary: NSDecimalNumber = 0.0
   private var payroll: Payroll = Payroll()
   private var shift: Bool = false
+  private var customDeductions: [Deduction] = []
   
   var viewNetSalary: String? {
     get {
@@ -24,10 +25,11 @@ struct SalaryViewModel {
     }
   }
   
-  init(salary: NSDecimalNumber, shift: Bool) {
+  init(salary: NSDecimalNumber, shift: Bool, customDeductions: [Deduction]) {
     self.salary = salary
     self.shift = shift
-    payroll = Payroll(withSalary: salary, andShift: shift)
+    self.customDeductions = customDeductions
+    payroll = Payroll(withSalary: salary, andShift: shift, andDeductions: customDeductions)
   }
   
   init() {
@@ -39,7 +41,7 @@ struct SalaryViewModel {
   }
   
   mutating func showMonthlyResults() {
-    payroll = Payroll(withSalary: salary, andShift: shift)
+    payroll = Payroll(withSalary: salary, andShift: shift, andDeductions: customDeductions)
   }
   
   private func formatNumberToCurrencyString(number: NSDecimalNumber) -> String? {

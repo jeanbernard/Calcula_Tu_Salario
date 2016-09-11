@@ -4,6 +4,7 @@ import XCTest
 class SalaryViewModelTest: XCTestCase {
   
   let salary: NSDecimalNumber = 50_400.00
+  let customDeductions: [Deduction] = []
   
   func testNotNil() {
     let salaryViewModel = SalaryViewModel()
@@ -12,7 +13,7 @@ class SalaryViewModelTest: XCTestCase {
   
   func testNetSalaryResult() {
     let expectedNetResult = "$45,424.17"
-    let netResult = SalaryViewModel(salary: salary, shift: false)
+    let netResult = SalaryViewModel(salary: salary, shift: false, customDeductions: customDeductions)
     
     XCTAssertEqual(expectedNetResult, netResult.viewNetSalary)
   }
@@ -22,7 +23,7 @@ class SalaryViewModelTest: XCTestCase {
     let expectedSFSDeduction = "$1,532.16"
     let expectedISR = "$1,997.19"
     
-    let salaryViewModelDeductions = SalaryViewModel(salary: salary, shift: false)
+    let salaryViewModelDeductions = SalaryViewModel(salary: salary, shift: false, customDeductions: customDeductions)
     
     XCTAssertEqual(expectedAFPDeduction,
                    salaryViewModelDeductions.viewDeductions["AFP"])
@@ -40,7 +41,7 @@ class SalaryViewModelTest: XCTestCase {
     let expectedSFSDeduction = "$766.08"
     let expectedISR = "$998.60"
     
-    var salaryViewModel = SalaryViewModel(salary: salary, shift: false)
+    var salaryViewModel = SalaryViewModel(salary: salary, shift: false, customDeductions: customDeductions)
     salaryViewModel.showBiWeeklyResults()
     
     XCTAssertEqual(expectedIncome,
@@ -63,7 +64,7 @@ class SalaryViewModelTest: XCTestCase {
     let expectedSFSDeduction = "$1,532.16"
     let expectedISR = "$1,997.19"
     
-    var salaryViewModel = SalaryViewModel(salary: salary, shift: false)
+    var salaryViewModel = SalaryViewModel(salary: salary, shift: false, customDeductions: customDeductions)
     salaryViewModel.showMonthlyResults()
     
     XCTAssertEqual(expectedIncome,
