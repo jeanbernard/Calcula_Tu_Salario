@@ -2,16 +2,16 @@ import UIKit
 
 extension SalaryViewController: UITableViewDataSource {
   
-  private enum CellIdentifiers {
+  fileprivate enum CellIdentifiers {
     static let deduction = "DeductionCell"
     static let createDeduction = "CreateDeductionCell"
   }
   
   //MARK: Data Source
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if indexPath.section == 0 {
-      let deductionCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.deduction) as! DeductionTableViewCell
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if (indexPath as NSIndexPath).section == 0 {
+      let deductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.deduction) as! DeductionTableViewCell
       
       if deductionCell.deductionNameTextField.text != "" && deductionCell.deductionAmountTextField.text != "" {
         deductionCell.deductionNameTextField.text = ""
@@ -20,12 +20,12 @@ extension SalaryViewController: UITableViewDataSource {
       
       return deductionCell
     } else {
-      let createDeductionCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.createDeduction)
+      let createDeductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.createDeduction)
       return createDeductionCell!
     }
   }
   
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
       return rows.count
     } else {
@@ -33,25 +33,25 @@ extension SalaryViewController: UITableViewDataSource {
     }
   }
   
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
   
   //MARK: Editing
   
-  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    if indexPath.section == 0 {
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    if (indexPath as NSIndexPath).section == 0 {
       return true
     }
     return false
   }
   
-  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == UITableViewCellEditingStyle.Delete {
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == UITableViewCellEditingStyle.delete {
       tableView.beginUpdates()
       
-      rows.removeAtIndex(indexPath.row)
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+      rows.remove(at: (indexPath as NSIndexPath).row)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
       
       tableView.endUpdates()
       contentViewHeightConstraint.constant -= 40
@@ -59,15 +59,15 @@ extension SalaryViewController: UITableViewDataSource {
     }
   }
   
-  func prepareDeductionsTableView(tableView: UITableView) {
+  func prepareDeductionsTableView(_ tableView: UITableView) {
     tableView.dataSource = self
     tableView.delegate = self
     tableView.tableFooterView = UIView()
     tableView.tableHeaderView = UIView()
-    tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+    tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
     tableView.alwaysBounceVertical = false
     tableView.allowsMultipleSelectionDuringEditing = false
-    tableView.editing = true
+    tableView.isEditing = true
     tableView.allowsSelectionDuringEditing = true
   }
 }

@@ -48,7 +48,7 @@ struct Payroll: Tax, Holiday, Overtime, NightShift {
   }
   
   
-  private mutating func calculateNet() {
+  fileprivate mutating func calculateNet() {
     
     for income in incomes.values {
       netSalary = netSalary + income
@@ -60,21 +60,21 @@ struct Payroll: Tax, Holiday, Overtime, NightShift {
     
   }
   
-  private mutating func calculateNightShift() {
+  fileprivate mutating func calculateNightShift() {
     let nightShiftRatePerHour = nightShiftRate(forSalary: salary)
     let nightShiftAmount = nightShiftTotalPay(forSalary: salary, andNightlyRate: nightShiftRatePerHour)
     incomes.updateValue(nightShiftAmount, forKey: "Horas Nocturnas")
     calculateNightShiftRetention()
   }
   
-  private mutating func calculateNightShiftRetention() {
+  fileprivate mutating func calculateNightShiftRetention() {
     var salaryAfterGovernmentRetention: NSDecimalNumber = 0.0
     var salaryAfterAddingNightPay: NSDecimalNumber = 0.0
     
     if let
       afpDeduction = deductions["AFP"],
-      sfsDeduction = deductions["SFS"],
-      nightShiftHours = incomes["Horas Nocturnas"]
+      let sfsDeduction = deductions["SFS"],
+      let nightShiftHours = incomes["Horas Nocturnas"]
     {
       salaryAfterGovernmentRetention = salary - afpDeduction - sfsDeduction
       salaryAfterAddingNightPay = salaryAfterGovernmentRetention + nightShiftHours

@@ -2,10 +2,10 @@ import Foundation
 
 struct SalaryViewModel {
   
-  private var salary: NSDecimalNumber = 0.0
-  private var payroll: Payroll = Payroll()
-  private var shift: Bool = false
-  private var customDeductions: [Deduction] = []
+  fileprivate var salary: NSDecimalNumber = 0.0
+  fileprivate var payroll: Payroll = Payroll()
+  fileprivate var shift: Bool = false
+  fileprivate var customDeductions: [Deduction] = []
   
   var viewNetSalary: String? {
     get {
@@ -44,18 +44,18 @@ struct SalaryViewModel {
     payroll = Payroll(withSalary: salary, andShift: shift, andDeductions: customDeductions)
   }
   
-  private func formatNumberToCurrencyString(number: NSDecimalNumber) -> String? {
-    let formatter = NSNumberFormatter()
-    formatter.numberStyle = .CurrencyStyle
+  fileprivate func formatNumberToCurrencyString(_ number: NSDecimalNumber) -> String? {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
     
-    if let formattedNumber = formatter.stringFromNumber(number) {
+    if let formattedNumber = formatter.string(from: number) {
       return formattedNumber
     }
     return nil
   }
   
   
-  private func formatDictionaryToCurrencyString(dictionary: [String: NSDecimalNumber]) -> [String: String] {
+  fileprivate func formatDictionaryToCurrencyString(_ dictionary: [String: NSDecimalNumber]) -> [String: String] {
     var stringyDictionary: [String: String] = [:]
     
     for (key, value) in dictionary {

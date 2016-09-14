@@ -20,11 +20,11 @@ private enum WorkingHours {
 protocol Overtime {
   func doesSalaryApplyForOvertimePay(extraHours hours: NSDecimalNumber) -> Bool
   
-  func ratePerHour(salary salary: NSDecimalNumber,
+  func ratePerHour(salary: NSDecimalNumber,
                           workingHours: NSDecimalNumber,
                           payFrequency: PaymentFrequency) -> NSDecimalNumber
   
-  func extraHoursWorked(hours hours: NSDecimalNumber) -> (
+  func extraHoursWorked(hours: NSDecimalNumber) -> (
     under68Hours: NSDecimalNumber, over68Hours: NSDecimalNumber)
   
   func extraRatePerHour(rate hourlyRate: NSDecimalNumber,
@@ -49,14 +49,14 @@ extension Overtime {
     return false
   }
   
-  func ratePerHour(salary salary: NSDecimalNumber, workingHours: NSDecimalNumber,
+  func ratePerHour(salary: NSDecimalNumber, workingHours: NSDecimalNumber,
                                  payFrequency: PaymentFrequency) -> NSDecimalNumber {
     
     let hourlyRateResult = (salary / payFrequency.rawValue) / workingHours
     return NSDecimalNumber.roundToNearestTwo(hourlyRateResult)
   }
   
-  func extraHoursWorked(hours hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber,
+  func extraHoursWorked(hours: NSDecimalNumber) -> (under68Hours: NSDecimalNumber,
     over68Hours: NSDecimalNumber) {
     
     let legalWorkingHours = WorkingHours.legalWorkingHours

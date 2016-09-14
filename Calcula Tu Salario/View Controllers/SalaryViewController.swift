@@ -22,15 +22,15 @@ class SalaryViewController: UIViewController {
     
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
     if let identifier = segue.identifier {
       
       switch identifier {
         
       case Segue.showResults.rawValue:
-        if let destinationVC = segue.destinationViewController as? ResultsViewController {
-          if let introducedSalary = salaryTextField.text where salaryTextField.text != "" {
+        if let destinationVC = segue.destination as? ResultsViewController {
+          if let introducedSalary = salaryTextField.text , salaryTextField.text != "" {
             
             let salary = NSDecimalNumber(string: introducedSalary)
             let customDeductions = prepareCustomDeductions()
@@ -44,7 +44,7 @@ class SalaryViewController: UIViewController {
         }
         
       case Segue.showSettings.rawValue:
-        if let navCon = segue.destinationViewController as? UINavigationController {
+        if let navCon = segue.destination as? UINavigationController {
           if let settingsVC = navCon.visibleViewController as? SettingsTableViewController {
             settingsVC.delegate = self
           }
@@ -57,12 +57,12 @@ class SalaryViewController: UIViewController {
     }
   }
   
-  override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+  override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     var shouldPerformSegue = true
     
-    for (index, _) in rows.enumerate() {
-      let indexPath = NSIndexPath(forRow: index, inSection: 0)
-      let cell = deductionsTableView.cellForRowAtIndexPath(indexPath) as! DeductionTableViewCell
+    for (index, _) in rows.enumerated() {
+      let indexPath = IndexPath(row: index, section: 0)
+      let cell = deductionsTableView.cellForRow(at: indexPath) as! DeductionTableViewCell
       
       if cell.deductionNameTextField.text == "" || cell.deductionAmountTextField.text == "" {
         shouldPerformSegue = false
@@ -71,9 +71,9 @@ class SalaryViewController: UIViewController {
     }
     
     if !shouldPerformSegue {
-      let alert = UIAlertController(title: "Oh no!", message: "Te falta por completar deducciones :(", preferredStyle: UIAlertControllerStyle.Alert)
-      alert.addAction(UIAlertAction(title: "Continuar", style: UIAlertActionStyle.Default, handler: nil))
-      presentViewController(alert, animated: true, completion: nil)
+      let alert = UIAlertController(title: "Oh no!", message: "Te falta por completar deducciones :(", preferredStyle: UIAlertControllerStyle.alert)
+      alert.addAction(UIAlertAction(title: "Continuar", style: UIAlertActionStyle.default, handler: nil))
+      present(alert, animated: true, completion: nil)
     }
     
     return shouldPerformSegue
@@ -82,9 +82,9 @@ class SalaryViewController: UIViewController {
   func prepareCustomDeductions() -> [Deduction] {
     var deductions = [Deduction]()
     
-    for (index, _) in rows.enumerate() {
-      let indexPath = NSIndexPath(forRow: index, inSection: 0)
-      let cell = deductionsTableView.cellForRowAtIndexPath(indexPath) as! DeductionTableViewCell
+    for (index, _) in rows.enumerated() {
+      let indexPath = IndexPath(row: index, section: 0)
+      let cell = deductionsTableView.cellForRow(at: indexPath) as! DeductionTableViewCell
       let deduction = Deduction(name: cell.deductionNameTextField.text!,
                                 amount: NSDecimalNumber(string: cell.deductionAmountTextField.text!))
       deductions.append(deduction)
@@ -95,8 +95,8 @@ class SalaryViewController: UIViewController {
 }
 
 extension SalaryViewController: SettingsDelegate {
-  func isNightShiftEnabled(switchButton: UISwitch) {
-    isNightShiftOn = switchButton.on
+  func isNightShiftEnabled(_ switchButton: UISwitch) {
+    isNightShiftOn = switchButton.isOn
   }
 }
 

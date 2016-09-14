@@ -11,34 +11,34 @@ import Foundation
 //MARK: Overloaded Arithmetic Operators
 
 func + (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-  return lhs.decimalNumberByAdding(rhs)
+  return lhs.adding(rhs)
 }
 
 func - (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-  return lhs.decimalNumberBySubtracting(rhs)
+  return lhs.subtracting(rhs)
 }
 
 func * (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-  return lhs.decimalNumberByMultiplyingBy(rhs)
+  return lhs.multiplying(by: rhs)
 }
 
 func / (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-  return lhs.decimalNumberByDividingBy(rhs)
+  return lhs.dividing(by: rhs)
 }
 
 
 //MARK: Overloaded Comparison Operators
 
 func > (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-  return lhs.compare(rhs) == NSComparisonResult.OrderedDescending
+  return lhs.compare(rhs) == ComparisonResult.orderedDescending
 }
 
 func < (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-  return lhs.compare(rhs) == NSComparisonResult.OrderedAscending
+  return lhs.compare(rhs) == ComparisonResult.orderedAscending
 }
 
 func == (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-  return lhs.compare(rhs) == NSComparisonResult.OrderedSame
+  return lhs.compare(rhs) == ComparisonResult.orderedSame
 }
 
 func >= (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
@@ -58,9 +58,9 @@ func <= (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
 
 extension NSDecimalNumber {
 
-  static func roundToNearestTwo(numberToRound: NSDecimalNumber) -> NSDecimalNumber {
-    let roundBehaviour = NSDecimalNumberHandler(roundingMode: .RoundPlain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-    return numberToRound.decimalNumberByRoundingAccordingToBehavior(roundBehaviour)
+  static func roundToNearestTwo(_ numberToRound: NSDecimalNumber) -> NSDecimalNumber {
+    let roundBehaviour = NSDecimalNumberHandler(roundingMode: .plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+    return numberToRound.rounding(accordingToBehavior: roundBehaviour)
   }
   
 }

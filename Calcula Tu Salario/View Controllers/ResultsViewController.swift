@@ -15,7 +15,7 @@ class ResultsViewController: UIViewController {
     resultLabel.text = salaryViewModel.viewNetSalary
   }
 
-  @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
+  @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
     
     let monthly = 0
     let biWeekly = 1
@@ -37,16 +37,15 @@ class ResultsViewController: UIViewController {
 }
 
 
-private func prepareTableView(tableView: UITableView) -> UITableView {
+private func prepareTableView(_ tableView: UITableView) {
   tableView.tableFooterView = UIView()
-  tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-  return tableView
+  tableView.separatorStyle = UITableViewCellSeparatorStyle.none
 }
 
 //MARK: Data Source
 
 extension ResultsViewController: UITableViewDataSource {
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     if section == 0 {
       return salaryViewModel.viewIncome.count
@@ -56,28 +55,28 @@ extension ResultsViewController: UITableViewDataSource {
     
   }
   
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let deductionNames = [String](salaryViewModel.viewDeductions.keys)
     let incomeNames = [String](salaryViewModel.viewIncome.keys)
-    let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! ResultTableViewCell
     
-    if indexPath.section == 0 {
-      cell.titleLabel.text = incomeNames[indexPath.row]
-      cell.amountLabel.text = salaryViewModel.viewIncome[incomeNames[indexPath.row]]!
+    if (indexPath as NSIndexPath).section == 0 {
+      cell.titleLabel.text = incomeNames[(indexPath as NSIndexPath).row]
+      cell.amountLabel.text = salaryViewModel.viewIncome[incomeNames[(indexPath as NSIndexPath).row]]!
     } else {
-      cell.titleLabel.text = deductionNames[indexPath.row]
-      cell.amountLabel.text = salaryViewModel.viewDeductions[deductionNames[indexPath.row]]!
+      cell.titleLabel.text = deductionNames[(indexPath as NSIndexPath).row]
+      cell.amountLabel.text = salaryViewModel.viewDeductions[deductionNames[(indexPath as NSIndexPath).row]]!
     }
     
     return cell
   }
   
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     if section == 0 {
       return "Ingresos"
     } else {

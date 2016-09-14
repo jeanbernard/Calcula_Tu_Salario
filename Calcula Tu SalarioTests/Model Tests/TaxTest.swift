@@ -92,7 +92,7 @@ class ISRTest: XCTestCase {
   }
 
   func testISRYearlyRetentionAmount25Percent() {
-    let expectedYearlyISRRetentionAmount = 105_279.25
+    let expectedYearlyISRRetentionAmount: NSDecimalNumber = 105_279.25
     let ISRDeductionAmount = payroll.getYearlyRetentionAmount(thirdScaleSalary)
     XCTAssertEqual(expectedYearlyISRRetentionAmount, ISRDeductionAmount)
   }

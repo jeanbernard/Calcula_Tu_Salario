@@ -1,7 +1,7 @@
 import UIKit
 
 protocol SettingsDelegate: class {
-  func isNightShiftEnabled(switchButton: UISwitch)
+  func isNightShiftEnabled(_ switchButton: UISwitch)
 }
 
 class SettingsTableViewController: UITableViewController {
@@ -11,24 +11,24 @@ class SettingsTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let userDefaults = NSUserDefaults.standardUserDefaults().boolForKey("NightSwitch")
-    nightShiftSwitch.on = userDefaults
+    let userDefaults = UserDefaults.standard.bool(forKey: "NightSwitch")
+    nightShiftSwitch.isOn = userDefaults
   }
   
   
-  @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-    NSUserDefaults.standardUserDefaults().setBool(nightShiftSwitch.on, forKey: "NightSwitch")
+  @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+    UserDefaults.standard.set(nightShiftSwitch.isOn, forKey: "NightSwitch")
     delegate?.isNightShiftEnabled(nightShiftSwitch)
-    dismissViewControllerAnimated(true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
   
   // MARK: - Table view data source
   
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1
   }
 }
