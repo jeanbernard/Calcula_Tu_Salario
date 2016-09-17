@@ -13,8 +13,7 @@ Thank you for stopping by and taking an interest in the repo :]
 
 This project is a work in progress so i'll post here what you should consider if you wanna check it out:
 
-* Clone the repo and open the .xcodeproj file in Xcode 7.
-* Checkout from Xcode 7 also works.
+* Migrated to Swift 3.0 so you need Xcode 8 to open the project.
 * Unit tests can be run manually from inside Xcode. It'll even show you the current code coverage 😎.
 * I decided to use MVVM as opposed to the traditional MVC 🤓. For more info on MVVM: http://artsy.github.io/blog/2015/09/24/mvvm-in-swift/
 * I follow this style guide for organizing my Swift code https://github.com/raywenderlich/swift-style-guide
@@ -27,7 +26,7 @@ This project is a work in progress so i'll post here what you should consider if
 - [x] Calculates monthly net salary taking into account all the deductions that come from government taxes (AFP, SFS, ISR).
 - [x] Calculate payroll based on a night shift schedule.
 - [x] Add custom deductions to payroll.
-- [ ] A detailed view showing the calculations.
+- [ ] A detailed view showing what each deduction means.
 
 ##Coming soon
 
