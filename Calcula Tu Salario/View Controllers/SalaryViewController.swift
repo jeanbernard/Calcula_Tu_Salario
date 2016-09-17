@@ -19,7 +19,7 @@ class SalaryViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     prepareDeductionsTableView(deductionsTableView)
-    
+    prepareTextFields(salaryTextField)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,9 +37,7 @@ class SalaryViewController: UIViewController {
             var salaryViewModel = SalaryViewModel()
             salaryViewModel = SalaryViewModel(salary: salary, shift: isNightShiftOn, customDeductions: customDeductions)
             destinationVC.salaryViewModel = salaryViewModel
-            
-          } else {
-            //TO-DO: Add UIAlertController "Must enter salary."
+
           }
         }
         
@@ -58,6 +56,7 @@ class SalaryViewController: UIViewController {
   }
   
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    
     var shouldPerformSegue = true
     
     for (index, _) in rows.enumerated() {
@@ -65,18 +64,26 @@ class SalaryViewController: UIViewController {
       let cell = deductionsTableView.cellForRow(at: indexPath) as! DeductionTableViewCell
       
       if cell.deductionNameTextField.text == "" || cell.deductionAmountTextField.text == "" {
+        let alert = UIAlertController(title: "Oh no!", message: "Te falta por completar deducciones :(", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Continuar", style: UIAlertActionStyle.default, handler: nil))
+        present(alert, animated: true, completion: nil)
         shouldPerformSegue = false
         break
       }
     }
     
-    if !shouldPerformSegue {
-      let alert = UIAlertController(title: "Oh no!", message: "Te falta por completar deducciones :(", preferredStyle: UIAlertControllerStyle.alert)
-      alert.addAction(UIAlertAction(title: "Continuar", style: UIAlertActionStyle.default, handler: nil))
-      present(alert, animated: true, completion: nil)
+    if let salaryText = salaryTextField.text {
+      if salaryText == "" {
+        let alert = UIAlertController(title: "Oh no!", message: "Introduzca salario! :(", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Continuar", style: UIAlertActionStyle.default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        shouldPerformSegue = false
+        return shouldPerformSegue
+      }
     }
     
     return shouldPerformSegue
+
   }
   
   func prepareCustomDeductions() -> [Deduction] {
@@ -99,7 +106,4 @@ extension SalaryViewController: SettingsDelegate {
     isNightShiftOn = switchButton.isOn
   }
 }
-
-
-
 

@@ -1,5 +1,5 @@
 language: objective-c
 osx_image: xcode8
 script: set -o pipefail && xcodebuild test -project Calcula\ Tu\ Salario.xcodeproj -scheme Calcula\ Tu\ Salario -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' | xcpretty
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'Calcula Tu Salario'
+# after_success:
+#   - bash <(curl -s https://codecov.io/bash) -J 'Calcula Tu Salario'

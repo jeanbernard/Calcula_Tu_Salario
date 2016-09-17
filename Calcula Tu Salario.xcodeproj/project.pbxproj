@@ -27,9 +27,10 @@
 		1571351A1D25CC5800DE9110 /* Calcula_Tu_SalarioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135191D25CC5800DE9110 /* Calcula_Tu_SalarioUITests.swift */; };
 		157135281D25CE0C00DE9110 /* TaxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157135271D25CE0C00DE9110 /* TaxTest.swift */; };
 		157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */; };
-		157DC3341D7F840B007593B7 /* SalaryViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC3331D7F840B007593B7 /* SalaryViewControllerDataSource.swift */; };
+		157DC3341D7F840B007593B7 /* SalaryVCTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC3331D7F840B007593B7 /* SalaryVCTableViewDataSource.swift */; };
 		157DC3391D7F8CBC007593B7 /* DeductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC3381D7F8CBC007593B7 /* DeductionTableViewCell.swift */; };
-		157DC33B1D7FA014007593B7 /* SalaryViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC33A1D7FA014007593B7 /* SalaryViewControllerDelegate.swift */; };
+		157DC33B1D7FA014007593B7 /* SalaryVCTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DC33A1D7FA014007593B7 /* SalaryVCTableViewDelegate.swift */; };
+		15A05B9D1D8D94840017A678 /* SalaryVCTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A05B9C1D8D94840017A678 /* SalaryVCTextFieldDelegate.swift */; };
 		15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B960A71D46E9CD000D377E /* ResultsViewController.swift */; };
 		15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */; };
 		15C302C71D68C98100401BDC /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C302C61D68C98100401BDC /* Holiday.swift */; };
@@ -83,9 +84,10 @@
 		1571351B1D25CC5800DE9110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		157135271D25CE0C00DE9110 /* TaxTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxTest.swift; sourceTree = "<group>"; };
 		1571352F1D271DBB00DE9110 /* NSDecimalNumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtil.swift; sourceTree = "<group>"; };
-		157DC3331D7F840B007593B7 /* SalaryViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewControllerDataSource.swift; sourceTree = "<group>"; };
+		157DC3331D7F840B007593B7 /* SalaryVCTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryVCTableViewDataSource.swift; sourceTree = "<group>"; };
 		157DC3381D7F8CBC007593B7 /* DeductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeductionTableViewCell.swift; sourceTree = "<group>"; };
-		157DC33A1D7FA014007593B7 /* SalaryViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewControllerDelegate.swift; sourceTree = "<group>"; };
+		157DC33A1D7FA014007593B7 /* SalaryVCTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryVCTableViewDelegate.swift; sourceTree = "<group>"; };
+		15A05B9C1D8D94840017A678 /* SalaryVCTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryVCTextFieldDelegate.swift; sourceTree = "<group>"; };
 		15B960A71D46E9CD000D377E /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		15BF2DA21D48B8AD00874418 /* SalaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
 		15C302C61D68C98100401BDC /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
@@ -209,7 +211,7 @@
 		157DC3361D7F89D7007593B7 /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
-				157DC3331D7F840B007593B7 /* SalaryViewControllerDataSource.swift */,
+				157DC3331D7F840B007593B7 /* SalaryVCTableViewDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -217,7 +219,8 @@
 		157DC3371D7F8A0D007593B7 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				157DC33A1D7FA014007593B7 /* SalaryViewControllerDelegate.swift */,
+				157DC33A1D7FA014007593B7 /* SalaryVCTableViewDelegate.swift */,
+				15A05B9C1D8D94840017A678 /* SalaryVCTextFieldDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -420,7 +423,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				157DC3341D7F840B007593B7 /* SalaryViewControllerDataSource.swift in Sources */,
+				15A05B9D1D8D94840017A678 /* SalaryVCTextFieldDelegate.swift in Sources */,
+				157DC3341D7F840B007593B7 /* SalaryVCTableViewDataSource.swift in Sources */,
 				153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */,
 				155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */,
 				15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */,
@@ -437,7 +441,7 @@
 				15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */,
 				153157571D85BBEE0027F3A5 /* Extensions.swift in Sources */,
 				15B960A81D46E9CD000D377E /* ResultsViewController.swift in Sources */,
-				157DC33B1D7FA014007593B7 /* SalaryViewControllerDelegate.swift in Sources */,
+				157DC33B1D7FA014007593B7 /* SalaryVCTableViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

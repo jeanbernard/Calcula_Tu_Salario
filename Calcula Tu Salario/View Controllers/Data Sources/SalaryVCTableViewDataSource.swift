@@ -18,6 +18,8 @@ extension SalaryViewController: UITableViewDataSource {
         deductionCell.deductionAmountTextField.text = ""
       }
       
+      prepareTextFields(deductionCell.deductionAmountTextField)
+      
       return deductionCell
     } else {
       let createDeductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.createDeduction)

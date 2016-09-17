@@ -42,14 +42,14 @@
                                                             <frame key="frameInset" width="375" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deducción" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jPf-jR-FzO">
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deducción" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jPf-jR-FzO">
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="138" id="fMC-nf-8oh"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                                 </textField>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$1,000.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zNv-ol-gfF">
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$1,000.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zNv-ol-gfF">
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 </textField>
@@ -242,51 +242,30 @@
                                                     <color key="textColor" red="0.97396391630172729" green="0.70611584186553955" blue="0.17488420009613037" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ouk-f2-QWf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ouk-f2-QWf">
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="baseline" secondItem="ub9-CR-KtW" secondAttribute="baseline" id="LnZ-Ts-u3z"/>
-                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="centerY" secondItem="090-qZ-gaI" secondAttribute="centerY" id="VJ8-De-cU3"/>
-                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="baseline" secondItem="ub9-CR-KtW" secondAttribute="baseline" id="YrB-zp-3tB"/>
-                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="centerY" secondItem="090-qZ-gaI" secondAttribute="centerY" id="e7s-cK-3IL"/>
-                                                <constraint firstItem="ub9-CR-KtW" firstAttribute="baseline" secondItem="Ouk-f2-QWf" secondAttribute="baseline" id="gTZ-CG-OZi"/>
+                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="centerY" secondItem="090-qZ-gaI" secondAttribute="centerY" id="E2l-pR-4RL"/>
+                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="leading" secondItem="090-qZ-gaI" secondAttribute="leadingMargin" constant="17" id="GJL-Fr-vBX"/>
+                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="baseline" secondItem="ub9-CR-KtW" secondAttribute="baseline" id="Id4-Zx-cO2"/>
+                                                <constraint firstItem="ub9-CR-KtW" firstAttribute="leading" secondItem="Ouk-f2-QWf" secondAttribute="trailing" constant="33" id="gmG-bQ-jNu"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ub9-CR-KtW" secondAttribute="trailing" id="gx0-Ia-yWa"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ub9-CR-KtW" secondAttribute="trailing" constant="57" id="im1-Sg-Ffe"/>
                                                 <constraint firstItem="ub9-CR-KtW" firstAttribute="leading" secondItem="090-qZ-gaI" secondAttribute="leading" constant="234" id="kWa-Qp-1sN"/>
-                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="leading" secondItem="090-qZ-gaI" secondAttribute="leadingMargin" constant="13" id="kex-6k-np8"/>
-                                                <constraint firstItem="Ouk-f2-QWf" firstAttribute="leading" secondItem="090-qZ-gaI" secondAttribute="leadingMargin" constant="17" id="ud4-mH-v39"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="LnZ-Ts-u3z"/>
-                                                    <exclude reference="e7s-cK-3IL"/>
-                                                    <exclude reference="kex-6k-np8"/>
-                                                    <exclude reference="gTZ-CG-OZi"/>
                                                     <exclude reference="gx0-Ia-yWa"/>
                                                     <exclude reference="im1-Sg-Ffe"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="constraints">
-                                                    <include reference="LnZ-Ts-u3z"/>
-                                                    <include reference="e7s-cK-3IL"/>
-                                                    <exclude reference="kex-6k-np8"/>
-                                                    <exclude reference="gTZ-CG-OZi"/>
                                                     <include reference="gx0-Ia-yWa"/>
                                                     <exclude reference="im1-Sg-Ffe"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=compact-widthClass=compact">
-                                                <mask key="constraints">
-                                                    <exclude reference="kex-6k-np8"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="constraints">
-                                                    <exclude reference="kex-6k-np8"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -335,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8v-1R-7sA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="338" y="-255"/>
+            <point key="canvasLocation" x="325.60000000000002" y="-232.53373313343329"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HRG-pd-zSh">

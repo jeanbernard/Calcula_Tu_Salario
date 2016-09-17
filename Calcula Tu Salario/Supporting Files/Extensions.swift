@@ -10,3 +10,9 @@ extension UILabel {
     return label
   }
 }
+
+extension UITextField {
+  override open func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    return false
+  }
+}
