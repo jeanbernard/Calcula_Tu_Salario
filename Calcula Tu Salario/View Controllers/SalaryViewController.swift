@@ -34,7 +34,6 @@ class SalaryViewController: UIViewController {
     addToolbarOnKeyboard(salaryTextField, withText: "Salario Mensual")
     
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.checkDynamicTypeChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
-    
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
   }
   
@@ -76,7 +75,7 @@ class SalaryViewController: UIViewController {
                                               customIncomes: customIncomes)
             
             destinationVC.salaryViewModel = salaryViewModel
-
+            
           }
         }
         
@@ -97,6 +96,10 @@ class SalaryViewController: UIViewController {
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     
     var shouldPerformSegue = true
+    
+    if identifier == "showSettings" {
+      return shouldPerformSegue
+    }
     
     for (index, _) in rows.enumerated() {
       let indexPath = IndexPath(row: index, section: 0)
@@ -122,7 +125,7 @@ class SalaryViewController: UIViewController {
     }
     
     return shouldPerformSegue
-
+    
   }
   
   fileprivate func prepareCustomDeductions() -> [Deduction] {
