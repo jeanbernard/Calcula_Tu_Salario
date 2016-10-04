@@ -11,6 +11,8 @@
 		152BB59F1D5409BA006DD461 /* Tax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152BB59E1D5409BA006DD461 /* Tax.swift */; };
 		153157571D85BBEE0027F3A5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153157561D85BBEE0027F3A5 /* Extensions.swift */; };
 		153157591D85C7A50027F3A5 /* Deduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153157581D85C7A50027F3A5 /* Deduction.swift */; };
+		153A2FFF1D8F28F400C2E24B /* ResultsVCTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A2FFE1D8F28F400C2E24B /* ResultsVCTableViewDelegate.swift */; };
+		153A30011D8F309900C2E24B /* ResultsVCTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A30001D8F309900C2E24B /* ResultsVCTableViewDataSource.swift */; };
 		153BFA9E1D6BBEC70035ECE8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */; };
 		153BFAA01D6BD4FA0035ECE8 /* NightShiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */; };
 		153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BFAA11D6BD5540035ECE8 /* NightShift.swift */; };
@@ -38,6 +40,7 @@
 		15CBA7AF1D476953001BA6B1 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */; };
 		15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E3336A1D452E030017114E /* SalaryViewController.swift */; };
 		15EAFEAD1D4D0DA20027F17D /* SalaryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */; };
+		15F849141DA336E500683F81 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F849131DA336E500683F81 /* Income.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,8 @@
 		152BB59E1D5409BA006DD461 /* Tax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tax.swift; sourceTree = "<group>"; };
 		153157561D85BBEE0027F3A5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		153157581D85C7A50027F3A5 /* Deduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deduction.swift; sourceTree = "<group>"; };
+		153A2FFE1D8F28F400C2E24B /* ResultsVCTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsVCTableViewDelegate.swift; sourceTree = "<group>"; };
+		153A30001D8F309900C2E24B /* ResultsVCTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsVCTableViewDataSource.swift; sourceTree = "<group>"; };
 		153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		153BFA9F1D6BD4FA0035ECE8 /* NightShiftTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightShiftTest.swift; sourceTree = "<group>"; };
 		153BFAA11D6BD5540035ECE8 /* NightShift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 		15CBA7AE1D476953001BA6B1 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		15E3336A1D452E030017114E /* SalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
 		15EAFEAC1D4D0DA20027F17D /* SalaryViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryViewModelTest.swift; sourceTree = "<group>"; };
+		15F849131DA336E500683F81 /* Income.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 		155B67771D2DDD3D002E8C9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				15F849131DA336E500683F81 /* Income.swift */,
 				153157581D85C7A50027F3A5 /* Deduction.swift */,
 				15C302C61D68C98100401BDC /* Holiday.swift */,
 				153BFAA11D6BD5540035ECE8 /* NightShift.swift */,
@@ -212,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				157DC3331D7F840B007593B7 /* SalaryVCTableViewDataSource.swift */,
+				153A30001D8F309900C2E24B /* ResultsVCTableViewDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 			children = (
 				157DC33A1D7FA014007593B7 /* SalaryVCTableViewDelegate.swift */,
 				15A05B9C1D8D94840017A678 /* SalaryVCTextFieldDelegate.swift */,
+				153A2FFE1D8F28F400C2E24B /* ResultsVCTableViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -427,12 +436,15 @@
 				157DC3341D7F840B007593B7 /* SalaryVCTableViewDataSource.swift in Sources */,
 				153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */,
 				155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */,
+				15F849141DA336E500683F81 /* Income.swift in Sources */,
+				153A2FFF1D8F28F400C2E24B /* ResultsVCTableViewDelegate.swift in Sources */,
 				15BF2DA31D48B8AD00874418 /* SalaryViewModel.swift in Sources */,
 				15C302C71D68C98100401BDC /* Holiday.swift in Sources */,
 				15453ADC1D2A6C2000515D9A /* Payroll.swift in Sources */,
 				151C97691D577C7300D8BCF9 /* TaxImpl.swift in Sources */,
 				157135301D271DBB00DE9110 /* NSDecimalNumberUtil.swift in Sources */,
 				152BB59F1D5409BA006DD461 /* Tax.swift in Sources */,
+				153A30011D8F309900C2E24B /* ResultsVCTableViewDataSource.swift in Sources */,
 				15E3336B1D452E030017114E /* SalaryViewController.swift in Sources */,
 				153BFA9E1D6BBEC70035ECE8 /* SettingsTableViewController.swift in Sources */,
 				157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */,

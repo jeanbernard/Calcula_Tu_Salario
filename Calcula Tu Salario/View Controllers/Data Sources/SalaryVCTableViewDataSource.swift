@@ -10,31 +10,63 @@ extension SalaryViewController: UITableViewDataSource {
   //MARK: Data Source
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if (indexPath as NSIndexPath).section == 0 {
-      let deductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.deduction) as! DeductionTableViewCell
-      
-      if deductionCell.deductionNameTextField.text != "" && deductionCell.deductionAmountTextField.text != "" {
-        deductionCell.deductionNameTextField.text = ""
-        deductionCell.deductionAmountTextField.text = ""
+    
+    if tableView == deductionsTableView {
+      if (indexPath as NSIndexPath).section == 0 {
+        let deductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.deduction) as! DeductionTableViewCell
+        
+        if deductionCell.deductionNameTextField.text != "" && deductionCell.deductionAmountTextField.text != "" {
+          deductionCell.deductionNameTextField.text = ""
+          deductionCell.deductionAmountTextField.text = ""
+        }
+        
+        prepareTextFields(deductionCell.deductionAmountTextField)
+        
+        return deductionCell
+      } else {
+        let createDeductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.createDeduction)
+        return createDeductionCell!
       }
-      
-      prepareTextFields(deductionCell.deductionAmountTextField)
-      
-      return deductionCell
-    } else {
-      let createDeductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.createDeduction)
-      return createDeductionCell!
     }
+    
+    else if tableView == incomeTableView {
+      
+      if (indexPath as NSIndexPath).section == 0 {
+        let deductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.deduction) as! DeductionTableViewCell
+        
+        if deductionCell.deductionNameTextField.text != "" && deductionCell.deductionAmountTextField.text != "" {
+          deductionCell.deductionNameTextField.text = ""
+          deductionCell.deductionAmountTextField.text = ""
+        }
+  
+        prepareTextFields(deductionCell.deductionAmountTextField)
+        
+        return deductionCell
+      } else {
+        let createDeductionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.createDeduction)
+        return createDeductionCell!
+      }
+    }
+    return UITableViewCell()
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
-      return rows.count
-    } else {
-      return 1
+      
+      if tableView == deductionsTableView {
+        return rows.count
+      }
+      
+      else if tableView == incomeTableView {
+        return incomeRows.count
+      }
+      
     }
+    return 1
   }
   
+
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
@@ -50,18 +82,51 @@ extension SalaryViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == UITableViewCellEditingStyle.delete {
-      tableView.beginUpdates()
       
-      rows.remove(at: (indexPath as NSIndexPath).row)
-      tableView.deleteRows(at: [indexPath], with: .automatic)
+      if tableView == deductionsTableView {
+        tableView.beginUpdates()
+        
+        rows.remove(at: (indexPath as NSIndexPath).row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        tableView.endUpdates()
+        
+        contentViewHeightConstraint.constant -= 44
+        deductionsTableViewHeightConstraint.constant -= 44
+        tableView.contentSize.height = deductionsTableViewHeightConstraint.constant
+        
+        UIView.animate(withDuration: 0.4, animations: {
+          self.view.layoutIfNeeded()
+        })
+        
+        rowCount -= 1
+        
+      }
       
-      tableView.endUpdates()
-      contentViewHeightConstraint.constant -= 40
-      rowCount -= 1
+      else if tableView == incomeTableView {
+        tableView.beginUpdates()
+        
+        incomeRows.remove(at: (indexPath as NSIndexPath).row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        tableView.endUpdates()
+        contentViewHeightConstraint.constant -= 44
+        incomeTableViewHeightConstraint.constant -= 44
+        tableView.contentSize.height = incomeTableViewHeightConstraint.constant
+        
+        UIView.animate(withDuration: 0.4, animations: {
+          self.view.layoutIfNeeded()
+        })
+
+        incomeRowCount -= 1
+      }
+      
     }
+    
+    
   }
   
-  func prepareDeductionsTableView(_ tableView: UITableView) {
+  func prepareTableView(for tableView: UITableView) {
     tableView.dataSource = self
     tableView.delegate = self
     tableView.tableFooterView = UIView()

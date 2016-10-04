@@ -9,8 +9,9 @@ struct Payroll: Tax, Holiday, Overtime, NightShift {
   var netSalary: NSDecimalNumber = 0.0
   var shift: Bool = false
   var customDeductions: [Deduction] = []
+  var customIncomes: [Income] = []
   
-  init(withSalary salary: NSDecimalNumber, andShift shift: Bool, andDeductions customDeductions: [Deduction]) {
+  init(withSalary salary: NSDecimalNumber, andShift shift: Bool, andDeductions customDeductions: [Deduction], andIncomes customIncomes: [Income]) {
     self.salary = salary
     self.shift = shift
     self.deductions = obtainDeductions(forSalary: salary)
@@ -22,11 +23,18 @@ struct Payroll: Tax, Holiday, Overtime, NightShift {
       }
     }
     
+    if !customIncomes.isEmpty {
+      for income in customIncomes {
+        incomes.updateValue(income.amount, forKey: income.name)
+      }
+    }
+    
     if shift {
       calculateNightShift()
     }
     
     calculateNet()
+    
   }
   
   init() {
