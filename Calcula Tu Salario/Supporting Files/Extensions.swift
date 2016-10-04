@@ -6,7 +6,7 @@ extension UILabel {
     label.text = text
     label.textAlignment = .center
     label.adjustsFontSizeToFitWidth = true
-    label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightUltraLight)
+    label.font = UIFont.preferredFont(forTextStyle: .callout)
     return label
   }
 }
