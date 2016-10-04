@@ -31,6 +31,8 @@ class SalaryViewController: UIViewController {
     prepareTableView(for: incomeTableView)
     prepareTextFields(salaryTextField)
     
+    addToolbarOnKeyboard(salaryTextField, withText: "Salario Mensual")
+    
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.checkDynamicTypeChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
     
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
