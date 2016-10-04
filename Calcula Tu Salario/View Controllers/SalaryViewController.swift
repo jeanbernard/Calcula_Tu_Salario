@@ -114,6 +114,19 @@ class SalaryViewController: UIViewController {
       }
     }
     
+    for (index, _) in incomeRows.enumerated() {
+      let indexPath = IndexPath(row: index, section: 0)
+      let cell = incomeTableView.cellForRow(at: indexPath) as! DeductionTableViewCell
+      
+      if cell.deductionNameTextField.text == "" || cell.deductionAmountTextField.text == "" {
+        let alert = UIAlertController(title: "Oh no!", message: "Te falta por completar ingresos :(", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Continuar", style: UIAlertActionStyle.default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        shouldPerformSegue = false
+        break
+      }
+    }
+    
     if let salaryText = salaryTextField.text {
       if salaryText == "" {
         let alert = UIAlertController(title: "Oh no!", message: "Introduzca salario! :(", preferredStyle: UIAlertControllerStyle.alert)
