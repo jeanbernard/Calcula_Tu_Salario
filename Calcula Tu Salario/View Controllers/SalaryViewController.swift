@@ -35,10 +35,29 @@ class SalaryViewController: UIViewController {
     
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.checkDynamicTypeChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.textFieldChanged), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
   }
   
   deinit {
     NotificationCenter.default.removeObserver(self)
+  }
+  
+  func textFieldChanged() {
+    if let salaryFromView = salaryTextField.text, salaryTextField.text != "" {
+      
+      let cleanString = salaryFromView.replacingOccurrences(of: ",", with: "")
+      let number = NSDecimalNumber(string: cleanString)
+      let formatter = NumberFormatter()
+      formatter.numberStyle = .decimal
+      
+      var addNumber: NSDecimalNumber = 0.0
+      addNumber = addNumber.adding(number)
+      
+      if let formattedNumber = formatter.string(from: addNumber) {
+        salaryTextField.text = formattedNumber
+      }
+      
+    }
   }
   
   func keyboardWasShown(_ notification: NSNotification) {
@@ -63,8 +82,8 @@ class SalaryViewController: UIViewController {
       case Segue.showResults.rawValue:
         if let destinationVC = segue.destination as? ResultsViewController {
           if let introducedSalary = salaryTextField.text , salaryTextField.text != "" {
-            
-            let salary = NSDecimalNumber(string: introducedSalary)
+            let cleanString = introducedSalary.replacingOccurrences(of: ",", with: "")
+            let salary = NSDecimalNumber(string: cleanString)
             let customDeductions = prepareCustomDeductions()
             let customIncomes = prepareCustomIncomes()
             var salaryViewModel = SalaryViewModel()

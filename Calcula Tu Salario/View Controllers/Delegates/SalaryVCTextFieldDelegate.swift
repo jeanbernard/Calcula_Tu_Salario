@@ -2,9 +2,9 @@ import UIKit
 
 extension SalaryViewController: UITextFieldDelegate {
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    
+
     let returnKey = ""
-    let maxCharacterCount = 7
+    let maxCharacterCount = 10
     
     if string == returnKey {
       return true
@@ -22,5 +22,5 @@ extension SalaryViewController: UITextFieldDelegate {
   func prepareTextFields(_ textField: UITextField) {
     textField.delegate = self
   }
-
+  
 }
