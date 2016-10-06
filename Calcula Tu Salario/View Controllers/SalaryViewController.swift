@@ -7,8 +7,6 @@ private enum Segue: String {
 
 class SalaryViewController: UIViewController {
   
-  var isNightShiftOn: Bool = false
-  
   @IBOutlet weak var salaryTextField: UITextField!
   @IBOutlet weak var deductionsTableView: UITableView!
   @IBOutlet weak var incomeTableView: UITableView!
@@ -16,31 +14,39 @@ class SalaryViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var deductionsTableViewHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var incomeTableViewHeightConstraint: NSLayoutConstraint!
-  
   @IBOutlet weak var contentView: UIView!
   
+  //MARK: Variables
+  
+  var isNightShiftOn: Bool = false
   var rows = [String]()
   var rowCount = 0
-  
   var incomeRows = [String]()
   var incomeRowCount = 0
+  
+  //MARK: View Controller Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     prepareTableView(for: deductionsTableView)
     prepareTableView(for: incomeTableView)
     prepareTextFields(salaryTextField)
-    
     addToolbarOnKeyboard(salaryTextField, withText: "Salario Mensual")
-    
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.checkDynamicTypeChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.textFieldChanged), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
   }
   
-  deinit {
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     NotificationCenter.default.removeObserver(self)
   }
+  
+  //MARK: Functions that are being observed
   
   func textFieldChanged() {
     if let salaryFromView = salaryTextField.text, salaryTextField.text != "" {
@@ -72,6 +78,8 @@ class SalaryViewController: UIViewController {
   func checkDynamicTypeChange () {
     salaryTextField.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
   }
+  
+  //MARK: Segues
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
@@ -159,6 +167,8 @@ class SalaryViewController: UIViewController {
     return shouldPerformSegue
     
   }
+  
+  //MARK: Internal Functions
   
   fileprivate func prepareCustomDeductions() -> [Deduction] {
     var deductions = [Deduction]()
