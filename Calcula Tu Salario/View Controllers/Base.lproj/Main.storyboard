@@ -392,18 +392,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLq-n0-He0">
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="tLq-n0-He0" secondAttribute="bottom" constant="8" symbolic="YES" id="2aI-sz-4zF"/>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="55" id="876-eE-BlP"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="30" id="876-eE-BlP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="nQp-Je-6cz" secondAttribute="bottom" constant="-18" id="AFv-dk-8An"/>
-                            <constraint firstItem="tLq-n0-He0" firstAttribute="leading" secondItem="C2c-jY-Mc9" secondAttribute="leading" id="K0F-9q-z7D"/>
                             <constraint firstAttribute="trailing" secondItem="nQp-Je-6cz" secondAttribute="trailing" id="fjA-0j-yxU"/>
                             <constraint firstItem="C2c-jY-Mc9" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="hMn-yF-Dvr"/>
                             <constraint firstItem="C2c-jY-Mc9" firstAttribute="centerX" secondItem="nQp-Je-6cz" secondAttribute="centerX" id="mU1-x2-dsg"/>
