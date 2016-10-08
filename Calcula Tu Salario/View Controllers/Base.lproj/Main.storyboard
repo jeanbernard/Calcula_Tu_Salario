@@ -353,7 +353,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nQp-Je-6cz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nQp-Je-6cz">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultCell" id="YQC-0n-Nv2" customClass="ResultTableViewCell" customModule="Calcula_Tu_Salario" customModuleProvider="target">
@@ -395,7 +395,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="30" id="876-eE-BlP"/>
+                            <constraint firstItem="C2c-jY-Mc9" firstAttribute="top" secondItem="JDP-lV-e3Z" secondAttribute="bottom" constant="25" id="876-eE-BlP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="nQp-Je-6cz" secondAttribute="bottom" constant="-18" id="AFv-dk-8An"/>
                             <constraint firstAttribute="trailing" secondItem="nQp-Je-6cz" secondAttribute="trailing" id="fjA-0j-yxU"/>
                             <constraint firstItem="C2c-jY-Mc9" firstAttribute="leading" secondItem="oT8-QP-WmV" secondAttribute="leadingMargin" id="hMn-yF-Dvr"/>
