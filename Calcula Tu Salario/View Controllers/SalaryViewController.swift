@@ -38,6 +38,7 @@ class SalaryViewController: UIViewController {
     super.viewWillAppear(animated)
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.checkDynamicTypeChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.keyboardDidDisappear(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(SalaryViewController.textFieldChanged), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
   }
   
@@ -67,12 +68,21 @@ class SalaryViewController: UIViewController {
   }
   
   func keyboardWasShown(_ notification: NSNotification) {
-    
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
       let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 60, right: 0)
       scrollView.contentInset = contentInsets
     }
+  }
+  
+  func keyboardDidDisappear(_ notification: NSNotification) {
+    let contentInsets = UIEdgeInsets.zero
     
+    UIView.animate(withDuration: 0.4) { 
+      self.scrollView.contentInset = contentInsets
+    }
+    
+    let point = CGPoint(x: 0, y: 0)
+    scrollView.setContentOffset(point, animated: true)
   }
   
   func checkDynamicTypeChange () {
