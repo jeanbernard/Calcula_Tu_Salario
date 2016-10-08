@@ -40,4 +40,5 @@ class ResultsViewController: UIViewController {
 private func prepareTableView(_ tableView: UITableView) {
   tableView.tableFooterView = UIView()
   tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+  //tableView.backgroundColor = UIColor.clear
 }
