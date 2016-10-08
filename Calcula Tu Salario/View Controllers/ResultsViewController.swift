@@ -35,6 +35,10 @@ class ResultsViewController: UIViewController {
     }
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    print("performed segue")
+  }
+  
 }
 
 private func prepareTableView(_ tableView: UITableView) {

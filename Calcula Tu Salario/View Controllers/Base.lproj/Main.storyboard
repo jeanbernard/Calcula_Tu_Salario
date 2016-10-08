@@ -356,11 +356,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nQp-Je-6cz">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultCell" id="YQC-0n-Nv2" customClass="ResultTableViewCell" customModule="Calcula_Tu_Salario" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="resultCell" id="YQC-0n-Nv2" customClass="ResultTableViewCell" customModule="Calcula_Tu_Salario" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YQC-0n-Nv2" id="090-qZ-gaI">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="328" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ouk-f2-QWf">
@@ -388,6 +388,7 @@
                                         <connections>
                                             <outlet property="amountLabel" destination="ub9-CR-KtW" id="3iu-kH-c7Z"/>
                                             <outlet property="titleLabel" destination="Ouk-f2-QWf" id="rBy-bh-E3D"/>
+                                            <segue destination="sQX-Gh-WSq" kind="show" identifier="detail" id="Svr-tT-Da7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -407,7 +408,7 @@
                     <navigationItem key="navigationItem" id="sQg-Ni-3Oz">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="YvS-fy-qDO">
-                            <rect key="frame" x="90.5" y="7.5" width="194" height="29"/>
+                            <rect key="frame" x="91" y="8" width="194" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="194" id="LJI-DC-eIr"/>
@@ -431,6 +432,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8v-1R-7sA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="325.60000000000002" y="-232.53373313343329"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="f8h-Jc-FQW">
+            <objects>
+                <viewController id="sQX-Gh-WSq" customClass="DetailViewController" customModule="Calcula_Tu_Salario" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bSC-UW-UbV"/>
+                        <viewControllerLayoutGuide type="bottom" id="W8C-Dk-uqq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SFP-we-Q0J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wvf-ec-pSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="-233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HRG-pd-zSh">

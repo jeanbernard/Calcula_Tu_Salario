@@ -16,6 +16,10 @@ extension ResultsViewController: UITableViewDelegate {
     return 60
   }
   
+  func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    performSegue(withIdentifier: "detail", sender: self)
+  }
+  
 }
 
 

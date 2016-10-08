@@ -21,6 +21,7 @@
 		15453ADE1D2A6C3800515D9A /* PayrollTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15453ADD1D2A6C3800515D9A /* PayrollTest.swift */; };
 		155B677B1D305B3A002E8C9F /* OvertimeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B677A1D305B3A002E8C9F /* OvertimeTest.swift */; };
 		155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B677C1D305E6D002E8C9F /* Overtime.swift */; };
+		156A5C061DA990F500E2B1FC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156A5C051DA990F500E2B1FC /* DetailViewController.swift */; };
 		157134FA1D25CC5800DE9110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157134F91D25CC5800DE9110 /* AppDelegate.swift */; };
 		157134FF1D25CC5800DE9110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 157134FD1D25CC5800DE9110 /* Main.storyboard */; };
 		157135011D25CC5800DE9110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 157135001D25CC5800DE9110 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		15453ADD1D2A6C3800515D9A /* PayrollTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayrollTest.swift; sourceTree = "<group>"; };
 		155B677A1D305B3A002E8C9F /* OvertimeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimeTest.swift; sourceTree = "<group>"; };
 		155B677C1D305E6D002E8C9F /* Overtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overtime.swift; sourceTree = "<group>"; };
+		156A5C051DA990F500E2B1FC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		157134F61D25CC5700DE9110 /* Calcula Tu Salario.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calcula Tu Salario.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		157134F91D25CC5800DE9110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		157134FE1D25CC5800DE9110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				15B960A71D46E9CD000D377E /* ResultsViewController.swift */,
 				15E3336A1D452E030017114E /* SalaryViewController.swift */,
 				153BFA9D1D6BBEC70035ECE8 /* SettingsTableViewController.swift */,
+				156A5C051DA990F500E2B1FC /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 			files = (
 				15A05B9D1D8D94840017A678 /* SalaryVCTextFieldDelegate.swift in Sources */,
 				157DC3341D7F840B007593B7 /* SalaryVCTableViewDataSource.swift in Sources */,
+				156A5C061DA990F500E2B1FC /* DetailViewController.swift in Sources */,
 				153BFAA21D6BD5540035ECE8 /* NightShift.swift in Sources */,
 				155B677D1D305E6D002E8C9F /* Overtime.swift in Sources */,
 				15F849141DA336E500683F81 /* Income.swift in Sources */,
