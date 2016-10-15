@@ -26,6 +26,12 @@ struct SalaryViewModel {
     }
   }
   
+  var viewISRPercentage: String {
+    get {
+      return "\(payroll.isrPercentage * 100).00%"
+    }
+  }
+  
   init(salary: NSDecimalNumber, shift: Bool, customDeductions: [Deduction], customIncomes: [Income]) {
     self.salary = salary
     self.shift = shift

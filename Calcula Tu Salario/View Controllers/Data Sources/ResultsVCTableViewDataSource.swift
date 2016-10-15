@@ -24,9 +24,27 @@ extension ResultsViewController: UITableViewDataSource {
     if (indexPath as NSIndexPath).section == 0 {
       cell.titleLabel.text = incomeNames[(indexPath as NSIndexPath).row]
       cell.amountLabel.text = salaryViewModel.viewIncome[incomeNames[(indexPath as NSIndexPath).row]]!
+      let greenColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1.0)
+      cell.amountLabel.textColor = greenColor
+      cell.percentageLabel.text = ""
     } else {
       cell.titleLabel.text = deductionNames[(indexPath as NSIndexPath).row]
       cell.amountLabel.text = salaryViewModel.viewDeductions[deductionNames[(indexPath as NSIndexPath).row]]!
+      
+      let deductionPercentage = deductionNames[(indexPath as NSIndexPath).row]
+      
+      if deductionPercentage == "AFP" {
+        cell.percentageLabel.text = "2.87%"
+      }
+      
+      else if deductionPercentage == "SFS" {
+        cell.percentageLabel.text = "3.04%"
+      }
+      
+      else if deductionPercentage == "ISR" {
+        cell.percentageLabel.text = salaryViewModel.viewISRPercentage
+      }
+      
     }
     
     return cell
