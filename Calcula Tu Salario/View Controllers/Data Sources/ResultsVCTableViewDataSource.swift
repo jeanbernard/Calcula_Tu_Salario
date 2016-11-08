@@ -45,6 +45,10 @@ extension ResultsViewController: UITableViewDataSource {
         cell.percentageLabel.text = salaryViewModel.viewISRPercentage
       }
       
+      else {
+        cell.percentageLabel.text = ""
+      }
+      
     }
     
     return cell
