@@ -4,9 +4,9 @@ extension ResultsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     if section == 0 {
-      return salaryViewModel.viewIncome.count
+      return payroll.incomes.count
     } else {
-      return salaryViewModel.viewDeductions.count
+      return payroll.deductions.count
     }
     
   }
@@ -17,40 +17,27 @@ extension ResultsViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let deductionNames = [String](salaryViewModel.viewDeductions.keys)
-    let incomeNames = [String](salaryViewModel.viewIncome.keys)
     let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! ResultTableViewCell
     
     if (indexPath as NSIndexPath).section == 0 {
-      cell.titleLabel.text = incomeNames[(indexPath as NSIndexPath).row]
-      cell.amountLabel.text = salaryViewModel.viewIncome[incomeNames[(indexPath as NSIndexPath).row]]!
       let greenColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1.0)
+      cell.titleLabel.text = payroll.incomes[(indexPath as NSIndexPath).row].name
+      cell.amountLabel.text = formatNumberToCurrencyString(payroll.incomes[(indexPath as NSIndexPath).row].amount)
       cell.amountLabel.textColor = greenColor
       cell.percentageLabel.text = ""
     } else {
-      cell.titleLabel.text = deductionNames[(indexPath as NSIndexPath).row]
-      cell.amountLabel.text = salaryViewModel.viewDeductions[deductionNames[(indexPath as NSIndexPath).row]]!
+      cell.titleLabel.text = payroll.deductions[(indexPath as NSIndexPath).row].name
+      cell.amountLabel.text = formatNumberToCurrencyString(payroll.deductions[(indexPath as NSIndexPath).row].amount)
       
-      let deductionPercentage = deductionNames[(indexPath as NSIndexPath).row]
-      
-      if deductionPercentage == "AFP" {
-        cell.percentageLabel.text = "2.87%"
-      }
-      
-      else if deductionPercentage == "SFS" {
-        cell.percentageLabel.text = "3.04%"
-      }
-      
-      else if deductionPercentage == "ISR" {
-        cell.percentageLabel.text = salaryViewModel.viewISRPercentage
-      }
-      
-      else {
+      //TODO: Create function to show the percentages correctly. Perhaps create a struct with Type methods to handle conversion between NSDecimalNumber to String and vice versa.
+      if let percentage = payroll.deductions[(indexPath as NSIndexPath).row].percentage {
+        cell.percentageLabel.text = formatNumberToCurrencyString(percentage * 100)?.replacingOccurrences(of: "$", with: "")
+        cell.percentageLabel.text?.append("%")
+      } else {
         cell.percentageLabel.text = ""
       }
       
     }
-    
     return cell
   }
   

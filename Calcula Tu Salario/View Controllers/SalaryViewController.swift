@@ -104,14 +104,12 @@ class SalaryViewController: UIViewController {
             let salary = NSDecimalNumber(string: cleanString)
             let customDeductions = prepareCustomDeductions()
             let customIncomes = prepareCustomIncomes()
-            var salaryViewModel = SalaryViewModel()
-            
-            salaryViewModel = SalaryViewModel(salary: salary,
-                                              shift: isNightShiftOn,
-                                              customDeductions: customDeductions,
-                                              customIncomes: customIncomes)
-            
-            destinationVC.salaryViewModel = salaryViewModel
+            let payroll = Payroll(withSalary: salary,
+                                  andShift: isNightShiftOn,
+                                  andDeductions: customDeductions,
+                                  andIncomes: customIncomes)
+
+            destinationVC.payroll = payroll
             
           }
         }
@@ -183,11 +181,17 @@ class SalaryViewController: UIViewController {
   fileprivate func prepareCustomDeductions() -> [Deduction] {
     var deductions = [Deduction]()
     
+    //TODO: Need to handle nil percentages.
+    
     for (index, _) in rows.enumerated() {
       let indexPath = IndexPath(row: index, section: 0)
       let cell = deductionsTableView.cellForRow(at: indexPath) as! DeductionTableViewCell
       let deduction = Deduction(name: cell.deductionNameTextField.text!,
-                                amount: NSDecimalNumber(string: cell.deductionAmountTextField.text!))
+                                amount: NSDecimalNumber(string: cell.deductionAmountTextField.text!),
+                                percentage: nil,
+                                frequency: .monthly,
+                                type: .custom,
+                                appliesForISR: false)
       deductions.append(deduction)
     }
     return deductions
@@ -200,7 +204,8 @@ class SalaryViewController: UIViewController {
       let indexPath = IndexPath(row: index, section: 0)
       let cell = incomeTableView.cellForRow(at: indexPath) as! DeductionTableViewCell
       let income = Income(name: cell.deductionNameTextField.text!,
-                          amount: NSDecimalNumber(string: cell.deductionAmountTextField.text!))
+                          amount: NSDecimalNumber(string: cell.deductionAmountTextField.text!),
+                          appliesForISR: false)
       incomes.append(income)
     }
     return incomes
