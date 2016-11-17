@@ -10,7 +10,7 @@ enum TaxType: String {
   case custom
 }
 
-struct Deduction {
+struct Deduction: Equatable {
   var name: String
   var amount: NSDecimalNumber
   var percentage: NSDecimalNumber?
@@ -25,6 +25,15 @@ struct Deduction {
     self.frequency = frequency
     self.type = type
     self.appliesForISR = appliesForISR
+  }
+  
+  static func ==(lhs: Deduction, rhs: Deduction) -> Bool {
+    return lhs.name == rhs.name &&
+      lhs.amount == rhs.amount &&
+      lhs.percentage == rhs.percentage &&
+      lhs.frequency == rhs.frequency &&
+      lhs.type == rhs.type &&
+      lhs.appliesForISR == rhs.appliesForISR
   }
   
 }

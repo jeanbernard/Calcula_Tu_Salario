@@ -51,8 +51,8 @@ struct Payroll: Tax, Holiday, Overtime, NightShift {
   //TaxFactory takes a salary and returns an array of deductions which include AFP and SFS.
   enum TaxFactory {
     static func calculateGovernmentTaxes(forSalary salary: NSDecimalNumber) -> [Deduction] {
-      let afpAmount = salary.multiplying(by: Tax2.AFP.rawValue)
-      let sfsAmount = salary.multiplying(by: Tax2.SFS.rawValue)
+      let afpAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax2.AFP.rawValue))
+      let sfsAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax2.SFS.rawValue))
       
       let afp = Deduction(name: "AFP", amount: afpAmount, percentage: Tax2.AFP.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
       let sfs = Deduction(name: "SFS", amount: sfsAmount, percentage: Tax2.SFS.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
