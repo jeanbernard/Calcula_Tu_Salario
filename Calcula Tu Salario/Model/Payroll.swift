@@ -61,36 +61,21 @@ struct Payroll: Tax, Holiday, Overtime, NightShift {
     }
   }
   
-  //  mutating func calculateBiWeeklyPayroll() {
-  //    salary = NSDecimalNumber.roundToNearestTwo(salary / 2)
-  //    netSalary = NSDecimalNumber.roundToNearestTwo(netSalary / 2)
-  //
-  //    for (key, value) in deductions {
-  //      deductions[key] = NSDecimalNumber.roundToNearestTwo(value / 2)
-  //    }
-  //
-  //    for (key, value) in incomes {
-  //      incomes[key] = NSDecimalNumber.roundToNearestTwo(value / 2)
-  //    }
-  //
-  //  }
+  mutating func calculateBiWeeklyPayroll() {
+    netSalary = NSDecimalNumber.roundToNearestTwo(netSalary / 2)
+    
+    for (index, _) in deductions.enumerated() {
+      _ = deductions[index].amount / 2
+    }
+    
+    for (index, _) in incomes.enumerated() {
+      _ = incomes[index].amount / 2
+    }
+  }
   
   fileprivate mutating func calculateNet() {
     netSalary = incomes.reduce(0) { $0 + $1.amount } - deductions.reduce(0) { $0 + $1.amount }
-    //netSalary = salary - deductions.reduce(0) { $0 + $1.amount } - isr
   }
-  
-  //  fileprivate mutating func calculateNet() {
-  //
-  //    for income in incomes.values {
-  //      netSalary = netSalary + income
-  //    }
-  //
-  //    for deduction in deductions.values {
-  //      netSalary = netSalary - deduction
-  //    }
-  //
-  //  }
   
   //  fileprivate mutating func calculateNightShift() {
   //    let nightShiftRatePerHour = nightShiftRate(forSalary: salary)

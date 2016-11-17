@@ -22,46 +22,46 @@ class PayrollTest: XCTestCase {
     XCTAssertEqual(expectedNetSalary, netSalary)
   }
 
-//  func test15PercentBiWeeklyNetSalary() {
-//    let salary: NSDecimalNumber = 50_400
-//    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
-//    let expectedNetSalary: NSDecimalNumber = 22_712.09
-//    payroll.calculateBiWeeklyPayroll()
-//    let netSalary = payroll.netSalary
-//    XCTAssertEqual(expectedNetSalary, netSalary)
-//  }
+  func test15PercentBiWeeklyNetSalary() {
+    let salary: NSDecimalNumber = 50_400
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
+    let expectedNetSalary: NSDecimalNumber = 22_712.09
+    payroll.calculateBiWeeklyPayroll()
+    let netSalary = payroll.netSalary
+    XCTAssertEqual(expectedNetSalary, netSalary)
+  }
 
-//  func test15PercentBiWeeklyNetSalaryAfterOtherDeductions() {
-//    let coop: NSDecimalNumber = 6300
-//    let gym: NSDecimalNumber = 1097.5
-//    let salary: NSDecimalNumber = 50_400
-//    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
-//    let expectedNetSalary: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(15_314.59)
-//    payroll.calculateBiWeeklyPayroll()
-//    let netSalary = payroll.netSalary
-//    let result = netSalary - coop - gym
-//    XCTAssertEqual(expectedNetSalary, result)
-//  }
+  func test15PercentBiWeeklyNetSalaryAfterOtherDeductions() {
+    let coop: NSDecimalNumber = 6300
+    let gym: NSDecimalNumber = 1097.5
+    let salary: NSDecimalNumber = 50_400
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
+    let expectedNetSalary: NSDecimalNumber = NSDecimalNumber.roundToNearestTwo(15_314.59)
+    payroll.calculateBiWeeklyPayroll()
+    let netSalary = payroll.netSalary
+    let result = netSalary - coop - gym
+    XCTAssertEqual(expectedNetSalary, result)
+  }
 
-//  func test20PercentBiWeeklyNetSalary() {
-//    let salary: NSDecimalNumber = 60_000.00
-//    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
-//    let expectedBiWeeklyNetSalary: NSDecimalNumber = 26_418.61
-//    payroll.calculateBiWeeklyPayroll()
-//    let biWeeklyNetSalary = payroll.netSalary
-//    
-//    XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
-//  }
+  func test20PercentBiWeeklyNetSalary() {
+    let salary: NSDecimalNumber = 60_000.00
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
+    let expectedBiWeeklyNetSalary: NSDecimalNumber = 26_418.61
+    payroll.calculateBiWeeklyPayroll()
+    let biWeeklyNetSalary = payroll.netSalary
+    
+    XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
+  }
 
-//  func test25PercentBiWeeklyNetSalary() {
-//    let salary: NSDecimalNumber = 80_000.00
-//    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
-//    let expectedBiWeeklyNetSalary: NSDecimalNumber = 33_840.37
-//    payroll.calculateBiWeeklyPayroll()
-//    let biWeeklyNetSalary = payroll.netSalary
-//    
-//    XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
-//  }
+  func test25PercentBiWeeklyNetSalary() {
+    let salary: NSDecimalNumber = 80_000.00
+    var payroll = Payroll(withSalary: salary, andShift: false, andDeductions: customDeductions, andIncomes: customIncomes)
+    let expectedBiWeeklyNetSalary: NSDecimalNumber = 33_840.37
+    payroll.calculateBiWeeklyPayroll()
+    let biWeeklyNetSalary = payroll.netSalary
+    
+    XCTAssertEqual(expectedBiWeeklyNetSalary, biWeeklyNetSalary)
+  }
 
   func testAllDeductions() {
     let salary: NSDecimalNumber = 50_400
