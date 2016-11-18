@@ -12,7 +12,7 @@ struct Payroll: Taxable, Holiday, Overtime, NightShift {
   init(withSalary salary: NSDecimalNumber, andShift shift: Bool, andDeductions deductions: [Deduction], andIncomes incomes: [Income]) {
     self.salary = salary
     self.shift = shift
-    self.deductions = deductions + TaxFactory.calculateGovernmentTaxes(forSalary: salary)
+    self.deductions = deductions + calculateGovernmentTaxes(forSalary: salary)
     self.incomes = incomes + prepareSalaryIncome()
     getRetentionAmount()
     if shift {
@@ -41,24 +41,6 @@ struct Payroll: Taxable, Holiday, Overtime, NightShift {
                 type: .government,
                 appliesForISR: false)
     )
-  }
-  
-  fileprivate enum Tax: NSDecimalNumber {
-    case AFP = 0.0287
-    case SFS = 0.0304
-  }
-  
-  //TaxFactory takes a salary and returns an array of deductions which include AFP and SFS.
-  fileprivate enum TaxFactory {
-    static func calculateGovernmentTaxes(forSalary salary: NSDecimalNumber) -> [Deduction] {
-      let afpAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax.AFP.rawValue))
-      let sfsAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax.SFS.rawValue))
-      
-      let afp = Deduction(name: "AFP", amount: afpAmount, percentage: Tax.AFP.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
-      let sfs = Deduction(name: "SFS", amount: sfsAmount, percentage: Tax.SFS.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
-      
-      return [afp, sfs]
-    }
   }
   
   mutating func calculateBiWeeklyPayroll() {

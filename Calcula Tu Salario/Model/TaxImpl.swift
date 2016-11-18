@@ -148,6 +148,16 @@ extension Taxable {
     return taxDeductions
   }
   
+  func calculateGovernmentTaxes(forSalary salary: NSDecimalNumber) -> [Deduction] {
+    let afpAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: TaxPercentage.AFP))
+    let sfsAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: TaxPercentage.SFS))
+    
+    let afp = Deduction(name: "AFP", amount: afpAmount, percentage: TaxPercentage.AFP, frequency: .monthly, type: .government, appliesForISR: true)
+    let sfs = Deduction(name: "SFS", amount: sfsAmount, percentage: TaxPercentage.SFS, frequency: .monthly, type: .government, appliesForISR: true)
+    
+    return [afp, sfs]
+  }
+  
 }
 
 private func calculateYearlySalary(_ salary: NSDecimalNumber) -> NSDecimalNumber {
