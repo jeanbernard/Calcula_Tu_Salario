@@ -29,7 +29,7 @@ private enum TaxPercentage {
 
 //MARK: Tax Implementation
 
-extension Tax {
+extension Taxable {
   
   func isSalaryExemptFromISR(_ salary: NSDecimalNumber) -> Bool {
     let yearlySalary: NSDecimalNumber = calculateYearlySalary(salary)

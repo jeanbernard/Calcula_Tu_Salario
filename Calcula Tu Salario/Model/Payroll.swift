@@ -1,7 +1,7 @@
 import Foundation
 
 
-struct Payroll: Tax, Holiday, Overtime, NightShift {
+struct Payroll: Taxable, Holiday, Overtime, NightShift {
   
   var salary: NSDecimalNumber = 0.0
   var netSalary: NSDecimalNumber = 0.0
@@ -43,19 +43,19 @@ struct Payroll: Tax, Holiday, Overtime, NightShift {
     )
   }
   
-  enum Tax2: NSDecimalNumber {
+  fileprivate enum Tax: NSDecimalNumber {
     case AFP = 0.0287
     case SFS = 0.0304
   }
   
   //TaxFactory takes a salary and returns an array of deductions which include AFP and SFS.
-  enum TaxFactory {
+  fileprivate enum TaxFactory {
     static func calculateGovernmentTaxes(forSalary salary: NSDecimalNumber) -> [Deduction] {
-      let afpAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax2.AFP.rawValue))
-      let sfsAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax2.SFS.rawValue))
+      let afpAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax.AFP.rawValue))
+      let sfsAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: Tax.SFS.rawValue))
       
-      let afp = Deduction(name: "AFP", amount: afpAmount, percentage: Tax2.AFP.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
-      let sfs = Deduction(name: "SFS", amount: sfsAmount, percentage: Tax2.SFS.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
+      let afp = Deduction(name: "AFP", amount: afpAmount, percentage: Tax.AFP.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
+      let sfs = Deduction(name: "SFS", amount: sfsAmount, percentage: Tax.SFS.rawValue, frequency: .monthly, type: .government, appliesForISR: true)
       
       return [afp, sfs]
     }

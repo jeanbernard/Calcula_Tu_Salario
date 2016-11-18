@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Tax {
+protocol Taxable {
   func isSalaryExemptFromISR(_ salary: NSDecimalNumber) -> Bool
   func getPercentage(_ salary: NSDecimalNumber) -> NSDecimalNumber
   func getSurplus(_ salary: NSDecimalNumber) -> NSDecimalNumber
