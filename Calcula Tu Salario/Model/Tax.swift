@@ -6,7 +6,6 @@ protocol Taxable {
   func getSurplus(_ salary: NSDecimalNumber) -> NSDecimalNumber
   func getRateNumber(_ percent: NSDecimalNumber) -> NSDecimalNumber
   func getYearlyRetentionAmount(_ salary: NSDecimalNumber) -> NSDecimalNumber
-  func obtainDeductions(forSalary salary: NSDecimalNumber) -> [String: NSDecimalNumber]
   func calculateGovernmentTaxes(forSalary salary: NSDecimalNumber) -> [Deduction]
 }
 

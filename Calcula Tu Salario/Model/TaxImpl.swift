@@ -130,24 +130,6 @@ extension Taxable {
     return NSDecimalNumber.roundToNearestTwo(getMonthlyRetentionAmount(salary) / 2)
   }
   
-  
-  func obtainDeductions(forSalary salary: NSDecimalNumber) -> [String: NSDecimalNumber] {
-    
-    let tax: (AFP: NSDecimalNumber, SFS: NSDecimalNumber) =
-      (salary * TaxPercentage.AFP, salary * TaxPercentage.SFS)
-    
-    let isr = getMonthlyRetentionAmount(salary - tax.AFP - tax.SFS)
-    
-    var taxDeductions: [String: NSDecimalNumber] = [
-      "AFP": tax.AFP,
-      "SFS": tax.SFS,
-      "ISR": isr
-    ]
-    
-    roundTax(&taxDeductions)
-    return taxDeductions
-  }
-  
   func calculateGovernmentTaxes(forSalary salary: NSDecimalNumber) -> [Deduction] {
     let afpAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: TaxPercentage.AFP))
     let sfsAmount = NSDecimalNumber.roundToNearestTwo(salary.multiplying(by: TaxPercentage.SFS))
@@ -165,8 +147,4 @@ private func calculateYearlySalary(_ salary: NSDecimalNumber) -> NSDecimalNumber
   return salary * oneYear
 }
 
-private func roundTax(_ taxDeductions: inout [String: NSDecimalNumber]) {
-  for (key, value) in taxDeductions {
-    taxDeductions[key] = NSDecimalNumber.roundToNearestTwo(value)
-  }
-}
+
